@@ -8,29 +8,34 @@ import { RacesListComponent } from './pages/races/races-list/races-list.componen
 import { RaceDetailComponent } from './pages/races/race-detail/race-detail.component';
 import { AdminDashboardComponent } from './pages/admin/dashboard/admin-dashboard.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { HomeComponent } from './pages/home/home.component';
+import { LayoutComponent } from './layout/layout.component';
+
+
 
 export const routes: Routes = [
-
-  // --- Public Routes ---
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
-
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-
-  // --- User Pages ---
-  { path: 'profile', component: ProfileComponent },
-
-  { path: 'races', component: RacesListComponent },
-  { path: 'races/:id', component: RaceDetailComponent },
-
-  // --- Admin Pages ---
   {
-    path: 'admin',
+    path: '',
+    component: LayoutComponent,
     children: [
-      { path: '', component: AdminDashboardComponent }
-    ]
-  },
+      { path: '', component: HomeComponent },
+      { path: 'login', component: LoginComponent },
+      { path: 'register', component: RegisterComponent },
 
-  // --- 404 ---
-  { path: '**', component: NotFoundComponent }
+      { path: 'profile', component: ProfileComponent },
+
+      { path: 'races', component: RacesListComponent },
+      { path: 'races/:id', component: RaceDetailComponent },
+
+      {
+        path: 'admin',
+        children: [
+          { path: '', component: AdminDashboardComponent }
+        ]
+      },
+
+      { path: '**', component: NotFoundComponent }
+    ]
+  }
 ];
+
