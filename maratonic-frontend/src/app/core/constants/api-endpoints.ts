@@ -1,21 +1,19 @@
-export const API_BASE = 'https://localhost:7247/api';
+const BASE_URL = 'http://localhost:5266/api';
 
-export const API_ENDPOINTS = {
-  AUTH: {
-    REGISTER: `${API_BASE}/auth/register`,
-    LOGIN: `${API_BASE}/auth/login`
-  },
-  RACES: {
-    LIST: `${API_BASE}/races/list`,
-    DETAIL: (id: number) => `${API_BASE}/races/${id}`,
-    CREATE: `${API_BASE}/races`
-  },
-  REGISTRATION: {
-    CREATE: `${API_BASE}/registrations`,
-    USER_REGISTRATIONS: (userId: number) => `${API_BASE}/registrations/user/${userId}`
-  },
-  PAYMENTS: {
-    CHECKOUT: `${API_BASE}/payments/checkout`,
-    REFUND: `${API_BASE}/payments/refund`
-  }
+export const API = {
+  // Auth
+  LOGIN: `${BASE_URL}/auth/login`,
+  REGISTER: `${BASE_URL}/auth/register`,
+
+  // Races
+  RACES_LIST: `${BASE_URL}/races/list`,
+  RACE_DETAIL: (id: number) => `${BASE_URL}/races/${id}`,
+
+  // Registrations
+  REGISTER_RACE: `${BASE_URL}/registrations/register`,
+  MY_REGISTRATIONS: `${BASE_URL}/registrations/my`,
+
+  // Payments
+  PAY: `${BASE_URL}/payments/pay`,
+  REFUND: `${BASE_URL}/payments/refund`
 };

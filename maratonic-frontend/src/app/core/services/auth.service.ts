@@ -1,20 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { API_ENDPOINTS } from '../constants/api-endpoints';
+import { API } from '../constants/api-endpoints';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  register(data: any) {
-    return this.http.post(API_ENDPOINTS.AUTH.REGISTER, data);
+  login(data: any) {
+    return this.http.post(API.LOGIN, data);
   }
 
-  login(data: any) {
-    return this.http.post(API_ENDPOINTS.AUTH.LOGIN, data);
+  register(data: any) {
+    return this.http.post(API.REGISTER, data);
   }
 
   saveToken(token: string) {

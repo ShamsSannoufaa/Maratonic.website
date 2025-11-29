@@ -8,11 +8,18 @@ import { RacesListComponent } from './pages/races/races-list/races-list.componen
 import { RaceDetailComponent } from './pages/races/race-detail/race-detail.component';
 import { AdminDashboardComponent } from './pages/admin/dashboard/admin-dashboard.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { HomeComponent } from './pages/home/home.component';
+import { LayoutComponent } from './layout/layout.component';
+
 
 export const routes: Routes = [
+  {
+    path: '',
+    component: LayoutComponent,
+    children: [
 
   // --- Public Routes ---
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', component: HomeComponent },
 
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
@@ -33,4 +40,6 @@ export const routes: Routes = [
 
   // --- 404 ---
   { path: '**', component: NotFoundComponent }
+  ]
+  }
 ];

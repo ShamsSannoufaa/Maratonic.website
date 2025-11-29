@@ -6,7 +6,18 @@
     "outDir": "./out-tsc/app",
     "types": [
       "node"
-    ]
+    ],
+    
+    // Uygulama dizininden başlayarak mutlak yolları çözer
+    "baseUrl": "./", 
+    
+    // '@constants/...' takma adını 'src/app/core/constants/...' gerçek yoluna eşler
+    "paths": {
+      "@constants/*": [
+        "src/app/core/constants/*"
+      ]
+    }
+    
   },
   "include": [
     "src/**/*.ts"

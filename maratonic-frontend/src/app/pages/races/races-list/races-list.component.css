@@ -1,1 +1,192 @@
-h2 { color: #555; }
+.races-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 20px 60px;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.page-header h1 {
+  font-size: 28px;
+  margin-bottom: 8px;
+  color: var(--color-black);
+}
+
+.page-header p {
+  color: #555;
+}
+
+/* Grid */
+
+.races-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Card */
+
+.race-card {
+  background: var(--color-white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 18px 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  border-left: 4px solid var(--color-primary);
+  gap: 18px;
+}
+
+.race-main {
+  flex: 1;
+}
+
+.race-title-block h2 {
+  font-size: 18px;
+  margin: 0 0 4px;
+  color: var(--color-black);
+}
+
+.race-location {
+  margin: 0;
+  color: #555;
+  font-size: 14px;
+}
+
+.race-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
+  font-size: 14px;
+  color: #333;
+}
+
+.race-distance {
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: rgba(38, 160, 140, 0.12);
+  color: var(--color-primary-dark);
+}
+
+/* Countdown */
+
+.race-countdown {
+  margin-top: 14px;
+  background: rgba(2, 115, 97, 0.06);
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.race-countdown--past {
+  background: #f5f5f5;
+}
+
+.countdown-label {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  color: var(--color-primary-dark);
+}
+
+.countdown-label.finished {
+  color: #999;
+}
+
+.timer {
+  display: flex;
+  gap: 14px;
+  margin-top: 6px;
+}
+
+.timer-item strong {
+  display: block;
+  font-size: 16px;
+}
+
+.timer-item span {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: #666;
+}
+
+/* Footer */
+
+.race-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  min-width: 210px;
+}
+
+.race-fee {
+  text-align: right;
+  margin-bottom: 10px;
+}
+
+.fee-label {
+  font-size: 12px;
+  color: #777;
+  display: block;
+}
+
+.fee-value {
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--color-primary-dark);
+}
+
+/* Buttons */
+
+.btn-primary,
+.btn-outline {
+  border-radius: 999px;
+  padding: 8px 18px;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.btn-primary:hover {
+  background: var(--color-primary-light);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--color-primary-dark);
+  border: 1px solid var(--color-primary-dark);
+}
+
+.btn-outline:hover {
+  background: rgba(2, 115, 97, 0.05);
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+  .race-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .race-footer {
+    align-items: flex-start;
+    min-width: 0;
+  }
+
+  .race-fee {
+    text-align: left;
+  }
+}
+    

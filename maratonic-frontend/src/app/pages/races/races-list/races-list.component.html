@@ -1,1 +1,76 @@
-<h2>Races List</h2>
+<section class="races-page">
+  <header class="page-header">
+    <h1>Upcoming Races</h1>
+    <p>Choose your next challenge and complete your registration online.</p>
+  </header>
+
+  <div class="races-grid">
+    <article class="race-card" *ngFor="let race of races">
+      <div class="race-main">
+        <div class="race-title-block">
+          <h2>{{ race.name }}</h2>
+          <p class="race-location">{{ race.location }}</p>
+        </div>
+
+        <div class="race-meta">
+          <span class="race-date">
+            {{ race.date | date: 'dd MMM y, HH:mm' }}
+          </span>
+          <span class="race-distance">
+            {{ race.distance }}
+          </span>
+        </div>
+
+        <div class="race-countdown"
+             [class.race-countdown--past]="getRemaining(race).isPast">
+          <ng-container *ngIf="!getRemaining(race).isPast; else pastRace">
+            <span class="countdown-label">Starts in</span>
+            <div class="timer">
+              <div class="timer-item">
+                <strong>{{ getRemaining(race).days }}</strong>
+                <span>days</span>
+              </div>
+              <div class="timer-item">
+                <strong>{{ getRemaining(race).hours }}</strong>
+                <span>hrs</span>
+              </div>
+              <div class="timer-item">
+                <strong>{{ getRemaining(race).minutes }}</strong>
+                <span>min</span>
+              </div>
+            </div>
+          </ng-container>
+
+          <ng-template #pastRace>
+            <span class="countdown-label finished">
+              Race finished
+            </span>
+          </ng-template>
+        </div>
+      </div>
+
+      <footer class="race-footer">
+        <div class="race-fee">
+          <span class="fee-label">Entry fee</span>
+          <span class="fee-value">
+            {{ race.fee | currency:'TRY':'symbol':'1.0-0' }}
+          </span>
+        </div>
+
+        <button
+          *ngIf="!race.isRegistered"
+          class="btn-primary"
+          [routerLink]="['/races', race.id]">
+          View & Register
+        </button>
+
+        <button
+          *ngIf="race.isRegistered"
+          class="btn-outline"
+          [routerLink]="['/races', race.id]">
+          Registered • View Details
+        </button>
+      </footer>
+    </article>
+  </div>
+</section>
