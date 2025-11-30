@@ -1,21 +1,22 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../../core/services/auth.service';
 import { CommonModule } from '@angular/common';
+
+import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  imports: [ReactiveFormsModule, CommonModule]
 })
 export class LoginComponent {
 
   form: FormGroup;
-  errorMessage = '';
   loading = false;
+  errorMessage = '';
 
   constructor(
     private fb: FormBuilder,
@@ -28,47 +29,42 @@ export class LoginComponent {
     });
   }
 
-  submit() {
-    console.log("Login form submitted.");
+  goHome() {
+    this.router.navigate(['/']);
+  }
 
-    // Form geçerli değilse dur
+  submit(): void {
+    this.errorMessage = '';
+
     if (this.form.invalid) {
-      this.errorMessage = 'E-posta ve şifre gereklidir.';
+      this.errorMessage = 'Lütfen tüm alanları doldurun.';
       return;
     }
 
     this.loading = true;
-    this.errorMessage = '';
 
     this.auth.login(this.form.value).subscribe({
       next: (res: any) => {
         this.loading = false;
 
-        // Backend düzgün JWT döndüyse
-        if (res && res.token) {
-          this.auth.saveToken(res.token);
-          console.log("Login successful. Token saved.");
-          this.router.navigate(['/profile']);
-        } else {
-          this.errorMessage = "Sunucudan geçersiz yanıt alındı.";
+        if (!res?.token) {
+          this.errorMessage = "Geçersiz sunucu yanıtı.";
+          return;
         }
+
+        // Token kaydet
+        this.auth.saveToken(res.token);
+
+        // Profil veya Anasayfaya yönlendir
+        this.router.navigate(['/profile']);
       },
+
       error: (err) => {
         this.loading = false;
 
-        // Backend hata mesajı dolu ise
-        if (err?.error?.message) {
-          this.errorMessage = err.error.message;
-        }
-        // Backend generic hata döndüyse
-        else if (err.status === 401) {
-          this.errorMessage = "E-posta veya şifre hatalı.";
-        }
-        else {
-          this.errorMessage = "Giriş sırasında bir hata oluştu.";
-        }
-
-        console.error("Login error:", err);
+        this.errorMessage =
+          err?.error?.message ||
+          "Giriş yapılamadı. Lütfen e-posta ve şifrenizi kontrol edin.";
       }
     });
   }

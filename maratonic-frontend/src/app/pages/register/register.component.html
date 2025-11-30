@@ -1,32 +1,78 @@
-<h2>Register</h2>
+<div class="container">
 
-<form [formGroup]="form" (ngSubmit)="submit()">
+  <!-- SOL PANEL – FORM -->
+  <div class="left-panel">
 
-  <div>
-    <label>Full Name</label>
-    <input type="text" formControlName="fullName" />
+    <div class="logo" (click)="goHome()">Maratonic</div>
+
+    <div class="form-wrapper">
+
+      <h2 class="title">Kayıt Ol</h2>
+
+      <form [formGroup]="form" (ngSubmit)="submit()" class="form-area">
+
+        <!-- AD - SOYAD YAN YANA -->
+        <div class="row-2">
+          <div>
+            <label>Ad</label>
+            <input type="text" formControlName="firstName" placeholder="Adınız" />
+          </div>
+
+          <div>
+            <label>Soyad</label>
+            <input type="text" formControlName="lastName" placeholder="Soyadınız" />
+          </div>
+        </div>
+
+        <!-- E-POSTA -->
+        <label>E-posta</label>
+        <input type="email" formControlName="email" placeholder="E-posta adresiniz" />
+
+        <!-- ŞİFRE -->
+        <label>Şifre</label>
+        <input type="password" formControlName="password" placeholder="Şifreniz" />
+
+        <!-- ŞİFRE TEKRAR -->
+        <label>Şifre Tekrar</label>
+        <input type="password" formControlName="confirmPassword" placeholder="Şifrenizi tekrar girin" />
+
+        <!-- DOĞUM TARİHİ -->
+        <label>Doğum Tarihi</label>
+        <input type="date" formControlName="birthDate" />
+
+        <!-- ÜLKE -->
+        <label>Ülke</label>
+        <select formControlName="country">
+          <option value="">Seçiniz</option>
+          <option value="Türkiye">Türkiye</option>
+          <option value="Almanya">Almanya</option>
+          <option value="Fransa">Fransa</option>
+          <option value="ABD">ABD</option>
+          <option value="İngiltere">İngiltere</option>
+        </select>
+
+        <!-- BUTON -->
+        <button type="submit" class="login-btn">
+          {{ loading ? "Yükleniyor..." : "Kayıt Ol" }}
+        </button>
+
+        <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+
+        <div class="cta-or-box">
+          <p>Zaten hesabın var mı?</p>
+         <a href="/login"> <button class="cta-register">Giriş Yap</button></a>
+        </div>
+
+      </form>
+
+    </div>
+
   </div>
 
-  <div>
-    <label>Email</label>
-    <input type="email" formControlName="email" />
+  <!-- SAĞ PANEL – GRADYAN -->
+  <div class="right-panel">
+    <h1>Aramıza Katıl!</h1>
+    <p>Maratonic'e üye olarak yarış deneyimlerini takip et, fotoğraflarını bul, koşu dünyasına adım at.</p>
   </div>
 
-  <div>
-    <label>Password</label>
-    <input type="password" formControlName="password" />
-  </div>
-
-  <div>
-    <label>Confirm Password</label>
-    <input type="password" formControlName="confirmPassword" />
-  </div>
-
-  <button type="submit">Sign Up</button>
-
-  <p *ngIf="errorMessage" style="color: red;">
-    {{ errorMessage }}
-  </p>
-
-</form>
-
+</div>

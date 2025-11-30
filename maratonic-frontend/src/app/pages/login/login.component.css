@@ -1,132 +1,272 @@
-/* GENERAL LAYOUT */
+/* GENEL */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* scrollbar kaldırıldı */
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ANA CONTAINER */
 .container {
   display: flex;
   width: 100%;
   height: 100vh;
-  font-family: 'Poppins', sans-serif;
 }
 
-/* LEFT SIDE */
+
+/* ─────────────────────────────── */
+/* SOL PANEL → GRADYAN BURAYA!!!   */
+/* ─────────────────────────────── */
 .left-panel {
-  width: 40%;
-  background-color: #027361;  /* Pine green */
-  color: #FFFFFA;
-  padding: 60px 40px;
+  width: 50%;
+  padding: 70px 50px;
+
+  background: linear-gradient(135deg, #065667, #027361);
+  color: #FFFFFF;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
+  position: relative;
 }
 
 .left-panel h1 {
   font-size: 42px;
-  margin-bottom: 20px;
+  font-weight: 700;
+  margin-bottom: 10px;
 }
 
 .left-panel p {
-  font-size: 18px;
-  margin-bottom: 30px;
+  font-size: 16px;
+  opacity: 0.9;
+  margin-bottom: 40px;
 }
 
-.signup-btn {
-  padding: 12px 20px;
-  width: 150px;
-  border-radius: 25px;
-  border: 2px solid #FFFFFA;
-  background: transparent;
-  color: #FFFFFA;
+/* CTA alanı */
+.cta-box {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.cta-register {
+background: linear-gradient(135deg, #027361, #065667);  padding: 9px 20px;
+  border-radius: 22px;
+  border: none;
+  color: #f9fcfc;
+  font-weight: 600;
   cursor: pointer;
   transition: 0.3s;
-}
-
-.signup-btn:hover {
-  background: #FFFFFA;
-  color: #027361;
-}
-
-/* RIGHT SIDE */
-.right-panel {
-  width: 60%;
-  background-color: #FFFFFA;
-  padding: 60px 80px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.right-panel h2 {
-  color: #065667;  /* Midnight green */
-  margin-bottom: 30px;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-}
-
-label {
-  font-size: 14px;
-  color: #065667;
   margin-top: 15px;
 }
 
+.cta-register:hover {
+  background: #FFCA28;
+}
+
+.cta-home {
+  margin-top: 10px;
+  padding: 10px 25px;
+  border-radius: 25px;
+  border: 2px solid white;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.cta-home:hover {
+  background: white;
+  color: #065667;
+}
+
+/* 'veya' + kaydol butonu alanı */
+.cta-or-box {
+  margin-top: 20px;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.cta-or-box p {
+  font-size: 15px;
+  color: #065667;
+  opacity: 0.9;
+}
+
+.cta-or-box .cta-register {
+  background: linear-gradient(135deg, #065667, #2f6774);
+  border: none;
+  padding: 9px 22px;
+  border-radius: 25px;
+  color: #f9fcfc;
+  font-weight: 600;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.cta-or-box .cta-register:hover {
+  transform: translateY(-2px);
+}
+
+
+/* ─────────────────────────────── */
+/* SAĞ PANEL → DÜZ AÇIK RENK       */
+/* ─────────────────────────────── */
+.right-panel {
+  width: 60%;
+  background: #f9fcfc;   /* düz açık renk */
+  padding: 40px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+}
+
+/* Form başlığı */
+.title {
+  font-size: 30px;
+  color: #065667;
+  margin-bottom: 10px;
+  margin-top: -20px; /* hafif yukarı */
+}
+
+/* FORM alanı kutusuz */
+.form-area {
+  width: 100%;
+  max-width: 330px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* INPUTLAR küçük & kompakt */
+label {
+  color: #065667;
+  margin-top: 12px;
+  margin-bottom: 4px;
+  font-size: 14px;
+}
+
 input {
-  padding: 12px;
-  border: 2px solid #26A08C; /* Persian green */
+  height: 38px;
+  border: 2px solid #065667;
   border-radius: 8px;
-  margin-top: 5px;
-  outline: none;
+  padding-left: 12px;
+  font-size: 14px;
 }
 
 input:focus {
   border-color: #027361;
 }
 
+/* Checkbox */
+.check {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.check input {
+  width: 15px;
+  height: 15px;
+}
+
+/* Satır */
 .extra-row {
+  margin-top: 10px;
   display: flex;
   justify-content: space-between;
-  margin-top: 10px;
 }
 
 .forgot {
   color: #027361;
   cursor: pointer;
+  font-size: 14px;
 }
 
+/* LOGIN BUTTON */
 .login-btn {
-  background-color: #027361;
-  color: white;
-  padding: 14px;
+  margin-top: 22px;
+  height: 42px;
   border: none;
   border-radius: 25px;
-  margin-top: 25px;
+background: linear-gradient(135deg, #027361, #065667);  padding: 9px 20px;
+  color: white;
+  font-size: 16px;
   cursor: pointer;
-  transition: 0.3s;
+  transition: .3s;
 }
 
 .login-btn:hover {
-  background-color: #065667;
+  background: #027361;
 }
 
-.error {
-  margin-top: 10px;
-  color: red;
-}
-
-.social-text {
-  margin-top: 35px;
-  text-align: center;
-  color: #065667;
-}
-
+/* Sosyal medya */
 .social-icons {
-  display: flex;
-  justify-content: center;
-  margin-top: 10px;
+  margin-top: 22px;
 }
 
 .social-icons i {
-  font-size: 22px;
   margin: 0 10px;
+  font-size: 20px;
+  color: #065667;
+  transition: .2s;
+}
+
+.social-icons i:hover {
+  transform: scale(1.1);
   color: #027361;
+}
+
+
+/* RESPONSIVE */
+@media(max-width: 950px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .left-panel,
+  .right-panel {
+    width: 100%;
+    height: auto;
+    padding: 40px;
+  }
+
+  body {
+    overflow-y: auto;
+  }
+}
+/* LOGO */
+.logo {
+  position: absolute;
+  top: 25px;
+  left: 35px;
+
+  font-size: 32px;
+  font-weight: 700;
+
   cursor: pointer;
+  color: #FFFFFF;
+
+  letter-spacing: 1px;
+  transition: 0.2s;
+}
+
+.logo:hover {
+  opacity: 0.85;
+  transform: scale(1.02);
 }

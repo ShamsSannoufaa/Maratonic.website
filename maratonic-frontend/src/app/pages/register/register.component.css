@@ -1,60 +1,176 @@
-:host {
-  display: block;
-  padding: 40px;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-}
-
-/* FORM GENEL */
-form {
-  display: flex;
-  flex-direction: column;
-  max-width: 450px;
-}
-
-/* LABEL AYARLARI */
-form label {
-  margin-top: 15px;       /* Üstten uzaklaştırır */
-  margin-bottom: 6px;     /* Yazı ile kutu arasında boşluk */
-  font-size: 15px;
-  font-weight: 500;
-  display: block;         /* Label satır kaplasın */
-}
-
-/* INPUT AYARLARI */
-form input {
-  padding: 12px;
-  border: 1px solid #999;
-  border-radius: 8px;
-  font-size: 15px;
-  outline: none;
-  margin-bottom: 5px;     /* Kutular arasında minik boşluk */
+/* GENEL */
+* {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
-form input:focus {
+html, body {
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ANA YAPI */
+.container {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+}
+
+/* SOL PANEL (FORM) */
+.left-panel {
+  width: 50%;
+  background: #ffffff;
+  color: #065667;
+
+  display: flex;
+  align-items: center;      /* yatay ortalama */
+  justify-content: center;  /* dikey ortalama */
+
+  position: relative;
+  padding: 40px;
+}
+
+/* LOGO */
+.logo {
+  position: absolute;
+  top: 25px;
+  left: 35px;
+  font-size: 32px;
+  font-weight: 700;
+  cursor: pointer;
+  color: #065667;
+}
+
+.form-wrapper {
+  width: 70%;          /* daha geniş form alanı */
+  max-width: 520px;
+}
+
+/* BAŞLIK */
+.title {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: #065667;
+}
+
+/* FORM */
+.form-area label {
+  margin-top: 14px;
+  margin-bottom: 4px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.form-area input,
+.form-area select {
+  height: 40px;
+  border-radius: 8px;
+  padding-left: 10px;
+  border: 2px solid #065667;
+  font-size: 14px;
+  width: 100%;
+}
+
+.form-area input:focus,
+.form-area select:focus {
   border-color: #027361;
 }
 
+/* AD - SOYAD (YAN YANA) */
+.row-2 {
+  display: flex;
+  gap: 15px;
+}
+
+.row-2 div {
+  width: 100%;
+}
+
 /* BUTON */
-button {
+.login-btn {
   margin-top: 25px;
-  padding: 14px;
-  background-color: #027361;
-  color: white;
-  font-size: 16px;
+  width: 100%;
+  height: 45px;
+  border-radius: 25px;
   border: none;
-  border-radius: 8px;
+  background: linear-gradient(135deg, #027361, #065667);
+  color: white;
   cursor: pointer;
-  font-weight: 600;
-  transition: background-color 0.2s ease;
+  font-size: 16px;
+  transition: .3s;
 }
 
-button:hover {
-  background-color: #065667;
+.login-btn:hover {
+  background: #027361;
 }
 
-/* HATA MESAJI */
-.error-message {
+.error {
   color: red;
   margin-top: 10px;
+  text-align: center;
+}
+
+/* GİRİŞ BUTONU ALANI */
+.cta-or-box {
+  margin-top: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cta-register {
+  background: linear-gradient(135deg, #027361, #065667);
+  border: none;
+  padding: 9px 22px;
+  border-radius: 25px;
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.cta-register:hover {
+  transform: translateY(-2px);
+}
+
+/* SAĞ PANEL (GRADYAN) */
+.right-panel {
+  width: 50%;
+  background: linear-gradient(135deg, #027361, #065667);
+  color: white;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px;
+}
+
+.right-panel h1 {
+  font-size: 46px;
+  margin-bottom: 10px;
+}
+
+.right-panel p {
+  font-size: 18px;
+  opacity: .9;
+}
+
+/* RESPONSIVE */
+@media(max-width: 950px) {
+  body { overflow-y: auto; }
+  .container { flex-direction: column; }
+  .left-panel,
+  .right-panel {
+    width: 100%;
+    height: auto;
+    padding: 40px;
+  }
+
+  .row-2 {
+    flex-direction: column;
+  }
 }

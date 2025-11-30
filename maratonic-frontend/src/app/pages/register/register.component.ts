@@ -1,86 +1,91 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormBuilder,
+  Validators,
+  FormGroup,
+  ReactiveFormsModule
+} from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../../core/services/auth.service';
 import { CommonModule } from '@angular/common';
+
+import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
+  imports: [ReactiveFormsModule, CommonModule]
 })
 export class RegisterComponent {
 
   form: FormGroup;
-  errorMessage = '';
   loading = false;
+  errorMessage = '';
 
   constructor(
     private fb: FormBuilder,
     private auth: AuthService,
     private router: Router
   ) {
+
     this.form = this.fb.group({
-      fullName: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
-      confirmPassword: ['', Validators.required]
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      email: [
+        '',
+        [Validators.required, Validators.email]
+      ],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      confirmPassword: ['', Validators.required],
+      birthDate: ['', Validators.required],
+      country: ['', Validators.required]
     });
   }
 
-  submit() {
+  goHome() {
+    this.router.navigate(['/']);
+  }
+
+  submit(): void {
     this.errorMessage = '';
 
-    // Form valid değilse
     if (this.form.invalid) {
-      this.errorMessage = "All fields are required.";
+      this.errorMessage = 'Lütfen tüm alanları eksiksiz doldurun.';
       return;
     }
 
-    // Şifre eşleşmiyorsa
+    // Şifreler uyuşuyor mu?
     if (this.form.value.password !== this.form.value.confirmPassword) {
-      this.errorMessage = "Passwords do not match.";
+      this.errorMessage = 'Şifreler uyuşmuyor.';
       return;
     }
 
-    // Backend’e gönderilecek gerçek payload
     const payload = {
-      fullName: this.form.value.fullName,
+      firstName: this.form.value.firstName,
+      lastName: this.form.value.lastName,
       email: this.form.value.email,
-      password: this.form.value.password
-      // confirmPassword backend'e gönderilmez
+      password: this.form.value.password,
+      birthDate: this.form.value.birthDate,
+      country: this.form.value.country
+      // confirmPassword backend'e gönderilmiyor!
     };
 
     this.loading = true;
 
     this.auth.register(payload).subscribe({
-      next: (res: any) => {
+      next: () => {
         this.loading = false;
-
-        // Eğer backend kayıt sonrası token döndürürse
-        if (res?.token) {
-          this.auth.saveToken(res.token);
-          this.router.navigate(['/profile']);
-          return;
-        }
-
-        // Standart kayıt → login'e yönlendir
         this.router.navigate(['/login']);
       },
       error: (err) => {
         this.loading = false;
 
-        if (err?.error?.message) {
-          this.errorMessage = err.error.message;
-        } else if (err.status === 400) {
-          this.errorMessage = "Invalid registration data.";
+        if (err.error?.errors && Array.isArray(err.error.errors)) {
+          this.errorMessage = err.error.errors.join(', ');
         } else {
-          this.errorMessage = "Registration failed.";
+          this.errorMessage = err.error?.message || 'Kayıt işlemi başarısız oldu.';
         }
-
-        console.error("Register error:", err);
       }
     });
   }

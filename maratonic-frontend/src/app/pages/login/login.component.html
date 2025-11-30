@@ -1,42 +1,50 @@
 <div class="container">
 
+  <!-- SOL PANEL -->
   <div class="left-panel">
-    <h1>Hey There!</h1>
-    <p>Welcome Back.<br>You are just one step away to your feed.</p>
+    <div class="logo" (click)="goHome()">Maratonic</div>
 
-   
+    <h1>Hoş Geldin!</h1>
+    <p>Tekrar giriş yap ve Maratonic deneyimine devam et.</p>
+
+    
+
   </div>
 
+  <!-- SAĞ PANEL -->
   <div class="right-panel">
+    
 
-    <h2>SIGN IN</h2>
+    <h2 class="title">Giriş Yap</h2>
 
-    <form [formGroup]="form" (ngSubmit)="submit()">
+    <form [formGroup]="form" (ngSubmit)="submit()" class="form-area">
 
-      <label>Email</label>
-      <input type="email" formControlName="email" />
+      <label>E-posta</label>
+      <input type="email" formControlName="email" placeholder="E-posta adresiniz" />
 
-      <label>Password</label>
-      <input type="password" formControlName="password" />
+      <label>Şifre</label>
+      <input type="password" formControlName="password" placeholder="Şifreniz" />
 
       <div class="extra-row">
-        <label>
+        <label class="check">
           <input type="checkbox" />
-          Keep me logged in
+          <span>Beni hatırla</span>
         </label>
 
-        <a class="forgot">Forgot Password?</a>
+        <a class="forgot">Şifremi Unuttum</a>
       </div>
 
       <button type="submit" class="login-btn">
-        {{ loading ? "Loading..." : "Sign In" }}
+        {{ loading ? "Yükleniyor..." : "Giriş Yap" }}
       </button>
+      <div class="cta-or-box">
+    <p>veya</p>
+    <a href="/register"><button class="cta-register" >Hemen Kaydol</button></a>
+  </div>
 
-      <p *ngIf="errorMessage" class="error">
-        {{ errorMessage }}
-      </p>
+      <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+
     </form>
-
 
     <div class="social-icons">
       <i class="fa-brands fa-facebook"></i>
