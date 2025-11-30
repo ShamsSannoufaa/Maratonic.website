@@ -92,7 +92,7 @@
 }
 
 .signup-btn {
-  background: #027361;
+background: linear-gradient(135deg, #027361, #065667); 
   color: white;
 }
 

@@ -13,20 +13,26 @@ import { AuthGuard } from './core/guards/auth.guard';
 
 export const routes: Routes = [
 
-  // --- Public Routes ---
+  // ============================
+  // PUBLIC ROUTES (No Auth Required)
+  // ============================
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
 
-  // Layout altında çalışan authenticated routes
+  // ============================
+  // LAYOUT ROUTES
+  // ============================
   {
     path: '',
     component: LayoutComponent,
     children: [
 
-      // --- Home ---
+      // Home page (public)
       { path: '', component: HomeComponent },
 
-      // --- User Protected Pages ---
+      // ============================
+      // USER PROTECTED ROUTES
+      // ============================
       { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
 
       {
@@ -37,22 +43,27 @@ export const routes: Routes = [
         canActivate: [AuthGuard]
       },
 
+      // ============================
+      // PUBLIC RACE PAGES
+      // ============================
       { path: 'races', component: RacesListComponent },
-      {
-        path: 'races/:id',
-        component: RaceDetailComponent,
-        canActivate: [AuthGuard]
-      },
 
+      // races/:id da public olsun istiyorsan guard yok
+      { path: 'races/:id', component: RaceDetailComponent },
+
+      // ============================
+      // PUBLIC CALENDAR PAGE
+      // ============================
       {
         path: 'calendar',
         loadComponent: () =>
           import('./pages/calendar/calendar.component')
-            .then(m => m.CalendarComponent),
-        canActivate: [AuthGuard]
+            .then(m => m.CalendarComponent)
       },
 
-      // --- Admin Pages ---
+      // ============================
+      // ADMIN AREA (Protected)
+      // ============================
       {
         path: 'admin',
         loadChildren: () =>
@@ -61,7 +72,7 @@ export const routes: Routes = [
         canActivate: [AuthGuard]
       },
 
-      // 404 inside layout
+      // 404
       { path: '**', component: NotFoundComponent }
     ]
   }
