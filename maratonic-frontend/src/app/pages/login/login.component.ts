@@ -29,8 +29,6 @@ export class LoginComponent {
   }
 
   submit() {
-    console.log("SUBMIT TETİKLENDİ!");
-
     if (this.form.invalid) return;
 
     this.loading = true;
@@ -43,13 +41,21 @@ export class LoginComponent {
           this.auth.saveToken(res.token);
           this.router.navigate(['/profile']);
         } else {
-          this.errorMessage = "Invalid response";
+          this.errorMessage = "Geçersiz yanıt.";
         }
       },
       error: (err) => {
         this.loading = false;
-        this.errorMessage = err?.error?.message || "Login failed";
+        this.errorMessage = err?.error?.message || "Giriş yapılamadı.";
       }
     });
+  }
+
+  goRegister() {
+    this.router.navigate(['/register']);
+  }
+
+  goHome() {
+    this.router.navigate(['/']);
   }
 }
