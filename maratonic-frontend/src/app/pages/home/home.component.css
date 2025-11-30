@@ -1,0 +1,232 @@
+/* GLOBAL */
+* {
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+section {
+  padding: 80px 30px;
+}
+
+/* -------------------- */
+/* HERO */
+/* -------------------- */
+.hero {
+  background: #065667;
+  color: white;
+  text-align: center;
+  padding: 120px 20px;
+}
+
+.hero h1 {
+  font-size: 40px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  max-width: 650px;
+  margin: 0 auto 30px;
+  font-size: 18px;
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.btn {
+  padding: 14px 26px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.btn.primary {
+  background: #027361;
+  color: white;
+}
+
+.btn.primary:hover {
+  background: #026652;
+}
+
+.btn.secondary {
+  border: 2px solid white;
+  color: white;
+}
+
+.btn.secondary:hover {
+  background: white;
+  color: #027361;
+}
+
+/* -------------------- */
+/* QUICK INFO STATS */
+/* -------------------- */
+
+.quick-info {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: -40px;
+  flex-wrap: wrap;
+}
+
+.info-card {
+  background: white;
+  padding: 25px 40px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  border-bottom: 4px solid #027361;
+}
+
+.info-card h3 {
+  font-size: 32px;
+  color: #027361;
+  margin-bottom: 5px;
+}
+
+.info-card p {
+  font-weight: 600;
+  color: #444;
+}
+
+/* -------------------- */
+/* FEATURES */
+/* -------------------- */
+
+.features h2 {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #004d61;
+  font-size: 32px;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+}
+
+.feature-card {
+  background: white;
+  padding: 28px;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  border-bottom: 4px solid #027361;
+  transition: 0.25s;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+
+.feature-card h3 {
+  color: #027361;
+  margin-bottom: 8px;
+}
+
+.feature-card p {
+  color: #555;
+  line-height: 1.5;
+}
+
+/* -------------------- */
+/* WHY */
+/* -------------------- */
+
+.why {
+  background: #f3fbf9;
+  text-align: center;
+}
+
+.why h2 {
+  color: #004d61;
+  margin-bottom: 10px;
+}
+
+.why-subtitle {
+  color: #666;
+  margin-bottom: 40px;
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+}
+
+.why-card {
+  background: white;
+  padding: 26px;
+  border-radius: 16px;
+  transition: 0.25s;
+  border-bottom: 4px solid #027361;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+.why-card:hover {
+  transform: translateY(-5px);
+}
+
+.why-card h3 {
+  color: #027361;
+  margin-bottom: 8px;
+}
+
+.why-card p {
+  color: #555;
+}
+
+/* -------------------- */
+/* CTA */
+/* -------------------- */
+
+.cta-section {
+  background: #e7f7f5;
+  text-align: center;
+}
+
+.cta-section h2 {
+  font-size: 32px;
+  color: #004d61;
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 25px;
+}
+
+.cta-btn {
+  padding: 14px 26px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.cta-btn.primary {
+  background: #027361;
+  color: white;
+}
+
+.cta-btn.primary:hover {
+  background: #026652;
+}
+
+.cta-btn.secondary {
+  border: 2px solid #027361;
+  color: #027361;
+}
+
+.cta-btn.secondary:hover {
+  background: #027361;
+  color: white;
+}

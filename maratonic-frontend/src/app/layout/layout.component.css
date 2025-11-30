@@ -1,0 +1,28 @@
+/* SAYFA WRAPPER */
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: auto;   /* << DÜZELTİLDİ */
+}
+
+/* ROUTER İÇERİĞİ */
+.page-container {
+  flex: 1;
+  padding: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Mobil görünüm iyileştirme */
+@media (max-width: 768px) {
+  .page-container {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-container {
+    padding: 12px;
+  }
+}

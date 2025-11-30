@@ -1,0 +1,24 @@
+<div class="calendar-container">
+
+  <h2 class="title">Koşu Yarış Takvimi</h2>
+
+  <div class="month" *ngFor="let m of months">
+
+    <h3 class="month-title">{{ m.name }}</h3>
+
+    <div class="race-card" *ngFor="let r of m.races">
+
+      <div class="date-box">
+        {{ r.day }}
+      </div>
+
+      <div class="race-info">
+        <h4 class="race-name">{{ r.name }}</h4>
+        <p class="race-detail">{{ r.distance }} • {{ r.city }}</p>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

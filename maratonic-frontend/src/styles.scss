@@ -1,3 +1,17 @@
+:root {
+  --color-black: #000103;
+  --color-white: #FFFFFA;
+  --color-primary: #027361;
+  --color-primary-light: #26A08C;
+  --color-primary-dark: #065667;
+
+  --color-text: #000103;
+  --color-bg: #FFFFFA;
+
+  --radius: 10px;
+  --shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -5,8 +19,8 @@ body {
   background: #f5f5f5;
 }
 
+/* Bunu tamamen kaldırıyoruz */
 .content-wrapper {
-  min-height: calc(100vh - 140px); // navbar + footer yüksekliği hariç
   padding: 20px;
   box-sizing: border-box;
 }

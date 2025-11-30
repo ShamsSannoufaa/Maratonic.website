@@ -1,0 +1,121 @@
+.calendar-container {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 10px;
+}
+
+.page-title {
+  text-align: center;
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #004d61;
+}
+
+.month-title {
+  margin-top: 40px;
+  font-size: 26px;
+  font-weight: 700;
+  color: #007f5f;
+  border-left: 6px solid #007f5f;
+  padding-left: 14px;
+}
+
+.race-row {
+  display: flex;
+  align-items: center;
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  margin-top: 16px;
+  cursor: pointer;
+  transition: 0.25s ease;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.07);
+}
+
+.race-row:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+}
+
+/* TARİH KUTUSU */
+.date-box {
+  width: 70px;
+  height: 70px;
+  border-radius: 10px;
+  background: #f1f1f1;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 20px;
+}
+
+.day {
+  font-size: 26px;
+  font-weight: 800;
+}
+
+.month {
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #007f5f;
+}
+
+/* ORTA KISIM */
+.race-middle {
+  flex: 1;
+}
+
+.race-name {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: #004d61;
+}
+
+.sub-info {
+  font-size: 15px;
+  color: #444;
+}
+
+.sub-info .location {
+  margin-left: 10px;
+  color: #007f5f;
+  font-weight: 600;
+}
+
+/* STATUS */
+.status-badge {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.status-badge.open {
+  background: #c8eee7;
+  color: #007f5f;
+}
+
+.status-badge.closed {
+  background: #ffd7d7;
+  color: #d9534f;
+}
+
+/* MOBILE */
+@media(max-width: 600px) {
+  .race-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .date-box {
+    margin-bottom: 12px;
+  }
+
+  .status-badge {
+    margin-top: 10px;
+  }
+}

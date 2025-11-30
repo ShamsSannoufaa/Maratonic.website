@@ -1,1 +1,109 @@
-<h2>Race Detail</h2>
+<div class="race-detail-container" *ngIf="race">
+
+  <!-- BANNER -->
+  <div class="banner" [style.backgroundImage]="'url(' + race.banner + ')'">
+    <div class="banner-overlay"></div>
+    <div class="banner-title">{{ race.name }}</div>
+  </div>
+
+  <!-- DURUM ROZETİ -->
+  <div class="status-badge" [ngClass]="race.status === 'Open' ? 'open' : 'closed'">
+    {{ race.status === 'Open' ? 'Kayıt Açık' : 'Kayıt Kapalı' }}
+  </div>
+
+  <!------------------------------->
+  <!-- ANA BİLGİLER -->
+  <!------------------------------->
+  <section class="info-section">
+
+    <h2 class="section-title">Yarış Bilgileri</h2>
+
+    <div class="info-grid">
+
+      <div class="info-box">
+        <i class="ri-calendar-event-line"></i>
+        <strong>Tarih:</strong>
+        <span>{{ race.date | date:'d MMMM y' }}</span>
+      </div>
+
+      <div class="info-box">
+        <i class="ri-map-pin-line"></i>
+        <strong>Konum:</strong>
+        <span>{{ race.location }}</span>
+      </div>
+
+      <div class="info-box">
+        <i class="ri-run-line"></i>
+        <strong>Mesafe:</strong>
+        <span>{{ race.distance }}</span>
+      </div>
+
+      <div class="info-box">
+        <i class="ri-money-dollar-circle-line"></i>
+        <strong>Kayıt Ücreti:</strong>
+        <span>{{ race.registrationFee }}₺</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!------------------------------->
+  <!-- AÇIKLAMA -->
+  <!------------------------------->
+  <section class="description-section">
+    <h2 class="section-title">Yarış Açıklaması</h2>
+    <p>{{ race.description }}</p>
+  </section>
+
+  <!------------------------------->
+  <!-- EK BİLGİLER -->
+  <!------------------------------->
+  <section class="extra-section">
+
+    <h2 class="section-title">Ek Bilgiler</h2>
+
+    <div class="extra-grid">
+
+      <div class="extra-box">
+        <i class="ri-timer-2-line"></i>
+        <h4>Parkur Süresi</h4>
+        <p>Katılımcıların parkuru tamamlaması için tahmini süre: <strong>4–6 saat</strong></p>
+      </div>
+
+      <div class="extra-box">
+        <i class="ri-flag-2-line"></i>
+        <h4>Parkur Tipi</h4>
+        <p>Yol koşusu · Asfalt · Uluslararası sertifikalı rota</p>
+      </div>
+
+      <div class="extra-box">
+        <i class="ri-team-line"></i>
+        <h4>Kontenjan</h4>
+        <p>Yaklaşık <strong>1500 koşucu</strong> kapasitelidir.</p>
+      </div>
+
+      <div class="extra-box">
+        <i class="ri-map-line"></i>
+        <h4>GPS / Rota</h4>
+        <p>GPX ve parkur haritası yarış haftasında paylaşılacaktır.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!------------------------------->
+  <!-- BUTONLAR -->
+  <!------------------------------->
+  <div class="button-group">
+
+    <button class="back-btn" routerLink="/races">
+      ← Yarış Listesine Dön
+    </button>
+
+    <button class="signup-btn" *ngIf="race.status === 'Open'">
+      Hemen Kaydol →
+    </button>
+
+  </div>
+
+</div>

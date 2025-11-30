@@ -1,0 +1,17 @@
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
+
+@Component({
+  selector: 'app-home',
+  standalone: true,
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css'],
+  imports: [
+    CommonModule,
+    RouterLink    // <-- BUNU EKLEDİK
+  ]
+})
+export class HomeComponent {
+  // şu an ekstra mantığa ihtiyacın yok
+}

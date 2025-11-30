@@ -1,45 +1,145 @@
-:host {
-  display: block;
-  width: 100%;
-}
-
-.navbar {
-  width: 100%;
-  height: 65px;
-  background-color: #027361;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 24px;
+/* OVERLAY BUG FIX */
+* {
   box-sizing: border-box;
 }
 
-.logo {
-  font-size: 24px;
-  font-weight: 700;
+/* NAVBAR */
+.navbar {
+  background: #000103;
+  height: 64px;
+  width: 100% !important;
+  display: flex;
+  justify-content: center;
+  border-bottom: 2px solid #06566733;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-.menu {
+.nav-content {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+
   display: flex;
-  gap: 25px;
+  justify-content: space-between;
+  align-items: center;
+
+  position: relative;
+  z-index: 1001;
+}
+
+/* LOGO */
+.logo {
+  font-size: 22px;
+  font-weight: 700;
+  color: white;
+  text-decoration: none;
+}
+
+/* HAMBURGER */
+.hamburger {
+  display: none;
+  color: white;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+/* DESKTOP MENU */
+.nav-links {
+  display: flex;
+  gap: 22px;
   list-style: none;
 }
 
-.menu a {
+.nav-links li a {
   color: white;
   text-decoration: none;
+  font-weight: 500;
 }
 
-.right-buttons {
+.nav-links li a:hover,
+.nav-links li a.active {
+  color: #26a08c;
+}
+
+/* RIGHT BUTTONS */
+.nav-right {
   display: flex;
-  gap: 10px;
+  gap: 14px;
+  align-items: center;
 }
 
-.right-buttons a {
-  padding: 6px 14px;
-  border-radius: 20px;
+.btn {
+  padding: 7px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.login-btn {
   border: 2px solid white;
   color: white;
-  text-decoration: none;
+  background: none;
+}
+
+.login-btn:hover {
+  background: white;
+  color: #027361;
+}
+
+.signup-btn {
+  background: #027361;
+  color: white;
+}
+
+.signup-btn:hover {
+  background: #26a08c;
+}
+
+/* =============================== */
+/* MOBILE RESPONSIVE */
+/* =============================== */
+
+@media (max-width: 992px) {
+
+  .hamburger {
+    display: block;
+  }
+
+  .nav-right {
+    display: none;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 64px;
+    left: 0;
+    width: 100% !important;
+    background: #000103;
+    flex-direction: column;
+    gap: 18px;
+    padding: 20px 0;
+    display: none;
+    border-bottom: 1px solid #06566733;
+    z-index: 999;
+  }
+
+  .nav-links.active {
+    display: flex;
+    animation: fadeSlide 0.3s ease;
+  }
+
+  .mobile-auth {
+    margin-top: 12px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  @keyframes fadeSlide {
+    from { opacity: 0; transform: translateY(-10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
 }
