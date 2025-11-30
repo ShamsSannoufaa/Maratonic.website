@@ -1,12 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
-import {
-  CommonModule,
-  NgFor,
-  NgClass,
-  DatePipe
-} from '@angular/common';
-
+import { PLATFORM_ID } from '@angular/core';
 import { RaceModel } from '../../../core/models/race.model';
 import { RacesService } from '../../../core/services/races.service';
 
@@ -15,13 +10,7 @@ import { RacesService } from '../../../core/services/races.service';
   standalone: true,
   templateUrl: './races-list.component.html',
   styleUrls: ['./races-list.component.css'],
-  imports: [
-    CommonModule,
-    NgFor,
-    NgClass,
-    DatePipe,
-    RouterLink
-  ]
+  imports: [CommonModule, RouterLink]
 })
 export class RacesListComponent implements OnInit {
 
@@ -31,10 +20,17 @@ export class RacesListComponent implements OnInit {
 
   constructor(
     private racesService: RacesService,
-    private router: Router
+    private router: Router,
+    @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
   ngOnInit(): void {
+
+    // ❗ SSR'DA REQUEST ATMAYI DURDURUYORUZ
+    if (!isPlatformBrowser(this.platformId)) {
+      return;
+    }
+
     this.loadRaces();
   }
 
@@ -48,13 +44,13 @@ export class RacesListComponent implements OnInit {
       },
       error: (err) => {
         this.loading = false;
-        this.errorMessage = 'Yarışlar yüklenirken bir hata oluştu.';
+        this.errorMessage = 'Yarışlar yüklenirken bir sorun oluştu.';
         console.error('Races error:', err);
       }
     });
   }
 
-  openRace(id: number): void {
+  openRace(id: number) {
     this.router.navigate(['/races', id]);
   }
 }

@@ -29,14 +29,28 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
-      this.isLoggedIn = !!this.auth.getToken();
 
-      // Token'dan rol okuma (JWT decode)
       const token = this.auth.getToken();
+      this.isLoggedIn = !!token;
+
       if (token) {
-        const payload = JSON.parse(atob(token.split('.')[1]));
-        this.isAdmin = payload.role === 'ADMIN';
+        try {
+          const payload = JSON.parse(atob(token.split('.')[1]));
+
+          // Role claim array olabilir → normalize et
+          const role =
+            payload["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"] ||
+            payload["role"] ||
+            payload["roles"];
+
+          this.isAdmin = role === "ADMIN" || role?.includes?.("ADMIN");
+
+        } catch (e) {
+          console.error("JWT parse error:", e);
+          this.isAdmin = false;
+        }
       }
+
     }
   }
 
