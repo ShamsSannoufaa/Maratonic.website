@@ -9,62 +9,60 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { HomeComponent } from './pages/home/home.component';
 
 import { LayoutComponent } from './layout/layout.component';
+import { AuthGuard } from './core/guards/auth.guard';
 
 export const routes: Routes = [
+
+  // --- Public Routes ---
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+
+  // Layout altında çalışan authenticated routes
   {
     path: '',
     component: LayoutComponent,
     children: [
+
+      // --- Home ---
       { path: '', component: HomeComponent },
 
-  // --- Public Routes ---
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
-
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-
-  // --- User Pages ---
-  { path: 'profile', component: ProfileComponent },
-
-  {
-    path: 'profile/edit',
-    loadComponent: () =>
-      import('./pages/profile/edit-profile/edit-profile.component')
-      .then(c => c.EditProfileComponent)
-  },
-
-  { path: 'races', component: RacesListComponent },
-  { path: 'races/:id', component: RaceDetailComponent },
-
-  // --- Admin Pages (Standalone Lazy) ---
-  {
-    path: 'admin',
-    loadChildren: () =>
-      import('./pages/admin/admin.routes').then(m => m.ADMIN_ROUTES)
-  },
-
-      { path: 'login', component: LoginComponent },
-      { path: 'register', component: RegisterComponent },
-
-      { path: 'profile', component: ProfileComponent },
-
-      { path: 'races', component: RacesListComponent },
-      { path: 'races/:id', component: RaceDetailComponent },{
-  path: 'calendar',
-  loadComponent: () =>
-    import('./pages/calendar/calendar.component').then(m => m.CalendarComponent)
-},
+      // --- User Protected Pages ---
+      { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
 
       {
-        path: 'admin',
-        children: [
-          { path: '', component: AdminDashboardComponent }
-        ]
+        path: 'profile/edit',
+        loadComponent: () =>
+          import('./pages/profile/edit-profile/edit-profile.component')
+            .then(c => c.EditProfileComponent),
+        canActivate: [AuthGuard]
       },
 
-      { path: '**', component: NotFoundComponent }
-      
+      { path: 'races', component: RacesListComponent },
+      {
+        path: 'races/:id',
+        component: RaceDetailComponent,
+        canActivate: [AuthGuard]
+      },
 
+      {
+        path: 'calendar',
+        loadComponent: () =>
+          import('./pages/calendar/calendar.component')
+            .then(m => m.CalendarComponent),
+        canActivate: [AuthGuard]
+      },
+
+      // --- Admin Pages ---
+      {
+        path: 'admin',
+        loadChildren: () =>
+          import('./pages/admin/admin.routes')
+            .then(m => m.ADMIN_ROUTES),
+        canActivate: [AuthGuard]
+      },
+
+      // 404 inside layout
+      { path: '**', component: NotFoundComponent }
     ]
   }
 ];

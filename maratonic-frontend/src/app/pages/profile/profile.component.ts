@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
+import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   standalone: true,
@@ -12,36 +13,41 @@ import { RouterModule } from '@angular/router';
     RouterModule
   ]
 })
-export class ProfileComponent {
+export class ProfileComponent implements OnInit {
 
-  user = {
-    name: "Sueda Ünal",
-    email: "suedaunal@example.com",
-    avatar: "https://i.pravatar.cc/150?img=47",
-    country: "Türkiye",
-    city: "İstanbul",
-    club: "Maratonic Running Team",
-    category: "Age 18–29 (Women)",
-    pace: "5:45 / km",
-    birthday: "02 April 2004",
-    phone: "+90 535 000 0000",
-    startYear: 2021
-  };
+  loading = true;
+  errorMessage = '';
+  user: any = null;
 
-  bio = {
-    totalRaces: 14,
-    bestRace: "Runtalya 10K – 54:12",
-    longestRace: "İstanbul Yarı Maratonu – 21.1 km",
-    yearlyMileage: "624 km",
-    runningStyle: "Endurance Runner",
-    favoriteSurface: "Road",
-  };
+  constructor(
+    private auth: AuthService,
+    private router: Router
+  ) {}
 
-  stats = [
-    { number: 14, title: "Tamamlanan Yarış", start: "2021", end: "2025", color: "#027361" },
-    { number: "624 km", title: "Yıllık Koşu Mesafesi", start: "2025", end: "Hedef: 800 km", color: "#065667" },
-    { number: "54:12", title: "En İyi 10K Zamanı", start: "Runtalya", end: "2024", color: "#26A08C" },
-    { number: "2:01:45", title: "En İyi Yarı Maraton", start: "İstanbul Yarı", end: "2024", color: "#F7A400" }
-  ];
+  ngOnInit(): void {
+    if (!this.auth.getToken()) {
+      this.router.navigate(['/login']);
+      return;
+    }
 
+    this.loadProfile();
+  }
+
+  loadProfile(): void {
+    this.auth.getCurrentUser().subscribe({
+      next: (res) => {
+        this.user = res;
+        this.loading = false;
+      },
+      error: (err) => {
+        this.loading = false;
+        this.errorMessage = 'Profil bilgisi alınamadı.';
+
+        if (err.status === 401) {
+          this.auth.logout();
+          this.router.navigate(['/login']);
+        }
+      }
+    });
+  }
 }

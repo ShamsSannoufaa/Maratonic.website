@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule, DatePipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
@@ -13,21 +13,37 @@ import { RacesService } from '../../../core/services/races.service';
   styleUrls: ['./race-detail.component.css'],
   imports: [CommonModule, DatePipe, RouterLink],
 })
-export class RaceDetailComponent {
+export class RaceDetailComponent implements OnInit {
 
   race: RaceModel | null = null;
+  loading = true;
+  errorMessage = '';
 
   constructor(
     private route: ActivatedRoute,
     private racesService: RacesService
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
 
+    if (!id) {
+      this.errorMessage = "Geçersiz yarış ID.";
+      this.loading = false;
+      return;
+    }
+
+    this.loadRace(id);
+  }
+
+  private loadRace(id: number): void {
     this.racesService.getRaceById(id).subscribe({
       next: (data) => {
-        if (!data) return;
+        if (!data) {
+          this.errorMessage = "Yarış bulunamadı.";
+          this.loading = false;
+          return;
+        }
 
         this.race = {
           ...data,
@@ -35,8 +51,14 @@ export class RaceDetailComponent {
             ? data.banner
             : 'assets/defaults/race-default.jpg'
         };
+
+        this.loading = false;
       },
-      error: (err) => console.error("Race detail error:", err)
+      error: (err) => {
+        console.error("Race detail error:", err);
+        this.errorMessage = "Yarış bilgileri yüklenirken bir hata oluştu.";
+        this.loading = false;
+      }
     });
   }
 }

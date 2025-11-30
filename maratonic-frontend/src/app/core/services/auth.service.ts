@@ -17,15 +17,26 @@ export class AuthService {
     return this.http.post(API_ENDPOINTS.AUTH.LOGIN, data);
   }
 
+  getCurrentUser() {
+    return this.http.get(API_ENDPOINTS.AUTH.ME); // ✔ PROFIL
+  }
+
   saveToken(token: string) {
-    localStorage.setItem('token', token);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('token', token);
+    }
   }
 
   getToken() {
-    return localStorage.getItem('token');
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('token');
+    }
+    return null;
   }
 
   logout() {
-    localStorage.removeItem('token');
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem('token');
+    }
   }
 }

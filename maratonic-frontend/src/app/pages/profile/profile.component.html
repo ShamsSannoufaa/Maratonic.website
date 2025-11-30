@@ -1,19 +1,18 @@
 <div class="profile-container">
 
   <!-- LEFT SIDEBAR -->
-  <aside class="sidebar">
+  <aside class="sidebar" *ngIf="user">
     <div class="avatar-box">
-      <img [src]="user.avatar" alt="avatar">
+      <img [src]="user.avatar || 'assets/defaults/avatar.png'" alt="avatar">
     </div>
 
-    <h2>{{ user.name }}</h2>
+    <h2>{{ user.fullName || user.name }}</h2>
     <p class="email">{{ user.email }}</p>
 
     <nav class="menu">
       <a class="active">Profil</a>
       <a>Koşu Aktivitesi</a>
       <a routerLink="/profile/edit">Profili Düzenle</a>
-
     </nav>
   </aside>
 
@@ -26,48 +25,41 @@
     </div>
 
     <div class="banner">
-      “Daha hızlı değil, daha tutarlı ol.”  
+      “Daha hızlı değil, daha tutarlı ol.”
       Koşu istikrar gerektirir. Bugün attığın her adım seni yarın daha güçlü yapar.
     </div>
 
     <!-- BIO GRAPH -->
-    <div class="bio-card">
+    <div class="bio-card" *ngIf="user">
       <h3>Koşucu Bilgileri</h3>
 
       <div class="bio-grid">
 
-        <div><strong>Ülke</strong>: {{ user.country }}</div>
-        <div><strong>Şehir</strong>: {{ user.city }}</div>
+        <div><strong>Ülke</strong>: {{ user.country || '-' }}</div>
+        <div><strong>Şehir</strong>: {{ user.city || '-' }}</div>
 
-        <div><strong>Running Club</strong>: {{ user.club }}</div>
-        <div><strong>Kategori</strong>: {{ user.category }}</div>
+        <div><strong>Telefon</strong>: {{ user.phone || '-' }}</div>
+        <div><strong>Doğum Tarihi</strong>: {{ user.birthday || '-' }}</div>
 
-        <div><strong>Pace</strong>: {{ user.pace }}</div>
-        <div><strong>Koşuya Başlangıç</strong>: {{ user.startYear }}</div>
-
-        <div><strong>Telefon</strong>: {{ user.phone }}</div>
-        <div><strong>Doğum Tarihi</strong>: {{ user.birthday }}</div>
-
-        <div><strong>En İyi Yarış</strong>: {{ bio.bestRace }}</div>
-        <div><strong>En Uzun Mesafe</strong>: {{ bio.longestRace }}</div>
-
-        <div><strong>Yıllık Mesafe</strong>: {{ bio.yearlyMileage }}</div>
-        <div><strong>Koşu Stili</strong>: {{ bio.runningStyle }}</div>
+        <!-- Backend’de olmayan alanlar kaldırıldı:
+             club, category, pace, startYear, bio.bestRace, bio.longestRace,
+             bio.yearlyMileage, bio.runningStyle
+        -->
 
       </div>
     </div>
 
-    <!-- STATS -->
+    <!-- STATS (geçici kaldırıldı, backend yok) -->
+    <!--
     <div class="stats-grid">
-
       <div class="stat-card" *ngFor="let s of stats">
         <h1 [style.color]="s.color">{{ s.number }}</h1>
         <h4>{{ s.title }}</h4>
         <p>Başlangıç: {{ s.start }}</p>
         <p>{{ s.end }}</p>
       </div>
-
     </div>
+    -->
 
   </main>
 
