@@ -24,7 +24,11 @@ export const routes: Routes = [
       { path: 'profile', component: ProfileComponent },
 
       { path: 'races', component: RacesListComponent },
-      { path: 'races/:id', component: RaceDetailComponent },
+      { path: 'races/:id', component: RaceDetailComponent },{
+  path: 'calendar',
+  loadComponent: () =>
+    import('./pages/calendar/calendar.component').then(m => m.CalendarComponent)
+},
 
       {
         path: 'admin',
@@ -34,6 +38,8 @@ export const routes: Routes = [
       },
 
       { path: '**', component: NotFoundComponent }
+      
+
     ]
   }
 ];

@@ -1,48 +1,117 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-content">
-    <h1>Find Your Next Race</h1>
-    <p>Track your performance. Discover races. Join events worldwide.</p>
-    <a routerLink="/races" class="cta">Explore Races</a>
-  </div>
-</section>
+    <h1>Koşu Dünyasını Tek Platformda Yönet</h1>
+    <p>
+      Yarışları keşfet, kaydol, performansını takip et. Maratonic, sporcular için
+      tasarlanmış modern bir yarış yönetim platformudur.
+    </p>
 
-<!-- COUNTDOWN -->
-<section class="countdown">
-  <h2>Next Race Starts In</h2>
-  <div class="clock">{{ countdownText }}</div>
-</section>
-
-<!-- FEATURES -->
-<section class="features-container">
-  <div class="features">
-    <div class="feature-card">
-      <h3>OCR Bib Detection</h3>
-      <p>Your race photos automatically tagged with your bib number.</p>
-    </div>
-
-    <div class="feature-card">
-      <h3>Race Calendar</h3>
-      <p>Discover upcoming races and distances worldwide.</p>
-    </div>
-
-    <div class="feature-card">
-      <h3>Performance Insights</h3>
-      <p>Track your progress and access previous race results.</p>
+    <div class="hero-buttons">
+      <a routerLink="/races" class="btn primary">Yarışları Keşfet</a>
+      <a routerLink="/register" class="btn secondary">Kayıt Ol</a>
     </div>
   </div>
 </section>
 
-<!-- WHY MARATONIC -->
+<!-- HIZLI BİLGİ KARTLARI -->
+<section class="quick-info">
+  <div class="info-card">
+    <h3>150+</h3>
+    <p>Yarış</p>
+  </div>
+
+  <div class="info-card">
+    <h3>10.000+</h3>
+    <p>Sporcu</p>
+  </div>
+
+  <div class="info-card">
+    <h3>50+</h3>
+    <p>Şehir</p>
+  </div>
+</section>
+
+<!-- ÖZELLİKLER -->
+<section class="features">
+  <h2>Öne Çıkan Özellikler</h2>
+
+  <div class="feature-grid">
+
+    <div class="feature-card">
+      <h3>OCR Göğüs Numarası Tanıma</h3>
+      <p>Yarış fotoğraflarındaki bib numaralarını otomatik algılar.</p>
+    </div>
+
+    <div class="feature-card">
+      <h3>Yarış Takvimi</h3>
+      <p>Yaklaşan tüm yarışları kolayca görüntüle.</p>
+    </div>
+
+    <div class="feature-card">
+      <h3>Performans Takibi</h3>
+      <p>Koşu geçmişini, PB’lerini ve sonuçlarını kaydet.</p>
+    </div>
+
+    <div class="feature-card">
+      <h3>Sporcu Profili</h3>
+      <p>Tüm koşu geçmişini ve başarılarını sergile.</p>
+    </div>
+
+    <div class="feature-card">
+      <h3>Anlık Bildirimler</h3>
+      <p>Yarış kayıtları açıldığında ilk sen öğren.</p>
+    </div>
+
+    <div class="feature-card">
+      <h3>Güvenli Ödeme Sistemi</h3>
+      <p>Yarış ücretlerini güvenle öde.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- NEDEN MARATONİC -->
 <section class="why">
-  <h2>Why Maratonic?</h2>
+  <h2>Neden Maratonic?</h2>
+  <p class="why-subtitle">
+    Sporcular için tasarlanmış, modern bir deneyim.
+  </p>
 
   <div class="why-grid">
-    <div class="why-item">Secure Online Payments</div>
-    <div class="why-item">Live Race Countdown</div>
-    <div class="why-item">Trail, Road, Ultra Events</div>
-    <div class="why-item">Instant Email Notifications</div>
-    <div class="why-item">Detailed Race Insights</div>
-    <div class="why-item">Smart OCR Photo System</div>
+
+    <div class="why-card">
+      <h3>Kolay Kullanım</h3>
+      <p>Sade, modern ve hızlı kullanıcı arayüzü.</p>
+    </div>
+
+    <div class="why-card">
+      <h3>Sporcu Topluluğu</h3>
+      <p>Binlerce koşucu ile aynı platformda buluş.</p>
+    </div>
+
+    <div class="why-card">
+      <h3>Profesyonel Altyapı</h3>
+      <p>Modern teknolojiyle geliştirilen güçlü sistem.</p>
+    </div>
+
+    <div class="why-card">
+      <h3>7/24 Destek</h3>
+      <p>Her zaman erişilebilir kullanıcı desteği.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>Hadi Başlayalım!</h2>
+  <p>
+    Spor dünyasına güçlü bir adım at. Maratonic ile yarışlara katıl ve performansını geliştir.
+  </p>
+
+  <div class="cta-buttons">
+    <a routerLink="/register" class="cta-btn primary">Kayıt Ol</a>
+    <a routerLink="/races" class="cta-btn secondary">Yaklaşan Yarışlar</a>
   </div>
 </section>

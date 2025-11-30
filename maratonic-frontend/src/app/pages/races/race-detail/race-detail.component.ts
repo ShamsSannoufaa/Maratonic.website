@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule, DatePipe } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 import { RaceModel } from '../../../core/models/race.model';
 import { RacesService } from '../../../core/services/races.service';
@@ -10,7 +11,7 @@ import { RacesService } from '../../../core/services/races.service';
   standalone: true,
   templateUrl: './race-detail.component.html',
   styleUrls: ['./race-detail.component.css'],
-  imports: [CommonModule, DatePipe]
+  imports: [CommonModule, DatePipe, RouterLink],
 })
 export class RaceDetailComponent {
 
@@ -30,10 +31,10 @@ export class RaceDetailComponent {
 
         this.race = {
           ...data,
-          banner: data.banner && data.banner.trim() !== ''
+          banner: data.banner?.trim()
             ? data.banner
             : 'assets/defaults/race-default.jpg'
-        } as RaceModel;
+        };
       },
       error: (err) => console.error("Race detail error:", err)
     });

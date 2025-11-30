@@ -1,38 +1,109 @@
 <div class="race-detail-container" *ngIf="race">
 
-  <div class="banner"
-       [style.backgroundImage]="'url(' + race.banner + ')'">
+  <!-- BANNER -->
+  <div class="banner" [style.backgroundImage]="'url(' + race.banner + ')'">
+    <div class="banner-overlay"></div>
+    <div class="banner-title">{{ race.name }}</div>
   </div>
 
-  <h2 class="race-title">{{ race.name }}</h2>
-
-  <div class="status-badge"
-       [ngClass]="race.status === 'Open' ? 'open' : 'closed'">
-    {{ race.status }}
+  <!-- DURUM ROZETİ -->
+  <div class="status-badge" [ngClass]="race.status === 'Open' ? 'open' : 'closed'">
+    {{ race.status === 'Open' ? 'Kayıt Açık' : 'Kayıt Kapalı' }}
   </div>
 
-  <div class="race-info">
+  <!------------------------------->
+  <!-- ANA BİLGİLER -->
+  <!------------------------------->
+  <section class="info-section">
 
-    <div class="info-item">
-      <i class="ri-calendar-event-line"></i>
-      <span>{{ race.date | date:'longDate' }}</span>
+    <h2 class="section-title">Yarış Bilgileri</h2>
+
+    <div class="info-grid">
+
+      <div class="info-box">
+        <i class="ri-calendar-event-line"></i>
+        <strong>Tarih:</strong>
+        <span>{{ race.date | date:'d MMMM y' }}</span>
+      </div>
+
+      <div class="info-box">
+        <i class="ri-map-pin-line"></i>
+        <strong>Konum:</strong>
+        <span>{{ race.location }}</span>
+      </div>
+
+      <div class="info-box">
+        <i class="ri-run-line"></i>
+        <strong>Mesafe:</strong>
+        <span>{{ race.distance }}</span>
+      </div>
+
+      <div class="info-box">
+        <i class="ri-money-dollar-circle-line"></i>
+        <strong>Kayıt Ücreti:</strong>
+        <span>{{ race.registrationFee }}₺</span>
+      </div>
+
     </div>
+  </section>
 
-    <div class="info-item">
-      <i class="ri-map-pin-line"></i>{{ race.location }}</div>
+  <!------------------------------->
+  <!-- AÇIKLAMA -->
+  <!------------------------------->
+  <section class="description-section">
+    <h2 class="section-title">Yarış Açıklaması</h2>
+    <p>{{ race.description }}</p>
+  </section>
 
-    <div class="info-item">
-      <i class="ri-run-line"></i>{{ race.distance }}</div>
+  <!------------------------------->
+  <!-- EK BİLGİLER -->
+  <!------------------------------->
+  <section class="extra-section">
 
-    <div class="info-item">
-      <i class="ri-money-dollar-circle-line"></i>
-      {{ race.registrationFee }}₺
+    <h2 class="section-title">Ek Bilgiler</h2>
+
+    <div class="extra-grid">
+
+      <div class="extra-box">
+        <i class="ri-timer-2-line"></i>
+        <h4>Parkur Süresi</h4>
+        <p>Katılımcıların parkuru tamamlaması için tahmini süre: <strong>4–6 saat</strong></p>
+      </div>
+
+      <div class="extra-box">
+        <i class="ri-flag-2-line"></i>
+        <h4>Parkur Tipi</h4>
+        <p>Yol koşusu · Asfalt · Uluslararası sertifikalı rota</p>
+      </div>
+
+      <div class="extra-box">
+        <i class="ri-team-line"></i>
+        <h4>Kontenjan</h4>
+        <p>Yaklaşık <strong>1500 koşucu</strong> kapasitelidir.</p>
+      </div>
+
+      <div class="extra-box">
+        <i class="ri-map-line"></i>
+        <h4>GPS / Rota</h4>
+        <p>GPX ve parkur haritası yarış haftasında paylaşılacaktır.</p>
+      </div>
+
     </div>
+  </section>
 
-    <h3>Description</h3>
-    <p class="description">{{ race.description }}</p>
+  <!------------------------------->
+  <!-- BUTONLAR -->
+  <!------------------------------->
+  <div class="button-group">
 
-    <button class="back-btn" routerLink="/races">← Back to Races</button>
+    <button class="back-btn" routerLink="/races">
+      ← Yarış Listesine Dön
+    </button>
+
+    <button class="signup-btn" *ngIf="race.status === 'Open'">
+      Hemen Kaydol →
+    </button>
 
   </div>
+
 </div>

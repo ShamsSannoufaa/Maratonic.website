@@ -1,0 +1,39 @@
+<div class="calendar-container">
+
+  <h1 class="page-title">Koşu Yarış Takvimi</h1>
+
+  <div *ngFor="let group of groupedRaces" class="month-group">
+
+    <!-- AY BAŞLIĞI -->
+    <h2 class="month-title">{{ group.monthName }}</h2>
+
+    <!-- AYIN YARIŞ LİSTESİ -->
+    <div *ngFor="let race of group.items"
+         class="race-row"
+         [routerLink]="['/races', race.raceId]">
+
+      <!-- TARİH KUTUSU -->
+      <div class="date-box">
+        <div class="day">{{ race.date | date:'dd' }}</div>
+        <div class="month">{{ race.date | date:'MMM' }}</div>
+      </div>
+
+      <!-- ORTA BÖLÜM: YARIŞ ADI + MESAFE -->
+      <div class="race-middle">
+        <h3 class="race-name">{{ race.name }}</h3>
+
+        <div class="sub-info">
+          <span>{{ race.distance }}</span>
+          <span class="location">{{ race.location }}</span>
+        </div>
+      </div>
+
+      <!-- DURUM ETİKETİ -->
+      <div class="status-badge"
+           [ngClass]="race.status === 'Open' ? 'open' : 'closed'">
+        {{ race.status === 'Open' ? 'Kayıt Açık' : 'Kapalı' }}
+      </div>
+    </div>
+  </div>
+
+</div>

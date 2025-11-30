@@ -1,0 +1,64 @@
+.calendar-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.title {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 700;
+  color: #004d61;
+  margin-bottom: 30px;
+}
+
+.month {
+  margin-bottom: 40px;
+}
+
+.month-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #027361;
+  margin-bottom: 16px;
+}
+
+.race-card {
+  display: flex;
+  align-items: center;
+  background: white;
+  padding: 14px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+
+.date-box {
+  width: 60px;
+  height: 60px;
+  background: #004d61;
+  color: white;
+  font-size: 22px;
+  font-weight: 700;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 16px;
+}
+
+.race-info {
+  flex: 1;
+}
+
+.race-name {
+  font-size: 18px;
+  margin: 0;
+  font-weight: 600;
+}
+
+.race-detail {
+  margin: 3px 0 0 0;
+  color: #444;
+  font-size: 15px;
+}

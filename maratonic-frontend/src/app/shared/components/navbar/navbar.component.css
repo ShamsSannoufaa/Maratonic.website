@@ -1,33 +1,33 @@
-/* Reset important bug */
+/* OVERLAY BUG FIX */
 * {
   box-sizing: border-box;
 }
 
-/* NAVBAR CONTAINER */
+/* NAVBAR */
 .navbar {
   background: #000103;
   height: 64px;
-  width: 100% !important;   /* ✨ CRITICAL FIX */
+  width: 100% !important;
   display: flex;
   justify-content: center;
   border-bottom: 2px solid #06566733;
   position: sticky;
   top: 0;
-  z-index: 50;
+  z-index: 1000;
 }
 
 .nav-content {
-  width: 100% !important;   /* ✨ CRITICAL FIX */
+  width: 100%;
   max-width: 1400px;
-  margin: 0 auto;           /* ✨ CRITICAL FIX */
+  margin: 0 auto;
   padding: 0 24px;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  position: relative;       /* overlay bug fix */
-  z-index: 100;
+  position: relative;
+  z-index: 1001;
 }
 
 /* LOGO */
@@ -38,7 +38,7 @@
   text-decoration: none;
 }
 
-/* HAMBURGER (mobile only) */
+/* HAMBURGER */
 .hamburger {
   display: none;
   color: white;
@@ -57,16 +57,14 @@
   color: white;
   text-decoration: none;
   font-weight: 500;
-  display: flex;
-  align-items: center;
-  gap: 6px;
 }
 
-.nav-links li a:hover {
+.nav-links li a:hover,
+.nav-links li a.active {
   color: #26a08c;
 }
 
-/* RIGHT SIDE */
+/* RIGHT BUTTONS */
 .nav-right {
   display: flex;
   gap: 14px;
@@ -100,9 +98,9 @@
   background: #26a08c;
 }
 
-/* ---------------------------- */
-/* RESPONSIVE - MOBILE/TABLET */
-/* ---------------------------- */
+/* =============================== */
+/* MOBILE RESPONSIVE */
+/* =============================== */
 
 @media (max-width: 992px) {
 
@@ -118,14 +116,14 @@
     position: absolute;
     top: 64px;
     left: 0;
-    width: 100% !important; /* FIX */
+    width: 100% !important;
     background: #000103;
     flex-direction: column;
     gap: 18px;
     padding: 20px 0;
     display: none;
     border-bottom: 1px solid #06566733;
-    z-index: 200;
+    z-index: 999;
   }
 
   .nav-links.active {

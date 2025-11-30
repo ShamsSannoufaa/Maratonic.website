@@ -1,11 +1,11 @@
-/* Sayfanın tamamını kapsayan wrapper */
+/* SAYFA WRAPPER */
 .page-wrapper {
-  min-height: calc(100vh - 140px); /* navbar + footer toplam yüksekliği */
   display: flex;
   flex-direction: column;
+  min-height: auto;   /* << DÜZELTİLDİ */
 }
 
-/* Router outlet içeriği */
+/* ROUTER İÇERİĞİ */
 .page-container {
   flex: 1;
   padding: 24px;

@@ -21,13 +21,14 @@
   padding: 40px 60px;
 }
 
+/* CARD */
 .race-card {
   background: white;
   border-radius: 14px;
   overflow: hidden;
-  cursor: pointer;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
   transition: 0.25s ease;
+  position: relative;
 }
 
 .race-card:hover {
@@ -35,12 +36,35 @@
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
 }
 
+/* STATUS BADGE (sağ üst) */
+.status-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 20px;
+  color: white;
+  z-index: 5;
+}
+
+.status-badge.open {
+  background: #027361;
+}
+
+.status-badge.closed {
+  background: #bb1f1f;
+}
+
+/* BANNER */
 .banner {
   height: 160px;
   background-size: cover;
   background-position: center;
 }
 
+/* BODY */
 .card-body {
   text-align: left;
   padding: 16px 20px;
@@ -64,26 +88,25 @@
 .info-row i {
   margin-right: 8px;
   font-size: 18px;
-  color: #007f5f;
+  color: #027361;
 }
 
-.status {
+/* 🔥 TAM GENİŞLİK DETAY BUTONU */
+.detail-bar {
   width: 100%;
-  padding: 10px;
-  text-align: center;
+  padding: 12px;
+  background: #065667;
+  color: white;
   font-weight: 600;
-  font-size: 15px;
-  pointer-events: none;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  transition: 0.25s ease;
 }
 
-.status.open {
-  background: #c8eee7;
-  color: #007f5f;
-}
-
-.status.closed {
-  background: #ffd7d7;
-  color: #d9534f;
+.detail-bar:hover {
+  background: #3793a8;
 }
 
 @media (max-width: 768px) {

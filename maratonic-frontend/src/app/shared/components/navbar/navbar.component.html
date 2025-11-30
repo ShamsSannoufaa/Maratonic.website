@@ -2,48 +2,58 @@
   <div class="nav-content">
 
     <!-- Logo -->
-    <a routerLink="/" class="logo">Maratonic</a>
+    <a routerLink="/" class="logo" (click)="closeMenu()">Maratonic</a>
 
-    <!-- Hamburger (mobile) -->
+    <!-- Hamburger -->
     <div class="hamburger" (click)="toggleMenu()">
       <i class="fas" [ngClass]="isMenuOpen ? 'fa-times' : 'fa-bars'"></i>
     </div>
 
-    <!-- Middle Menu -->
+    <!-- Navigation -->
     <ul class="nav-links" [class.active]="isMenuOpen">
-      <li><a routerLink="/races" (click)="closeMenu()"><i class="fas fa-running"></i> Races</a></li>
-      <li><a routerLink="/calendar" (click)="closeMenu()"><i class="fas fa-calendar-day"></i> Calendar</a></li>
-      <li><a routerLink="/results" (click)="closeMenu()"><i class="fas fa-stopwatch"></i> Results</a></li>
-      <li><a routerLink="/training" (click)="closeMenu()"><i class="fas fa-dumbbell"></i> Training</a></li>
-      <li><a routerLink="/about" (click)="closeMenu()"><i class="fas fa-info-circle"></i> About</a></li>
 
-      <!-- Mobile Login/Register -->
-      <div class="mobile-auth" *ngIf="isMenuOpen">
-        <ng-container *ngIf="!isLoggedIn">
-          <a routerLink="/login" class="btn login-btn">Login</a>
-          <a routerLink="/register" class="btn signup-btn">Sign Up</a>
-        </ng-container>
+      <li>
+        <a routerLink="/"
+           routerLinkActive="active"
+           [routerLinkActiveOptions]="{ exact: true }"
+           (click)="closeMenu()">
+           Anasayfa
+        </a>
+      </li>
 
-        <button *ngIf="isLoggedIn" class="btn login-btn" (click)="logout()">
-          Logout
-        </button>
+      <li>
+        <a routerLink="/races"
+           routerLinkActive="active"
+           (click)="closeMenu()">
+           Yarışlar
+        </a>
+      </li>
+
+      <li>
+        <a routerLink="/calendar"
+           routerLinkActive="active"
+           (click)="closeMenu()">
+           Takvim
+        </a>
+      </li>
+
+      <!-- Mobil auth -->
+      <div class="mobile-auth" *ngIf="isMenuOpen && !isLoggedIn">
+        <a routerLink="/login" class="btn login-btn" (click)="closeMenu()">Giriş Yap</a>
+        <a routerLink="/register" class="btn signup-btn" (click)="closeMenu()">Kayıt Ol</a>
       </div>
     </ul>
 
-    <!-- Right side (desktop) -->
+    <!-- Desktop auth -->
     <div class="nav-right">
-      <a *ngIf="isLoggedIn" routerLink="/profile" class="profile-btn">
-        <i class="fas fa-user"></i> Profile
-      </a>
 
       <ng-container *ngIf="!isLoggedIn">
-        <a routerLink="/login" class="btn login-btn">Login</a>
-        <a routerLink="/register" class="btn signup-btn">Sign Up</a>
+        <a routerLink="/login" class="btn login-btn">Giriş Yap</a>
+        <a routerLink="/register" class="btn signup-btn">Kayıt Ol</a>
       </ng-container>
 
-      <button *ngIf="isLoggedIn" class="btn login-btn" (click)="logout()">
-        Logout
-      </button>
+      <button *ngIf="isLoggedIn" class="btn login-btn" (click)="logout()">Çıkış Yap</button>
+
     </div>
 
   </div>

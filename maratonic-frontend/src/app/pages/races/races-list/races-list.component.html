@@ -1,24 +1,31 @@
 <div class="races-container">
 
-  <h2 class="title">Upcoming Races</h2>
-  <p class="subtitle">Discover events. Choose your next challenge.</p>
+  <h2 class="title">Yaklaşan Yarışlar</h2>
+  <p class="subtitle">Etkinlikleri keşfet. Yeni hedefini belirle.</p>
 
   <div class="race-grid">
 
-    <div class="race-card"
-         *ngFor="let race of races"
-         (click)="openRace(race.raceId)">
+    <div 
+      class="race-card"
+      *ngFor="let race of races">
 
+      <!-- DURUM ROZETİ (SAĞ ÜST KÖŞE) -->
+      <div class="status-badge" [ngClass]="race.status === 'Open' ? 'open' : 'closed'">
+        {{ race.status === 'Open' ? 'Açık' : 'Kapalı' }}
+      </div>
+
+      <!-- BANNER -->
       <div class="banner"
            [style.backgroundImage]="'url(' + race.banner + ')'">
       </div>
 
+      <!-- GÖVDE -->
       <div class="card-body">
         <h3 class="race-name">{{ race.name }}</h3>
 
         <div class="info-row">
           <i class="ri-calendar-event-line"></i>
-          {{ race.date | date:'MMMM d, y' }}
+          {{ race.date | date:'d MMMM y' }}
         </div>
 
         <div class="info-row">
@@ -35,10 +42,10 @@
         </div>
       </div>
 
-      <div class="status"
-           [ngClass]="race.status === 'Open' ? 'open' : 'closed'">
-        {{ race.status }}
-      </div>
+      <!-- TAM GENİŞLİK DETAY BUTONU -->
+      <button class="detail-bar" [routerLink]="['/races', race.raceId]">
+        Detay →
+      </button>
 
     </div>
 
