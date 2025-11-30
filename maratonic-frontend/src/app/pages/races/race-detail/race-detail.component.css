@@ -1,1 +1,91 @@
-h2 { color: #666; }
+.race-detail-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.banner {
+  height: 260px;
+  width: 100%;
+  border-radius: 16px;
+  background-size: cover;
+  background-position: center;
+}
+
+.race-title {
+  font-size: 32px;
+  text-align: center;
+  margin: 20px 0;
+  color: #004d61;
+}
+
+.status-badge {
+  display: block;
+  width: fit-content;
+  margin: 0 auto 20px;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.status-badge.open {
+  background: #c8eee7;
+  color: #007f5f;
+}
+
+.status-badge.closed {
+  background: #ffd7d7;
+  color: #d9534f;
+}
+
+.race-info {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.info-item i {
+  font-size: 22px;
+  margin-right: 10px;
+  color: #007f5f;
+}
+
+.description {
+  margin-top: 15px;
+  color: #444;
+}
+
+.back-btn {
+  margin-top: 30px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  background: #004d61;
+  color: white;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.back-btn:hover {
+  background: #00728c;
+}
+
+@media (max-width: 768px) {
+  .race-title {
+    font-size: 26px;
+  }
+
+  .banner {
+    height: 200px;
+  }
+
+  .race-info {
+    font-size: 16px;
+  }
+}

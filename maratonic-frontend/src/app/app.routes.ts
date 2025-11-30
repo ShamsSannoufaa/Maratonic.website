@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
 
-// Pages
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ProfileComponent } from './pages/profile/profile.component';
@@ -9,9 +8,8 @@ import { RaceDetailComponent } from './pages/races/race-detail/race-detail.compo
 import { AdminDashboardComponent } from './pages/admin/dashboard/admin-dashboard.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { HomeComponent } from './pages/home/home.component';
+
 import { LayoutComponent } from './layout/layout.component';
-
-
 
 export const routes: Routes = [
   {
@@ -19,6 +17,7 @@ export const routes: Routes = [
     component: LayoutComponent,
     children: [
       { path: '', component: HomeComponent },
+
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
 
@@ -38,4 +37,3 @@ export const routes: Routes = [
     ]
   }
 ];
-

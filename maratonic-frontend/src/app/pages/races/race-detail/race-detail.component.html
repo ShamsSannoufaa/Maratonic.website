@@ -1,1 +1,38 @@
-<h2>Race Detail</h2>
+<div class="race-detail-container" *ngIf="race">
+
+  <div class="banner"
+       [style.backgroundImage]="'url(' + race.banner + ')'">
+  </div>
+
+  <h2 class="race-title">{{ race.name }}</h2>
+
+  <div class="status-badge"
+       [ngClass]="race.status === 'Open' ? 'open' : 'closed'">
+    {{ race.status }}
+  </div>
+
+  <div class="race-info">
+
+    <div class="info-item">
+      <i class="ri-calendar-event-line"></i>
+      <span>{{ race.date | date:'longDate' }}</span>
+    </div>
+
+    <div class="info-item">
+      <i class="ri-map-pin-line"></i>{{ race.location }}</div>
+
+    <div class="info-item">
+      <i class="ri-run-line"></i>{{ race.distance }}</div>
+
+    <div class="info-item">
+      <i class="ri-money-dollar-circle-line"></i>
+      {{ race.registrationFee }}₺
+    </div>
+
+    <h3>Description</h3>
+    <p class="description">{{ race.description }}</p>
+
+    <button class="back-btn" routerLink="/races">← Back to Races</button>
+
+  </div>
+</div>

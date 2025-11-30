@@ -1,29 +1,46 @@
 <nav class="navbar">
   <div class="nav-content">
 
+    <!-- Logo -->
     <a routerLink="/" class="logo">Maratonic</a>
 
-    <ul class="nav-links">
-      <li><a routerLink="/races"><i class="fas fa-running"></i> Races</a></li>
-      <li><a routerLink="/calendar"><i class="fas fa-calendar-day"></i> Calendar</a></li>
-      <li><a routerLink="/results"><i class="fas fa-stopwatch"></i> Results</a></li>
-      <li><a routerLink="/training"><i class="fas fa-dumbbell"></i> Training</a></li>
-      <li><a routerLink="/about"><i class="fas fa-info-circle"></i> About</a></li>
+    <!-- Hamburger (mobile) -->
+    <div class="hamburger" (click)="toggleMenu()">
+      <i class="fas" [ngClass]="isMenuOpen ? 'fa-times' : 'fa-bars'"></i>
+    </div>
+
+    <!-- Middle Menu -->
+    <ul class="nav-links" [class.active]="isMenuOpen">
+      <li><a routerLink="/races" (click)="closeMenu()"><i class="fas fa-running"></i> Races</a></li>
+      <li><a routerLink="/calendar" (click)="closeMenu()"><i class="fas fa-calendar-day"></i> Calendar</a></li>
+      <li><a routerLink="/results" (click)="closeMenu()"><i class="fas fa-stopwatch"></i> Results</a></li>
+      <li><a routerLink="/training" (click)="closeMenu()"><i class="fas fa-dumbbell"></i> Training</a></li>
+      <li><a routerLink="/about" (click)="closeMenu()"><i class="fas fa-info-circle"></i> About</a></li>
+
+      <!-- Mobile Login/Register -->
+      <div class="mobile-auth" *ngIf="isMenuOpen">
+        <ng-container *ngIf="!isLoggedIn">
+          <a routerLink="/login" class="btn login-btn">Login</a>
+          <a routerLink="/register" class="btn signup-btn">Sign Up</a>
+        </ng-container>
+
+        <button *ngIf="isLoggedIn" class="btn login-btn" (click)="logout()">
+          Logout
+        </button>
+      </div>
     </ul>
 
+    <!-- Right side (desktop) -->
     <div class="nav-right">
-      <!-- Profil yalnızca giriş yapınca -->
       <a *ngIf="isLoggedIn" routerLink="/profile" class="profile-btn">
         <i class="fas fa-user"></i> Profile
       </a>
 
-      <!-- Login & Register -->
       <ng-container *ngIf="!isLoggedIn">
         <a routerLink="/login" class="btn login-btn">Login</a>
         <a routerLink="/register" class="btn signup-btn">Sign Up</a>
       </ng-container>
 
-      <!-- Logout -->
       <button *ngIf="isLoggedIn" class="btn login-btn" (click)="logout()">
         Logout
       </button>

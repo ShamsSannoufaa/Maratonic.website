@@ -5,7 +5,7 @@ export interface RaceModel {
   location: string;
   description: string;
   registrationFee: number;
-  banner: string;
+  banner?: string;     // <-- Burası opsiyonel olmalı
   distance: string;
-  status: string;   // “Open / Closed”
+  status: string;       // "Open" / "Closed"
 }

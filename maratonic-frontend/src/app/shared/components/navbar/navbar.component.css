@@ -1,24 +1,36 @@
+/* Reset important bug */
+* {
+  box-sizing: border-box;
+}
+
+/* NAVBAR CONTAINER */
 .navbar {
   background: #000103;
-  padding: 0;
   height: 64px;
+  width: 100% !important;   /* ✨ CRITICAL FIX */
   display: flex;
-  justify-content: center; /* her şey ortalanır */
+  justify-content: center;
   border-bottom: 2px solid #06566733;
+  position: sticky;
+  top: 0;
+  z-index: 50;
 }
 
 .nav-content {
-  width: 100%;
-  max-width: 1400px; /* merkez genişlik */
-  margin: 0 auto;
+  width: 100% !important;   /* ✨ CRITICAL FIX */
+  max-width: 1400px;
+  margin: 0 auto;           /* ✨ CRITICAL FIX */
   padding: 0 24px;
 
   display: flex;
-  justify-content: space-between; /* sol - orta - sağ */
+  justify-content: space-between;
   align-items: center;
+
+  position: relative;       /* overlay bug fix */
+  z-index: 100;
 }
 
-/* Logo */
+/* LOGO */
 .logo {
   font-size: 22px;
   font-weight: 700;
@@ -26,13 +38,19 @@
   text-decoration: none;
 }
 
-/* Middle Menu */
+/* HAMBURGER (mobile only) */
+.hamburger {
+  display: none;
+  color: white;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+/* DESKTOP MENU */
 .nav-links {
   display: flex;
   gap: 22px;
   list-style: none;
-  margin-left: auto; /* sol blok ile arayı kapatır */
-  margin-right: auto; /* sağ blok ile ortalar */
 }
 
 .nav-links li a {
@@ -48,7 +66,7 @@
   color: #26a08c;
 }
 
-/* Right side */
+/* RIGHT SIDE */
 .nav-right {
   display: flex;
   gap: 14px;
@@ -80,4 +98,50 @@
 
 .signup-btn:hover {
   background: #26a08c;
+}
+
+/* ---------------------------- */
+/* RESPONSIVE - MOBILE/TABLET */
+/* ---------------------------- */
+
+@media (max-width: 992px) {
+
+  .hamburger {
+    display: block;
+  }
+
+  .nav-right {
+    display: none;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 64px;
+    left: 0;
+    width: 100% !important; /* FIX */
+    background: #000103;
+    flex-direction: column;
+    gap: 18px;
+    padding: 20px 0;
+    display: none;
+    border-bottom: 1px solid #06566733;
+    z-index: 200;
+  }
+
+  .nav-links.active {
+    display: flex;
+    animation: fadeSlide 0.3s ease;
+  }
+
+  .mobile-auth {
+    margin-top: 12px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  @keyframes fadeSlide {
+    from { opacity: 0; transform: translateY(-10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
 }

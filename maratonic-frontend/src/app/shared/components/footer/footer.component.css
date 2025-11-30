@@ -1,7 +1,7 @@
 .footer {
   background: #000103;
   color: #ffffffdd;
-  padding: 40px 0;
+  padding: 45px 0 30px;
   margin-top: 60px;
 }
 
@@ -10,10 +10,12 @@
   margin: auto;
   display: flex;
   justify-content: space-between;
-  align-items: start;
+  align-items: flex-start;
   padding: 0 24px;
+  gap: 40px;
 }
 
+/* LEFT */
 .footer-left .footer-logo {
   font-size: 22px;
   font-weight: 700;
@@ -21,17 +23,28 @@
   margin-bottom: 10px;
 }
 
+.footer-left p {
+  font-size: 15px;
+  color: #ffffffbb;
+  max-width: 250px;
+}
+
+/* CENTER LINKS */
 .footer-center a {
   display: block;
   margin-bottom: 8px;
   color: #ffffffdd;
   text-decoration: none;
+  font-size: 15px;
+  transition: 0.2s ease;
 }
 
 .footer-center a:hover {
   color: #26a08c;
+  transform: translateX(3px);
 }
 
+/* RIGHT SOCIAL ICONS */
 .footer-right {
   display: flex;
   gap: 18px;
@@ -41,16 +54,59 @@
   font-size: 24px;
   color: white;
   cursor: pointer;
-  transition: 0.2s;
+  transition: 0.25s ease;
 }
 
 .social-icon:hover {
   color: #26a08c;
+  transform: scale(1.15);
 }
 
+/* BOTTOM */
 .footer-bottom {
   text-align: center;
-  margin-top: 25px;
+  margin-top: 28px;
   font-size: 14px;
-  color: #ffffff99;
+  color: #ffffff77;
+}
+
+
+/* ----------------------------- */
+/* RESPONSIVE DESIGN */
+/* ----------------------------- */
+@media (max-width: 992px) {
+  .footer-content {
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+    gap: 30px;
+  }
+
+  .footer-left,
+  .footer-center,
+  .footer-right {
+    width: 100%;
+  }
+
+  .footer-left p {
+    margin: auto;
+  }
+
+  .footer-right {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer {
+    padding: 35px 0 20px;
+  }
+
+  .footer-content {
+    gap: 20px;
+  }
+
+  .footer-center a {
+    font-size: 14px;
+  }
 }

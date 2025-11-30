@@ -48,4 +48,9 @@ export class RacesService {
   getRaces(): Observable<RaceModel[]> {
     return of(this.fakeRaces);
   }
+  getRaceById(id: number): Observable<RaceModel | null> {
+  const found = this.fakeRaces.find(r => r.raceId === id);
+  return of(found || null);
+}
+
 }

@@ -1,30 +1,43 @@
-<div class="races-wrapper">
+<div class="races-container">
 
-  <h1 class="title">Upcoming Races</h1>
+  <h2 class="title">Upcoming Races</h2>
   <p class="subtitle">Discover events. Choose your next challenge.</p>
 
-  <div class="races-grid">
+  <div class="race-grid">
 
-    <div class="race-card" *ngFor="let race of races" [routerLink]="['/races', race.raceId]">
+    <div class="race-card"
+         *ngFor="let race of races"
+         (click)="openRace(race.raceId)">
 
-      <div class="race-image" [style.backgroundImage]="'url(' + race.banner + ')'"></div>
+      <div class="banner"
+           [style.backgroundImage]="'url(' + race.banner + ')'">
+      </div>
 
-      <div class="race-info">
-        <h3>{{ race.name }}</h3>
+      <div class="card-body">
+        <h3 class="race-name">{{ race.name }}</h3>
 
-        <div class="race-meta">
-          <span><i class="fas fa-calendar"></i> {{ race.date | date:'longDate' }}</span>
-          <span><i class="fas fa-map-marker-alt"></i> {{ race.location }}</span>
+        <div class="info-row">
+          <i class="ri-calendar-event-line"></i>
+          {{ race.date | date:'MMMM d, y' }}
         </div>
 
-        <div class="race-details">
-          <span><i class="fas fa-road"></i> {{ race.distance }}</span>
-          <span><i class="fas fa-money-bill"></i> {{ race.registrationFee }}₺</span>
+        <div class="info-row">
+          <i class="ri-map-pin-line"></i>{{ race.location }}
         </div>
 
-        <div class="race-status" [ngClass]="race.status.toLowerCase()">
-          {{ race.status }}
+        <div class="info-row">
+          <i class="ri-run-line"></i>{{ race.distance }}
         </div>
+
+        <div class="info-row">
+          <i class="ri-money-dollar-circle-line"></i>
+          {{ race.registrationFee }}₺
+        </div>
+      </div>
+
+      <div class="status"
+           [ngClass]="race.status === 'Open' ? 'open' : 'closed'">
+        {{ race.status }}
       </div>
 
     </div>

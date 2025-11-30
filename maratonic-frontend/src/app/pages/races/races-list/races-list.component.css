@@ -1,86 +1,94 @@
-.races-wrapper {
-  max-width: 1300px;
-  margin: 0 auto;
-  padding: 40px 20px;
+.races-container {
+  text-align: center;
+  padding: 40px 0;
 }
 
 .title {
-  text-align: center;
-  font-size: 36px;
+  color: #004d61;
+  font-size: 32px;
   font-weight: 700;
-  color: #000103;
 }
 
 .subtitle {
-  text-align: center;
-  font-size: 16px;
-  margin-bottom: 40px;
-  color: #065667;
+  margin-top: -10px;
+  color: #444;
 }
 
-.races-grid {
+.race-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 28px;
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+  gap: 24px;
+  padding: 40px 60px;
 }
 
 .race-card {
   background: white;
-  border-radius: 12px;
+  border-radius: 14px;
   overflow: hidden;
   cursor: pointer;
-  transition: 0.25s;
-  border: 1px solid #e3e3e3;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  transition: 0.25s ease;
 }
 
 .race-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 6px 20px #00000020;
+  transform: scale(1.02);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
 }
 
-.race-image {
+.banner {
   height: 160px;
   background-size: cover;
   background-position: center;
 }
 
-.race-info {
-  padding: 18px;
+.card-body {
+  text-align: left;
+  padding: 16px 20px;
 }
 
-.race-info h3 {
-  margin: 0 0 12px;
-  color: #027361;
+.race-name {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #004d61;
 }
 
-.race-meta, .race-details {
+.info-row {
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
+  align-items: center;
+  margin-bottom: 6px;
   color: #333;
-  font-size: 14px;
+  font-size: 15px;
 }
 
-.race-status {
-  margin-top: 14px;
-  padding: 6px 10px;
-  border-radius: 6px;
-  font-weight: 700;
+.info-row i {
+  margin-right: 8px;
+  font-size: 18px;
+  color: #007f5f;
+}
+
+.status {
+  width: 100%;
+  padding: 10px;
   text-align: center;
-  font-size: 14px;
+  font-weight: 600;
+  font-size: 15px;
+  pointer-events: none;
 }
 
-.race-status.open {
-  background: #26a08c33;
-  color: #027361;
+.status.open {
+  background: #c8eee7;
+  color: #007f5f;
 }
 
-.race-status.closed {
-  background: #ffcccc;
-  color: #b30000;
+.status.closed {
+  background: #ffd7d7;
+  color: #d9534f;
 }
 
-.race-status.soon {
-  background: #ffe8b3;
-  color: #a16900;
+@media (max-width: 768px) {
+  .race-grid {
+    padding: 20px;
+    grid-template-columns: 1fr;
+  }
 }

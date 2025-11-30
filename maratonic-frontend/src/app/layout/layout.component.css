@@ -1,4 +1,28 @@
+/* Sayfanın tamamını kapsayan wrapper */
+.page-wrapper {
+  min-height: calc(100vh - 140px); /* navbar + footer toplam yüksekliği */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Router outlet içeriği */
 .page-container {
-  min-height: calc(100vh - 140px);
-  padding: 20px;
+  flex: 1;
+  padding: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Mobil görünüm iyileştirme */
+@media (max-width: 768px) {
+  .page-container {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-container {
+    padding: 12px;
+  }
 }
