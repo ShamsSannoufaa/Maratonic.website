@@ -6,6 +6,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { RacesListComponent } from './pages/races/races-list/races-list.component';
 import { RaceDetailComponent } from './pages/races/race-detail/race-detail.component';
+import { AdminLayoutComponent } from './pages/admin/admin-layout/admin-layout.component';
 import { AdminDashboardComponent } from './pages/admin/dashboard/admin-dashboard.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 
@@ -26,11 +27,10 @@ export const routes: Routes = [
   // --- Admin Pages ---
   {
     path: 'admin',
-    children: [
-      { path: '', component: AdminDashboardComponent }
-    ]
+    loadChildren: () =>
+      import('./pages/admin/admin.routes').then(m => m.ADMIN_ROUTES)
   },
-
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   // --- 404 ---
   { path: '**', component: NotFoundComponent }
 ];
