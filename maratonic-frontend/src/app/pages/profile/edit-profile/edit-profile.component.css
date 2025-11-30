@@ -1,0 +1,55 @@
+.edit-container {
+  max-width: 450px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #065667;
+}
+
+label {
+  font-size: 14px;
+  margin-top: 12px;
+  display: block;
+  color: #027361;
+}
+
+input, select {
+  width: 100%;
+  padding: 10px;
+  border: 1.5px solid #ccc;
+  border-radius: 8px;
+  margin-top: 5px;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.button-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+button {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+button.back {
+  background: #ccc;
+  color: #000;
+}
+
+button.save {
+  background: #027361;
+  color: #fff;
+}

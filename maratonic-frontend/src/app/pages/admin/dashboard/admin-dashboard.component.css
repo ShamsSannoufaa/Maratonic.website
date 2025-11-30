@@ -1,1 +1,40 @@
-h2 { color: #000; }
+.title {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: #065667;
+}
+
+/* GRID */
+.stat-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+/* CARD */
+.stat-card {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  border: 1px solid #e0e3e7;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  transition: 0.2s;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+}
+
+.stat-card h3 {
+  font-size: 32px;
+  font-weight: 700;
+  margin: 0;
+  color: #027361;
+}
+
+.stat-card p {
+  margin: 5px 0 0;
+  color: #4a4a4a;
+  font-size: 15px;
+}

@@ -1,0 +1,21 @@
+<div class="edit-container">
+  <h2>Profili Düzenle</h2>
+
+  <form [formGroup]="form">
+
+    <label>Full Name</label>
+    <input type="text" formControlName="fullName">
+
+    <label>Email</label>
+    <input type="email" formControlName="email">
+
+    <label>City</label>
+    <input type="text" formControlName="city">
+
+    <div class="button-row">
+      <button type="button" class="back" (click)="goBack()">Geri Dön</button>
+      <button type="button" class="save" (click)="save()">Kaydet</button>
+    </div>
+
+  </form>
+</div>

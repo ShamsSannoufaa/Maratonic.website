@@ -1,2 +1,60 @@
+:host {
+  display: block;
+  padding: 40px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
 
-    h2 { color: #444; }
+/* FORM GENEL */
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 450px;
+}
+
+/* LABEL AYARLARI */
+form label {
+  margin-top: 15px;       /* Üstten uzaklaştırır */
+  margin-bottom: 6px;     /* Yazı ile kutu arasında boşluk */
+  font-size: 15px;
+  font-weight: 500;
+  display: block;         /* Label satır kaplasın */
+}
+
+/* INPUT AYARLARI */
+form input {
+  padding: 12px;
+  border: 1px solid #999;
+  border-radius: 8px;
+  font-size: 15px;
+  outline: none;
+  margin-bottom: 5px;     /* Kutular arasında minik boşluk */
+  box-sizing: border-box;
+}
+
+form input:focus {
+  border-color: #027361;
+}
+
+/* BUTON */
+button {
+  margin-top: 25px;
+  padding: 14px;
+  background-color: #027361;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+button:hover {
+  background-color: #065667;
+}
+
+/* HATA MESAJI */
+.error-message {
+  color: red;
+  margin-top: 10px;
+}

@@ -1,1 +1,49 @@
-<h2>Login Page</h2>
+<div class="container">
+
+  <div class="left-panel">
+    <h1>Hey There!</h1>
+    <p>Welcome Back.<br>You are just one step away to your feed.</p>
+
+   
+  </div>
+
+  <div class="right-panel">
+
+    <h2>SIGN IN</h2>
+
+    <form [formGroup]="form" (ngSubmit)="submit()">
+
+      <label>Email</label>
+      <input type="email" formControlName="email" />
+
+      <label>Password</label>
+      <input type="password" formControlName="password" />
+
+      <div class="extra-row">
+        <label>
+          <input type="checkbox" />
+          Keep me logged in
+        </label>
+
+        <a class="forgot">Forgot Password?</a>
+      </div>
+
+      <button type="submit" class="login-btn">
+        {{ loading ? "Loading..." : "Sign In" }}
+      </button>
+
+      <p *ngIf="errorMessage" class="error">
+        {{ errorMessage }}
+      </p>
+    </form>
+
+
+    <div class="social-icons">
+      <i class="fa-brands fa-facebook"></i>
+      <i class="fa-brands fa-twitter"></i>
+      <i class="fa-brands fa-linkedin"></i>
+    </div>
+
+  </div>
+
+</div>
