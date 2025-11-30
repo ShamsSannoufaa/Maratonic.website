@@ -6,4 +6,12 @@ import { Component } from '@angular/core';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent {}
+export class NavbarComponent {
+  isLoggedIn = false;
+
+logout() {
+  this.isLoggedIn = false;
+  // ileride: authService.logout()
+}
+
+}

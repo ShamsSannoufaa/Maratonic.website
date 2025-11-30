@@ -1,43 +1,83 @@
 .navbar {
-  background: var(--color-black);
-  color: var(--color-white);
-  padding: 14px 40px;
+  background: #000103;
+  padding: 0;
+  height: 64px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center; /* her şey ortalanır */
+  border-bottom: 2px solid #06566733;
+}
+
+.nav-content {
+  width: 100%;
+  max-width: 1400px; /* merkez genişlik */
+  margin: 0 auto;
+  padding: 0 24px;
+
+  display: flex;
+  justify-content: space-between; /* sol - orta - sağ */
   align-items: center;
 }
 
+/* Logo */
 .logo {
   font-size: 22px;
   font-weight: 700;
-  color: var(--color-white);
+  color: white;
   text-decoration: none;
 }
 
-.nav-links a {
-  margin-left: 24px;
-  color: var(--color-white);
-  opacity: .85;
-  transition: .2s;
+/* Middle Menu */
+.nav-links {
+  display: flex;
+  gap: 22px;
+  list-style: none;
+  margin-left: auto; /* sol blok ile arayı kapatır */
+  margin-right: auto; /* sağ blok ile ortalar */
 }
 
-.nav-links a:hover {
-  opacity: 1;
-}
-
-.btn-login {
-  color: var(--color-white);
-  margin-right: 18px;
-}
-
-.btn-register {
-  background: var(--color-primary);
-  padding: 8px 16px;
-  border-radius: var(--radius);
-  color: var(--color-white);
+.nav-links li a {
+  color: white;
   text-decoration: none;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
-.btn-register:hover {
-  background: var(--color-primary-light);
+.nav-links li a:hover {
+  color: #26a08c;
+}
+
+/* Right side */
+.nav-right {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.btn {
+  padding: 7px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.login-btn {
+  border: 2px solid white;
+  color: white;
+  background: none;
+}
+
+.login-btn:hover {
+  background: white;
+  color: #027361;
+}
+
+.signup-btn {
+  background: #027361;
+  color: white;
+}
+
+.signup-btn:hover {
+  background: #26a08c;
 }

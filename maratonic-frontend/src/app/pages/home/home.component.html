@@ -1,23 +1,44 @@
+<!-- HERO -->
 <section class="hero">
   <h1>Find Your Next Race</h1>
-  <p>Track your performance. Discover events. Relive your race journey.</p>
-
-  <a routerLink="/races" class="cta-btn">Explore Races</a>
+  <p>Track your performance. Discover races. Join events worldwide.</p>
+  <a routerLink="/races" class="cta">Explore Races</a>
 </section>
 
+<!-- COUNTDOWN -->
+<section class="countdown">
+  <h2>Next Race Starts In</h2>
+  <div class="clock">{{ countdownText }}</div>
+</section>
+
+<!-- FEATURES -->
 <section class="features">
-  <div class="feature">
+  <div class="feature-card">
     <h3>OCR Bib Detection</h3>
     <p>Your race photos automatically tagged with your bib number.</p>
   </div>
 
-  <div class="feature">
+  <div class="feature-card">
     <h3>Race Calendar</h3>
-    <p>Discover and register for races across the world.</p>
+    <p>Discover upcoming races and distances worldwide.</p>
   </div>
 
-  <div class="feature">
-    <h3>Profile Insights</h3>
-    <p>View your performance history and personal records.</p>
+  <div class="feature-card">
+    <h3>Performance Insights</h3>
+    <p>Track your progress and access previous race results.</p>
+  </div>
+</section>
+
+<!-- WHY MARATONIC -->
+<section class="why">
+  <h2>Why Maratonic?</h2>
+
+  <div class="why-grid">
+    <div class="why-item">Secure Online Payments</div>
+    <div class="why-item">Live Race Countdown</div>
+    <div class="why-item">Trail, Road, Ultra Events</div>
+    <div class="why-item">Instant Email Notifications</div>
+    <div class="why-item">Detailed Race Insights</div>
+    <div class="why-item">Smart OCR Photo System</div>
   </div>
 </section>
