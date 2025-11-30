@@ -1,16 +1,15 @@
-<div class="races-container">
 
-  <h2 class="title">Yaklaşan Yarışlar</h2>
-  <p class="subtitle">Etkinlikleri keşfet. Yeni hedefini belirle.</p>
 
+<!-- YARIŞ KARTLARI -->
+<section class="features">
+<h2 class="title">Yaklaşan Yarışlar</h2>
   <div class="race-grid">
 
-    <div 
-      class="race-card"
-      *ngFor="let race of races">
+    <div class="race-card" *ngFor="let race of races">
 
-      <!-- DURUM ROZETİ (SAĞ ÜST KÖŞE) -->
-      <div class="status-badge" [ngClass]="race.status === 'Open' ? 'open' : 'closed'">
+      <!-- DURUM ROZETİ -->
+      <div class="status-badge" 
+           [ngClass]="race.status === 'Open' ? 'open' : 'closed'">
         {{ race.status === 'Open' ? 'Açık' : 'Kapalı' }}
       </div>
 
@@ -19,7 +18,7 @@
            [style.backgroundImage]="'url(' + race.banner + ')'">
       </div>
 
-      <!-- GÖVDE -->
+      <!-- BODY -->
       <div class="card-body">
         <h3 class="race-name">{{ race.name }}</h3>
 
@@ -42,12 +41,21 @@
         </div>
       </div>
 
-      <!-- TAM GENİŞLİK DETAY BUTONU -->
       <button class="detail-bar" [routerLink]="['/races', race.raceId]">
         Detay →
       </button>
-
     </div>
 
   </div>
-</div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>Hedefine Hazır Mısın?</h2>
+  <p>Yeni bir yarış seç ve kendini test et.</p>
+
+  <div class="cta-buttons">
+    <a routerLink="/register" class="cta-btn primary">Kayıt Ol</a>
+    <a routerLink="/profile" class="cta-btn secondary">Profilim</a>
+  </div>
+</section>
