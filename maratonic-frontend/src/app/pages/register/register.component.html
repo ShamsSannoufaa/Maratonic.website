@@ -1,51 +1,56 @@
+
+<div class="toast" 
+     [class.show]="showToast"
+     [class.success]="toastType === 'success'"
+     [class.error]="toastType === 'error'">
+  {{ toastMessage }}
+</div>
+
+
+
 <div class="container">
 
-  <!-- SOL PANEL – FORM -->
+
+
+  <!-- LEFT PANEL -->
   <div class="left-panel">
 
     <div class="logo" (click)="goHome()">Maratonic</div>
 
     <div class="form-wrapper">
 
-      <h2 class="title">Kayıt Ol</h2>
+      <h2 class="title">Sign Up</h2>
 
       <form [formGroup]="form" (ngSubmit)="submit()" class="form-area">
 
-        <!-- AD - SOYAD YAN YANA -->
         <div class="row-2">
           <div>
-            <label>Ad</label>
-            <input type="text" formControlName="firstName" placeholder="Adınız" />
+            <label>First Name</label>
+            <input type="text" formControlName="firstName" placeholder="Enter your first name" />
           </div>
 
           <div>
-            <label>Soyad</label>
-            <input type="text" formControlName="lastName" placeholder="Soyadınız" />
+            <label>Last Name</label>
+            <input type="text" formControlName="lastName" placeholder="Enter your last name" />
           </div>
         </div>
 
-        <!-- E-POSTA -->
-        <label>E-posta</label>
-        <input type="email" formControlName="email" placeholder="E-posta adresiniz" />
+        <label>Email</label>
+        <input type="email" formControlName="email" placeholder="Enter your email" />
 
-        <!-- ŞİFRE -->
-        <label>Şifre</label>
-        <input type="password" formControlName="password" placeholder="Şifreniz" />
+        <label>Password</label>
+        <input type="password" formControlName="password" placeholder="Enter your password" />
 
-        <!-- ŞİFRE TEKRAR -->
-        <label>Şifre Tekrar</label>
-        <input type="password" formControlName="confirmPassword" placeholder="Şifrenizi tekrar girin" />
+        <label>Confirm Password</label>
+        <input type="password" formControlName="confirmPassword" placeholder="Re-enter your password" />
 
-        <!-- BUTON -->
         <button type="submit" class="login-btn">
-          {{ loading ? "Yükleniyor..." : "Kayıt Ol" }}
+          {{ loading ? "Creating..." : "Create Account" }}
         </button>
 
-        <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
-
         <div class="cta-or-box">
-          <p>Zaten hesabın var mı?</p>
-          <a href="/login"><button class="cta-register">Giriş Yap</button></a>
+          <p>Already have an account?</p>
+          <a routerLink="/login"><button class="cta-register">Log In</button></a>
         </div>
 
       </form>
@@ -54,10 +59,10 @@
 
   </div>
 
-  <!-- SAĞ PANEL – GRADYAN -->
+  <!-- RIGHT PANEL -->
   <div class="right-panel">
-    <h1>Aramıza Katıl!</h1>
-    <p>Maratonic'e üye olarak yarış deneyimlerini takip et, fotoğraflarını bul ve koşu dünyasına adım at.</p>
+    <h1>Join Us!</h1>
+    <p>Become a part of Maratonic to track your race experiences, find your photos, and explore the running world.</p>
   </div>
 
 </div>

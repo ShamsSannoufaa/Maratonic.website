@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../core/services/auth.service';
 
@@ -9,13 +9,17 @@ import { AuthService } from '../../core/services/auth.service';
   standalone: true,
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
-  imports: [ReactiveFormsModule, CommonModule]
+  imports: [ReactiveFormsModule, CommonModule, RouterLink]
 })
 export class RegisterComponent {
 
   form: FormGroup;
   loading = false;
-  errorMessage = '';
+
+  // Toast states
+  showToast = false;
+  toastType: 'success' | 'error' = 'success';
+  toastMessage = '';
 
   constructor(
     private fb: FormBuilder,
@@ -27,7 +31,7 @@ export class RegisterComponent {
       lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', Validators.required],
+      confirmPassword: ['', Validators.required]
     });
   }
 
@@ -35,18 +39,24 @@ export class RegisterComponent {
     this.router.navigate(['/']);
   }
 
+  showToastMessage(type: 'success' | 'error', message: string) {
+    this.toastType = type;
+    this.toastMessage = message;
+    this.showToast = true;
+
+    setTimeout(() => {
+      this.showToast = false;
+    }, 3000);
+  }
+
   submit(): void {
-    console.log("FORM:", this.form.value, "VALID:", this.form.valid);
-
-    this.errorMessage = '';
-
     if (this.form.invalid) {
-      this.errorMessage = 'Lütfen tüm alanları eksiksiz doldurun.';
+      this.showToastMessage('error', 'Please fill all fields correctly.');
       return;
     }
 
     if (this.form.value.password !== this.form.value.confirmPassword) {
-      this.errorMessage = 'Şifreler uyuşmuyor.';
+      this.showToastMessage('error', 'Passwords do not match.');
       return;
     }
 
@@ -57,26 +67,18 @@ export class RegisterComponent {
       password: this.form.value.password
     };
 
-    console.log("Gönderilen payload:", payload);
-
     this.loading = true;
 
     this.auth.register(payload).subscribe({
-      next: (res) => {
-        console.log("REGISTER OK:", res);
+      next: () => {
         this.loading = false;
-        this.router.navigate(['/login']);
+        this.showToastMessage('success', 'Account created successfully!');
       },
       error: (err) => {
-        console.log("REGISTER ERROR:", err);
-
         this.loading = false;
 
-        if (err.error?.errors && Array.isArray(err.error.errors)) {
-          this.errorMessage = err.error.errors.join(', ');
-        } else {
-          this.errorMessage = err.error?.message || 'Kayıt işlemi başarısız oldu.';
-        }
+        const msg = err.error?.message || 'Registration failed.';
+        this.showToastMessage('error', msg);
       }
     });
   }

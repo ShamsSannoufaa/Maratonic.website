@@ -4,7 +4,7 @@ export const API_ENDPOINTS = {
   AUTH: {
     REGISTER: `${API_BASE}/auth/register`,
     LOGIN: `${API_BASE}/auth/login`,
-    ME: `${API_BASE}/auth/me`   // ✔ DOĞRU ENDPOINT
+    ME: `${API_BASE}/auth/me`
   },
 
   RACES: {
