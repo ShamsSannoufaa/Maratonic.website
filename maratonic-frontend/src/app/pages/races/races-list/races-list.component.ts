@@ -1,7 +1,7 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
-import { PLATFORM_ID } from '@angular/core';
+
 import { RaceModel } from '../../../core/models/race.model';
 import { RacesService } from '../../../core/services/races.service';
 
@@ -21,16 +21,10 @@ export class RacesListComponent implements OnInit {
   constructor(
     private racesService: RacesService,
     private router: Router,
-    @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
   ngOnInit(): void {
-
-    // ❗ SSR'DA REQUEST ATMAYI DURDURUYORUZ
-    if (!isPlatformBrowser(this.platformId)) {
-      return;
-    }
-
+    // SSR kontrolü kaldırıldı → CSR modunda istek atıyor.
     this.loadRaces();
   }
 

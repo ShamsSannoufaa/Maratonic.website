@@ -1,4 +1,5 @@
-export const API_BASE = 'http://localhost:7280/api';
+export const API_BASE = 'https://localhost:7280/api';
+
 
 export const API_ENDPOINTS = {
   AUTH: {
@@ -10,17 +11,16 @@ export const API_ENDPOINTS = {
   RACES: {
     LIST: `${API_BASE}/races/list`,
     DETAIL: (id: number) => `${API_BASE}/races/${id}`,
-    CREATE: `${API_BASE}/races`
+    CREATE: `${API_BASE}/races/create`
   },
 
   REGISTRATION: {
     CREATE: `${API_BASE}/registrations`,
-    USER_REGISTRATIONS: (userId: number) =>
-      `${API_BASE}/registrations/user/${userId}`,
+    USER_REGISTRATIONS: (userId: number) => `${API_BASE}/registrations/user/${userId}`,
   },
 
   PAYMENTS: {
     CHECKOUT: `${API_BASE}/payments/checkout`,
-    REFUND: `${API_BASE}/payments/refund`,
+    REFUND: `${API_BASE}/payments/refund`
   }
 };
