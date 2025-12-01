@@ -17,6 +17,8 @@ background: linear-gradient(135deg, #027361, #065667);
   text-align: center;
   padding: 170px 20px;
   margin-bottom: 20px;
+    border-radius: 2%;
+
 }
 
 .hero h1 {

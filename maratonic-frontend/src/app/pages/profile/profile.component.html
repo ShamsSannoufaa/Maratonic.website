@@ -1,65 +1,76 @@
-<div class="profile-container">
+<div class="profile-wrapper">
 
-  <!-- LEFT SIDEBAR -->
-  <aside class="sidebar" *ngIf="user">
-    <div class="avatar-box">
-      <img [src]="user.avatar || 'assets/defaults/avatar.png'" alt="avatar">
+  <!-- LEFT PANEL -->
+  <aside class="side">
+
+    <div class="avatar">
+      <i class="fa-solid fa-user"></i>
     </div>
 
-    <h2>{{ user.fullName || user.name }}</h2>
-    <p class="email">{{ user.email }}</p>
+    <h2 class="username">{{ user.name || "Kullanıcı" }}</h2>
+    <p class="email">{{ user.email || "—" }}</p>
 
-    <nav class="menu">
+    <nav class="side-menu">
       <a class="active">Profil</a>
-      <a>Koşu Aktivitesi</a>
       <a routerLink="/profile/edit">Profili Düzenle</a>
+      <a routerLink="/login">Çıkış Yap</a>
     </nav>
+
   </aside>
 
-  <!-- MAIN CONTENT -->
-  <main class="main">
+  <!-- MAIN SECTION -->
+  <main class="content">
 
-    <div class="post-box">
-      <input placeholder="Bugün nasıl hissettin? Antrenmanını paylaş...">
-      <button>Paylaş</button>
-    </div>
-
+    <!-- MOTIVATION BANNER -->
     <div class="banner">
-      “Daha hızlı değil, daha tutarlı ol.”
-      Koşu istikrar gerektirir. Bugün attığın her adım seni yarın daha güçlü yapar.
+      “Koşmak bir yarış değil, bir ritimdir.”
+      <span>Daha tutarlı, daha güçlü.</span>
     </div>
 
-    <!-- BIO GRAPH -->
-    <div class="bio-card" *ngIf="user">
-      <h3>Koşucu Bilgileri</h3>
+    <!-- PROFILE INFORMATION IN GALLERY -->
+    <section class="info-gallery">
 
-      <div class="bio-grid">
-
-        <div><strong>Ülke</strong>: {{ user.country || '-' }}</div>
-        <div><strong>Şehir</strong>: {{ user.city || '-' }}</div>
-
-        <div><strong>Telefon</strong>: {{ user.phone || '-' }}</div>
-        <div><strong>Doğum Tarihi</strong>: {{ user.birthday || '-' }}</div>
-
-        <!-- Backend’de olmayan alanlar kaldırıldı:
-             club, category, pace, startYear, bio.bestRace, bio.longestRace,
-             bio.yearlyMileage, bio.runningStyle
-        -->
-
+      <div class="gallery-card">
+        <h4>Ülke</h4>
+        <p>{{ user.country || "—" }}</p>
       </div>
-    </div>
 
-    <!-- STATS (geçici kaldırıldı, backend yok) -->
-    <!--
-    <div class="stats-grid">
-      <div class="stat-card" *ngFor="let s of stats">
-        <h1 [style.color]="s.color">{{ s.number }}</h1>
-        <h4>{{ s.title }}</h4>
-        <p>Başlangıç: {{ s.start }}</p>
-        <p>{{ s.end }}</p>
+      <div class="gallery-card">
+        <h4>Şehir</h4>
+        <p>{{ user.city || "—" }}</p>
       </div>
-    </div>
-    -->
+
+      <div class="gallery-card">
+        <h4>Running Club</h4>
+        <p>{{ user.club || "—" }}</p>
+      </div>
+
+      <div class="gallery-card">
+        <h4>Kategori</h4>
+        <p>{{ user.category || "—" }}</p>
+      </div>
+
+      <div class="gallery-card">
+        <h4>Pace</h4>
+        <p>{{ user.pace || "—" }}</p>
+      </div>
+
+      <div class="gallery-card">
+        <h4>Başlangıç Yılı</h4>
+        <p>{{ user.startYear || "—" }}</p>
+      </div>
+
+      <div class="gallery-card">
+        <h4>Telefon</h4>
+        <p>{{ user.phone || "—" }}</p>
+      </div>
+
+      <div class="gallery-card">
+        <h4>Doğum Tarihi</h4>
+        <p>{{ user.birthday || "—" }}</p>
+      </div>
+
+    </section>
 
   </main>
 

@@ -8,46 +8,44 @@ import { AuthService } from '../../core/services/auth.service';
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css'],
-  imports: [
-    CommonModule,
-    RouterModule
-  ]
+  imports: [CommonModule, RouterModule]
 })
 export class ProfileComponent implements OnInit {
 
-  loading = true;
-  errorMessage = '';
-  user: any = null;
+  user: any = {
+    name: "",
+    email: "",
+    country: "",
+    city: "",
+    club: "",
+    category: "",
+    pace: "",
+    birthday: "",
+    phone: "",
+    startYear: ""
+  };
 
   constructor(
     private auth: AuthService,
     private router: Router
   ) {}
 
-  ngOnInit(): void {
-    if (!this.auth.getToken()) {
-      this.router.navigate(['/login']);
-      return;
-    }
-
-    this.loadProfile();
+  ngOnInit() {
+    this.loadUserFromToken();
   }
 
-  loadProfile(): void {
-    this.auth.getCurrentUser().subscribe({
-      next: (res) => {
-        this.user = res;
-        this.loading = false;
-      },
-      error: (err) => {
-        this.loading = false;
-        this.errorMessage = 'Profil bilgisi alınamadı.';
+  loadUserFromToken() {
+    const token = this.auth.getToken();
+    if (!token) return;
 
-        if (err.status === 401) {
-          this.auth.logout();
-          this.router.navigate(['/login']);
-        }
-      }
-    });
+    try {
+      const decoded = JSON.parse(atob(token.split('.')[1]));
+
+      this.user.name = `${decoded.firstName ?? ""} ${decoded.lastName ?? ""}`.trim();
+      this.user.email = decoded.email ?? "";
+
+    } catch (err) {
+      console.error("Token decode error", err);
+    }
   }
 }

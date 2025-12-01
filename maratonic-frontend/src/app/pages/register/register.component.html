@@ -1,4 +1,4 @@
-
+<!-- TOAST -->
 <div class="toast" 
      [class.show]="showToast"
      [class.success]="toastType === 'success'"
@@ -6,13 +6,9 @@
   {{ toastMessage }}
 </div>
 
-
-
 <div class="container">
 
-
-
-  <!-- LEFT PANEL -->
+  <!-- LEFT -->
   <div class="left-panel">
 
     <div class="logo" (click)="goHome()">Maratonic</div>
@@ -23,6 +19,7 @@
 
       <form [formGroup]="form" (ngSubmit)="submit()" class="form-area">
 
+        <!-- FIRST + LAST NAME -->
         <div class="row-2">
           <div>
             <label>First Name</label>
@@ -35,22 +32,28 @@
           </div>
         </div>
 
+        <!-- EMAIL -->
         <label>Email</label>
         <input type="email" formControlName="email" placeholder="Enter your email" />
 
+        <!-- PASSWORD -->
         <label>Password</label>
         <input type="password" formControlName="password" placeholder="Enter your password" />
 
         <label>Confirm Password</label>
         <input type="password" formControlName="confirmPassword" placeholder="Re-enter your password" />
 
+        <!-- SUBMIT -->
         <button type="submit" class="login-btn">
           {{ loading ? "Creating..." : "Create Account" }}
         </button>
 
+        <!-- CTA -->
         <div class="cta-or-box">
           <p>Already have an account?</p>
-          <a routerLink="/login"><button class="cta-register">Log In</button></a>
+          <a routerLink="/login">
+            <button type="button" class="cta-register">Log In</button>
+          </a>
         </div>
 
       </form>
@@ -59,7 +62,7 @@
 
   </div>
 
-  <!-- RIGHT PANEL -->
+  <!-- RIGHT -->
   <div class="right-panel">
     <h1>Join Us!</h1>
     <p>Become a part of Maratonic to track your race experiences, find your photos, and explore the running world.</p>

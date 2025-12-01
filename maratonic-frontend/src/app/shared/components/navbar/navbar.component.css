@@ -7,7 +7,7 @@
 /* NAVBAR */
 /* ====================== */
 .navbar {
-  background: #000103;
+background: linear-gradient(135deg, #027361, #065667); 
   height: 64px;
   width: 100% !important;
   display: flex;
@@ -16,6 +16,8 @@
   position: sticky;
   top: 0;
   z-index: 1000;
+  border-radius: 7%;
+  margin-bottom: 5px;
 }
 
 .nav-content {
@@ -63,7 +65,7 @@
 
 .nav-links li a:hover,
 .nav-links li a.active {
-  color: #26a08c;
+  color: #000000;
 }
 
 /* AUTH BUTTONS (Right) */

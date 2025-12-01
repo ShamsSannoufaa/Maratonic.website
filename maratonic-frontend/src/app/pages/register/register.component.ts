@@ -26,6 +26,8 @@ export class RegisterComponent {
     private auth: AuthService,
     private router: Router
   ) {
+
+    // ✅ FORM TAMAMEN DOĞRU ŞEKİLDE OLUŞTURULDU
     this.form = this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
@@ -50,16 +52,20 @@ export class RegisterComponent {
   }
 
   submit(): void {
+
+    // 🔥 FORM HATALIYSA
     if (this.form.invalid) {
       this.showToastMessage('error', 'Please fill all fields correctly.');
       return;
     }
 
+    // 🔥 ŞİFRELER EŞLEŞMİYORSA
     if (this.form.value.password !== this.form.value.confirmPassword) {
       this.showToastMessage('error', 'Passwords do not match.');
       return;
     }
 
+    // BACKEND’E GİDECEK VERİ
     const payload = {
       firstName: this.form.value.firstName,
       lastName: this.form.value.lastName,
@@ -72,12 +78,22 @@ export class RegisterComponent {
     this.auth.register(payload).subscribe({
       next: () => {
         this.loading = false;
+
         this.showToastMessage('success', 'Account created successfully!');
+
+        // Kısa bekleyip login sayfasına yönlendirelim
+        setTimeout(() => {
+          this.router.navigate(['/login']);
+        }, 1200);
       },
+
       error: (err) => {
         this.loading = false;
 
-        const msg = err.error?.message || 'Registration failed.';
+        const msg =
+          err.error?.message ||
+          'Registration failed. Please try again.';
+
         this.showToastMessage('error', msg);
       }
     });

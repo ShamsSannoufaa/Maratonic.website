@@ -1,5 +1,5 @@
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { provideRouter, withRouterConfig } from '@angular/router';
 import { routes } from './app.routes';
 
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
@@ -10,10 +10,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    // 📌 ROUTER
-    provideRouter(routes),
+    provideRouter(
+      routes,
+      withRouterConfig({
+        onSameUrlNavigation: 'reload'
+      })
+    ),
 
-    // 📌 HttpClient (FETCH KALDIRILDI — self-signed SSL sorununu çözüyor)
     provideHttpClient(
       withInterceptors([
         AuthInterceptor,
@@ -21,7 +24,6 @@ export const appConfig: ApplicationConfig = {
       ])
     ),
 
-    // 📌 ReactiveForms Module
     importProvidersFrom(ReactiveFormsModule)
   ]
 };

@@ -13,26 +13,16 @@ import { AuthGuard } from './core/guards/auth.guard';
 
 export const routes: Routes = [
 
-  // ============================
-  // PUBLIC ROUTES (No Auth Required)
-  // ============================
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
 
-  // ============================
-  // LAYOUT ROUTES
-  // ============================
   {
     path: '',
     component: LayoutComponent,
     children: [
 
-      // Home page (public)
       { path: '', component: HomeComponent },
 
-      // ============================
-      // USER PROTECTED ROUTES
-      // ============================
       { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
 
       {
@@ -43,17 +33,17 @@ export const routes: Routes = [
         canActivate: [AuthGuard]
       },
 
-      // ============================
-      // PUBLIC RACE PAGES
-      // ============================
-      { path: 'races', component: RacesListComponent },
+      // ==================================================
+      // 🔥 RACES ROUTE FIX — Tek tıkla yüklemek için şart 🔥
+      // ==================================================
+      {
+        path: 'races',
+        component: RacesListComponent,
+        runGuardsAndResolvers: 'always'
+      },
 
-      // races/:id da public olsun istiyorsan guard yok
       { path: 'races/:id', component: RaceDetailComponent },
 
-      // ============================
-      // PUBLIC CALENDAR PAGE
-      // ============================
       {
         path: 'calendar',
         loadComponent: () =>
@@ -61,9 +51,6 @@ export const routes: Routes = [
             .then(m => m.CalendarComponent)
       },
 
-      // ============================
-      // ADMIN AREA (Protected)
-      // ============================
       {
         path: 'admin',
         loadChildren: () =>
@@ -72,7 +59,6 @@ export const routes: Routes = [
         canActivate: [AuthGuard]
       },
 
-      // 404
       { path: '**', component: NotFoundComponent }
     ]
   }
