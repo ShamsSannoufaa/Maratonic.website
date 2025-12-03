@@ -49,4 +49,23 @@ export class AuthService {
       localStorage.removeItem('token');
     }
   }
+
+  // ✔ EKLENECEK FONKSİYON
+  isAdmin(): boolean {
+    const token = this.getToken();
+    if (!token) return false;
+
+    try {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      const roles = payload["role"] || payload["roles"] || [];
+
+      if (Array.isArray(roles)) {
+        return roles.includes("ADMIN");
+      }
+
+      return roles === "ADMIN";
+    } catch {
+      return false;
+    }
+  }
 }

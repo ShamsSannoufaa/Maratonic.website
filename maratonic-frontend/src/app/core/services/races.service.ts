@@ -11,13 +11,18 @@ export class RacesService {
 
   constructor(private http: HttpClient) {}
 
-  // BACKENDDEN YARIŞ LİSTESİ ÇEK
   getRaces(): Observable<RaceModel[]> {
     return this.http.get<RaceModel[]>(API_ENDPOINTS.RACES.LIST);
   }
 
-  // BACKENDDEN TEK YARIŞ DETAYI ÇEK
   getRaceById(id: number): Observable<RaceModel> {
     return this.http.get<RaceModel>(API_ENDPOINTS.RACES.DETAIL(id));
+  }
+
+  // ✔ DOĞRU YARIŞA KAYIT ENDPOINTİ
+  registerToRace(raceId: number): Observable<any> {
+    return this.http.post(API_ENDPOINTS.REGISTRATION.REGISTER, {
+      raceId: raceId
+    });
   }
 }

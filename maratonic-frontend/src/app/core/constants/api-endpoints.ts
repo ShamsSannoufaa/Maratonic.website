@@ -15,9 +15,10 @@ export const API_ENDPOINTS = {
   },
 
   REGISTRATION: {
-    CREATE: `${API_BASE}/registrations`,
-    USER_REGISTRATIONS: (userId: number) => `${API_BASE}/registrations/user/${userId}`,
-  },
+  REGISTER: `${API_BASE}/registrations/register`,
+  USER_REGISTRATIONS: `${API_BASE}/registrations/my`
+},
+
 
   PAYMENTS: {
     CHECKOUT: `${API_BASE}/payments/checkout`,

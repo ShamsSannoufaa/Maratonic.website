@@ -1,173 +1,505 @@
-.race-detail-container {
-  max-width: 980px;
-  margin: 40px auto;
-  padding: 20px;
+/* --------- PAGE WRAPPER --------- */
+.race-detail-page {
+  min-height: 100vh;
+  padding: 32px 16px 60px;
+  background: radial-gradient(circle at top left, #e6f4f2 0, #f8fbfc 40%, #ffffff 100%);
 }
 
-/* ---------------- BANNER ---------------- */
+/* --------- STATES --------- */
+.state-box {
+  max-width: 720px;
+  margin: 80px auto;
+  padding: 32px 28px;
+  border-radius: 18px;
+  text-align: center;
+  background: #ffffff;
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.08);
+}
+
+.state-box h3 {
+  margin-bottom: 8px;
+  font-size: 22px;
+  color: #004d61;
+}
+
+.state-box p {
+  margin: 0 0 20px;
+  color: #555;
+  font-size: 15px;
+}
+
+.loading-state .spinner {
+  margin: 0 auto 16px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 3px solid #cfe8e4;
+  border-top-color: #027361;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* --------- MAIN CONTAINER --------- */
+.race-detail-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* --------- BANNER --------- */
 .banner {
-  height: 280px;
+  position: relative;
+  height: 320px;
   width: 100%;
-  border-radius: 20px;
+  border-radius: 26px;
   background-size: cover;
   background-position: center;
-  position: relative;
   overflow: hidden;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
 }
 
 .banner-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, #00000055, #000000aa);
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.75),
+    rgba(0, 0, 0, 0.3)
+  );
+}
+
+.banner-content {
+  position: absolute;
+  inset: 0;
+  padding: 26px 30px 26px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 14px;
+}
+
+.banner-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
 }
 
 .banner-title {
-  position: absolute;
-  bottom: 20px;
-  left: 30px;
   font-size: 32px;
-  font-weight: 700;
-  color: white;
+  letter-spacing: 0.03em;
+  font-weight: 800;
+  color: #ffffff;
 }
 
-/* ---------------- STATUS BADGE ---------------- */
-.status-badge {
-  margin: 20px auto;
-  width: fit-content;
-  padding: 8px 22px;
-  border-radius: 50px;
+/* STATUS CHIP */
+.status-chip {
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 13px;
   font-weight: 600;
-  font-size: 16px;
-  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
 }
 
-.status-badge.open {
-  background: #c8eee7;
-  color: #007f5f;
+.status-chip.open {
+  background: linear-gradient(135deg, rgba(28, 173, 125, 0.9), rgba(7, 106, 82, 0.9));
+  color: #e9fff8;
 }
 
-.status-badge.closed {
-  background: #ffd7d7;
-  color: #d9534f;
+.status-chip.closed {
+  background: linear-gradient(135deg, rgba(214, 73, 73, 0.9), rgba(148, 37, 37, 0.9));
+  color: #ffecec;
 }
 
-/* ---------------- SECTION TITLES ---------------- */
-.section-title {
-  font-size: 22px;
-  font-weight: 700;
-  color: #004d61;
-  margin-bottom: 16px;
+.status-chip i {
+  font-size: 18px;
 }
 
-/* ---------------- INFO GRID ---------------- */
-.info-section {
-  margin-top: 20px;
-}
-
-.info-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+/* META ROW */
+.meta-row {
+  display: flex;
+  flex-wrap: wrap;
   gap: 16px;
+  margin-top: 6px;
 }
 
-.info-box {
-  background: #ffffff;
-  border-radius: 12px;
-  padding: 14px 16px;
-  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+.meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.45);
+  color: #f8f8f8;
+  font-size: 13px;
+}
+
+.meta-item i {
+  font-size: 16px;
+  color: #d1fff2;
+}
+
+/* --------- LAYOUT --------- */
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(260px, 2fr);
+  gap: 26px;
+  margin-top: 28px;
+}
+
+/* LEFT & RIGHT COLUMNS */
+.left-column,
+.right-column {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-}
-
-.info-box i {
-  font-size: 26px;
-  color: #027361;
-}
-
-/* ---------------- DESCRIPTION ---------------- */
-.description-section {
-  margin-top: 30px;
-  font-size: 17px;
-  line-height: 1.7;
-  color: #444;
-}
-
-/* ---------------- EXTRA INFO ---------------- */
-.extra-section {
-  margin-top: 40px;
-}
-
-.extra-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 20px;
 }
 
-.extra-box {
-  background: #f7fdfd;
-  border-left: 5px solid #027361;
-  border-radius: 12px;
-  padding: 16px;
-  box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+/* --------- PRICE CARD --------- */
+.price-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 20px 20px 18px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
 }
 
-.extra-box i {
-  font-size: 30px;
+.price-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.price-label {
+  font-size: 15px;
+  font-weight: 500;
   color: #027361;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
-.extra-box h4 {
-  margin: 6px 0;
-  font-size: 18px;
+.price-value {
+  font-size: 28px;
+  font-weight: 800;
   color: #004d61;
 }
 
-/* ---------------- BUTTONS ---------------- */
+.price-extra p {
+  margin: 0;
+  font-size: 13px;
+  color: #777;
+}
+
+/* BUTTON GROUP */
 .button-group {
   display: flex;
-  gap: 16px;
-  margin-top: 35px;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.back-btn,
+.signup-btn,
+.edit-btn {
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 12px 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.18s ease,
+    color 0.18s ease;
 }
 
 .back-btn {
   flex: 1;
-  padding: 14px;
   background: #004d61;
-  border-radius: 10px;
-  color: white;
-  border: none;
-  font-size: 17px;
-  cursor: pointer;
-  transition: 0.25s;
+  color: #ffffff;
+  box-shadow: 0 6px 16px rgba(0, 77, 97, 0.25);
+}
+
+.back-btn.ghost {
+  background: #f1f7f8;
+  color: #004d61;
+  box-shadow: none;
+  border: 1px solid #d2e4e7;
 }
 
 .back-btn:hover {
-  background: #00627c;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(0, 77, 97, 0.35);
+}
+
+.back-btn.ghost:hover {
+  background: #e2f0f3;
+  box-shadow: 0 4px 12px rgba(0, 77, 97, 0.12);
 }
 
 .signup-btn {
-  flex: 1;
-  padding: 14px;
-  background: #027361;
-  border-radius: 10px;
-  color: white;
-  border: none;
-  font-size: 17px;
-  cursor: pointer;
-  transition: 0.25s;
+  flex: 1.2;
+  background: linear-gradient(135deg, #027361, #15977e);
+  color: #ffffff;
+  box-shadow: 0 8px 20px rgba(2, 115, 97, 0.36);
 }
 
 .signup-btn:hover {
-  background: #15977e;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 26px rgba(2, 115, 97, 0.48);
 }
 
-/* ---------------- RESPONSIVE ---------------- */
-@media (max-width: 768px) {
-  .banner-title {
-    font-size: 26px;
+.signup-btn:disabled {
+  opacity: 0.7;
+  cursor: default;
+  box-shadow: none;
+  transform: none;
+}
+
+/* EDIT BUTTON (ADMIN) */
+.edit-btn {
+  margin-top: 6px;
+  align-self: flex-start;
+  background: #ffffff;
+  color: #027361;
+  border: 1px solid #c8eee7;
+  font-size: 14px;
+  padding-inline: 12px;
+}
+
+.edit-btn i {
+  font-size: 18px;
+}
+
+.edit-btn:hover {
+  background: #e2f7f2;
+  box-shadow: 0 4px 12px rgba(2, 115, 97, 0.18);
+  transform: translateY(-1px);
+}
+
+/* --------- SECTION TITLES --------- */
+.section-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #004d61;
+  margin-bottom: 10px;
+}
+
+/* DESCRIPTION */
+.description-section {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 18px 20px 20px;
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.05);
+  font-size: 15px;
+  line-height: 1.7;
+  color: #444;
+}
+
+/* EXTRA INFO */
+.extra-section {
+  background: #f7fdfd;
+  border-radius: 18px;
+  padding: 18px 20px 20px;
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.04);
+}
+
+.extra-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 16px;
+}
+
+.extra-box {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 14px 14px 14px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+  border-left: 4px solid #027361;
+}
+
+.extra-box i {
+  font-size: 24px;
+  color: #027361;
+}
+
+.extra-box h4 {
+  margin: 4px 0 6px;
+  font-size: 16px;
+  color: #004d61;
+}
+
+.extra-box p {
+  margin: 0;
+  font-size: 14px;
+  color: #555;
+}
+
+/* --------- INFO GRID (RIGHT COLUMN) --------- */
+.info-section {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 18px 20px 20px;
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.05);
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.info-box {
+  background: #f6fbfb;
+  border-radius: 12px;
+  padding: 10px 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.info-box i {
+  font-size: 20px;
+  color: #027361;
+  margin-top: 2px;
+}
+
+.info-box strong {
+  display: block;
+  font-size: 14px;
+  color: #004d61;
+}
+
+.info-box p {
+  margin: 2px 0 0;
+  font-size: 13px;
+  color: #555;
+}
+
+/* --------- ALERTS (RIGHT COLUMN) --------- */
+.alert {
+  margin-top: 10px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  font-size: 13px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.alert i {
+  font-size: 18px;
+  margin-top: 1px;
+}
+
+.alert.success {
+  background: #e5f8f0;
+  color: #055b3c;
+}
+
+.alert.info {
+  background: #e8f3fa;
+  color: #084b7a;
+}
+
+.alert.error {
+  background: #ffe6e6;
+  color: #922828;
+}
+
+/* --------- RESPONSIVE --------- */
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
   }
+
+  .right-column {
+    order: -1;
+  }
+}
+
+@media (max-width: 768px) {
+  .banner {
+    height: 260px;
+    border-radius: 20px;
+  }
+
+  .banner-content {
+    padding: 20px 18px 18px;
+  }
+
+  .banner-title {
+    font-size: 24px;
+  }
+
+  .meta-row {
+    gap: 10px;
+  }
+
   .button-group {
     flex-direction: column;
   }
+
+  .price-main {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .race-detail-page {
+    padding-inline: 12px;
+  }
+}
+/* ---- STATUS COLORS ---- */
+.status-chip {
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: capitalize;
+}
+
+.status-chip.open {
+  background: #d6f5e7;
+  color: #007f5f;
+}
+
+.status-chip.closed {
+  background: #ffd7d7;
+  color: #d9534f;
+}
+
+.status-chip.upcoming {
+  background: #e6e6ff;
+  color: #4c3cff;
+}
+
+.status-chip.finished {
+  background: #d8ffe1;
+  color: #008f3d;
+}
+
+/* ---- SPINNER ---- */
+.spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid #ccc;
+  border-top-color: #027361;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }
