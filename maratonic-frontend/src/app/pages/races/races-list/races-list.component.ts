@@ -30,7 +30,6 @@ export class RacesListComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.loadRaces();
 
-    // 🔥 ROUTE DEĞİŞİNCE TEKRAR ÇALIŞTIR
     this.navSub = this.router.events
       .pipe(filter(e => e instanceof NavigationEnd))
       .subscribe((ev: any) => {
@@ -51,22 +50,39 @@ export class RacesListComponent implements OnInit, OnDestroy {
       next: (res) => {
         this.races = res;
         this.loading = false;
-
-        // 🔥 ZORUNLU CHANGE DETECTION
         this.cdr.detectChanges();
       },
       error: (err) => {
         this.loading = false;
         this.errorMessage = 'Yarışlar yüklenirken bir sorun oluştu.';
-        console.error('Races error:', err);
-
-        // hata durumunda da tetikle
         this.cdr.detectChanges();
       }
     });
   }
 
+
+
   openRace(id: number) {
     this.router.navigate(['/races', id]);
   }
+  getStatusClass(status: any): string {
+  const s = String(status).toLowerCase();
+  return {
+    open: 'status-open',
+    upcoming: 'status-upcoming',
+    closed: 'status-closed',
+    finished: 'status-finished'
+  }[s] || 'status-upcoming';
+}
+
+getStatusLabel(status: any): string {
+  const s = String(status).toLowerCase();
+  return {
+    open: 'Open',
+    upcoming: 'Upcoming',
+    closed: 'Closed',
+    finished: 'Finished'
+  }[s] || 'Status';
+}
+
 }

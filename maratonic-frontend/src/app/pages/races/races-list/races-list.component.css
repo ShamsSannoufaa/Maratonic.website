@@ -1,228 +1,166 @@
-/* -------------------- */
-/* GLOBAL */
-/* -------------------- */
+/* ============================= */
+/*     RACE LIST PAGE - FULL     */
+/* ============================= */
 
-* {
-  box-sizing: border-box;
-  font-family: "Inter", sans-serif;
-}
-
-section {
-  padding: 80px 30px;
-}
-
-/* -------------------- */
-/* HERO */
-/* -------------------- */
-
-.hero {
-  background: #065667;
-  color: white;
-  text-align: center;
-  padding: 120px 20px;
-}
-
-.hero h1 {
-  font-size: 40px;
-  font-weight: 700;
-  margin-bottom: 15px;
-}
-
-.hero p {
-  max-width: 650px;
-  margin: 0 auto;
-  font-size: 18px;
-  opacity: 0.9;
-}
-
-/* -------------------- */
-/* QUICK INFO */
-/* -------------------- */
-
-.quick-info {
+/* GENEL */
+.features {
+  padding: 40px 0;
   display: flex;
-  justify-content: center;
-  gap: 40px;
-  margin-top: -40px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
 }
 
-.info-card {
-  background: white;
-  padding: 25px 40px;
-  border-radius: 12px;
-  text-align: center;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-  border-bottom: 4px solid #027361;
-}
-
-.info-card h3 {
+.title {
   font-size: 32px;
-  color: #027361;
+  font-weight: 700;
+  color: #003d4d;
+  margin-bottom: 30px;
 }
 
-.info-card p {
-  font-weight: 600;
-  color: #444;
-}
-
-/* -------------------- */
-/* RACE GRID */
-/* -------------------- */
-
+/* GRID – Orta alanda 3 kart */
 .race-grid {
+  width: 100%;
+  max-width: 1100px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
-  gap: 24px;
-  margin-top: 40px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+  justify-content: center;
 }
+
+/* ========================= */
+/*           KART            */
+/* ========================= */
 
 .race-card {
   background: white;
   border-radius: 14px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  transition: 0.25s ease;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+  transition: .25s;
   position: relative;
+
+  /* 🔥 Sabit yükseklik → tüm kartlar eşit */
+  height: 300px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .race-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
 }
 
-/* STATUS BADGE */
+/* ========================= */
+/*     STATUS BADGE (köşe)   */
+/* ========================= */
 
 .status-badge {
   position: absolute;
   top: 12px;
   right: 12px;
-  padding: 6px 12px;
+  padding: 4px 10px;
   font-size: 13px;
   font-weight: 600;
-  border-radius: 20px;
   color: white;
-  z-index: 5;
+  border-radius: 12px;
+  opacity: 0.95;
 }
 
-.status-badge.open {
-  background: #027361;
+.status-open {
+  background: #1fa672;
 }
 
-.status-badge.closed {
-  background: #bb1f1f;
+.status-upcoming {
+  background: #d9a400;
 }
 
-/* BANNER */
-
-.banner {
-  height: 160px;
-  background-size: cover;
-  background-position: center;
+.status-closed {
+  background: #c62828;
 }
 
-/* CARD BODY */
+.status-finished {
+  background: #555;
+}
+
+/* ========================= */
+/*         CARD BODY         */
+/* ========================= */
 
 .card-body {
-  padding: 16px 20px;
+  padding: 22px 24px;
+
+  /* 🔥 İçerik sabit yüksekliğe uyacak */
+  height: 200px;
+  overflow: hidden;
 }
 
 .race-name {
-  font-size: 20px;
+  font-size: 19px;
   font-weight: 700;
+  color: #003d4d;
   margin-bottom: 12px;
-  color: #004d61;
 }
+
+/* ========================= */
+/*        INFO LINES         */
+/* ========================= */
 
 .info-row {
   display: flex;
   align-items: center;
+  font-size: 14px;
   margin-bottom: 6px;
-  font-size: 15px;
   color: #333;
+  gap: 6px;
 }
 
 .info-row i {
-  margin-right: 8px;
-  font-size: 18px;
+  margin-right: 6px;
+  font-size: 16px;
   color: #027361;
 }
 
-/* DETAIL BUTTON */
+/* ========================= */
+/*        DETAIL BUTTON      */
+/* ========================= */
 
 .detail-bar {
   width: 100%;
   padding: 12px;
+  text-align: center;
   background: #065667;
   color: white;
   font-weight: 600;
-  font-size: 16px;
   border: none;
   cursor: pointer;
-  text-align: center;
-  transition: 0.25s;
+  transition: .25s;
+  border-bottom-left-radius: 14px;
+  border-bottom-right-radius: 14px;
+
+  /* 🔥 Her zaman en altta sabit */
+  margin-top: auto;
 }
 
 .detail-bar:hover {
-  background: #3793a8;
+  background: #0c8196;
 }
 
-/* -------------------- */
-/* CTA SECTION */
-/* -------------------- */
+/* ========================= */
+/*        RESPONSIVE         */
+/* ========================= */
 
-.cta-section {
-  background: #e7f7f5;
-  text-align: center;
-}
-
-.cta-section h2 {
-  font-size: 32px;
-  color: #004d61;
-}
-
-.cta-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin-top: 25px;
-}
-
-.cta-btn {
-  padding: 14px 26px;
-  border-radius: 10px;
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.cta-btn.primary {
-  background: #027361;
-  color: white;
-}
-
-.cta-btn.primary:hover {
-  background: #026652;
-}
-
-.cta-btn.secondary {
-  border: 2px solid #027361;
-  color: #027361;
-}
-
-.cta-btn.secondary:hover {
-  background: #027361;
-  color: white;
-}
-
-/* MOBILE */
-@media (max-width: 768px) {
-  .quick-info {
-    margin-top: -20px;
-  }
-
+@media (max-width: 1100px) {
   .race-grid {
-    grid-template-columns: 1fr;
-    padding: 0 10px;
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 800px;
   }
 }
-.title { color: #004d61; font-size: 32px; font-weight: 700;}
+
+@media (max-width: 768px) {
+  .race-grid {
+    grid-template-columns: repeat(1, 1fr);
+    max-width: 420px;
+  }
+}

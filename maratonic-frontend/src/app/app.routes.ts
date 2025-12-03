@@ -9,6 +9,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { LayoutComponent } from './layout/layout.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { AuthGuard } from './core/guards/auth.guard';
+import { CalendarComponent } from './pages/calendar/calendar.component';
+import { AdminDashboardComponent } from './pages/admin/dashboard/admin-dashboard.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -30,6 +32,15 @@ export const routes: Routes = [
       { 
         path: 'races/:id',
         component: RaceDetailComponent 
+      },
+      { 
+        path: 'calendar',
+        component: CalendarComponent 
+      },
+
+      { 
+        path: 'admin',
+        component: AdminDashboardComponent ,  canActivate: [AuthGuard]
       },
 
       { path: '**', component: NotFoundComponent }

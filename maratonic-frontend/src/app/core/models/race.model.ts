@@ -5,7 +5,13 @@ export interface RaceModel {
   location: string;
   description: string;
   registrationFee: number;
-  banner?: string;     // <-- Burası opsiyonel olmalı
+
+  banner?: string;
   distance?: string;
-  status: number | string;       // "Open" / "Closed"
+
+  difficultyLevel?: string;   // Easy / Medium / Hard
+  surfaceType?: string;        // Road / Trail / Mixed
+  elevationGain?: number;      // metre
+
+  status: number | string;     // Open / Closed / Upcoming / Finished
 }

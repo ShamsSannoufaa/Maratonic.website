@@ -24,7 +24,6 @@
         <div class="banner-title-row">
           <h1 class="banner-title">{{ race.name }}</h1>
 
-          <!-- 4 DURUM DESTEKLENİYOR -->
           <span
             class="status-chip"
             [ngClass]="{
@@ -49,9 +48,24 @@
             <span>{{ race.location }}</span>
           </div>
 
-          <div class="meta-item">
+          <div class="meta-item" *ngIf="race.distance">
             <i class="ri-run-line"></i>
             <span>{{ race.distance }}</span>
+          </div>
+
+          <div class="meta-item" *ngIf="race.difficultyLevel">
+            <i class="ri-bar-chart-line"></i>
+            <span>Zorluk: {{ race.difficultyLevel }}</span>
+          </div>
+
+          <div class="meta-item" *ngIf="race.surfaceType">
+            <i class="ri-road-map-line"></i>
+            <span>Zemin: {{ race.surfaceType }}</span>
+          </div>
+
+          <div class="meta-item" *ngIf="race.elevationGain">
+            <i class="ri-arrow-up-line"></i>
+            <span>Tırmanış: {{ race.elevationGain }} m</span>
           </div>
         </div>
       </div>
@@ -100,6 +114,7 @@
           <h2 class="section-title">Öne Çıkan Bilgiler</h2>
 
           <div class="info-grid">
+
             <div class="info-box">
               <i class="ri-calendar-event-line"></i>
               <div>
@@ -116,11 +131,35 @@
               </div>
             </div>
 
-            <div class="info-box">
+            <div class="info-box" *ngIf="race.distance">
               <i class="ri-run-line"></i>
               <div>
                 <strong>Mesafe</strong>
                 <p>{{ race.distance }}</p>
+              </div>
+            </div>
+
+            <div class="info-box" *ngIf="race.difficultyLevel">
+              <i class="ri-bar-chart-line"></i>
+              <div>
+                <strong>Zorluk</strong>
+                <p>{{ race.difficultyLevel }}</p>
+              </div>
+            </div>
+
+            <div class="info-box" *ngIf="race.surfaceType">
+              <i class="ri-road-map-line"></i>
+              <div>
+                <strong>Zemin Türü</strong>
+                <p>{{ race.surfaceType }}</p>
+              </div>
+            </div>
+
+            <div class="info-box" *ngIf="race.elevationGain">
+              <i class="ri-arrow-up-line"></i>
+              <div>
+                <strong>Tırmanış</strong>
+                <p>{{ race.elevationGain }} m</p>
               </div>
             </div>
 
@@ -131,6 +170,7 @@
                 <p>{{ race.registrationFee }}₺</p>
               </div>
             </div>
+
           </div>
         </section>
 

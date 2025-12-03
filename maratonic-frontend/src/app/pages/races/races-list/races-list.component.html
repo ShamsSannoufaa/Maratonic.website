@@ -1,4 +1,3 @@
-<!-- YARIŞ KARTLARI -->
 <section class="features">
   <h2 class="title">Yaklaşan Yarışlar</h2>
 
@@ -6,23 +5,16 @@
 
     <div class="race-card" *ngFor="let race of races">
 
-      <!-- DURUM ROZETİ -->
-      <div class="status-badge" 
-           [ngClass]="race.status === 'Open' ? 'open' : 'closed'">
-        {{ race.status === 'Open' ? 'Açık' : 'Kapalı' }}
+      <!-- STATUS BADGE -->
+      <div class="status-badge" [ngClass]="getStatusClass(race.status)">
+        {{ getStatusLabel(race.status) }}
       </div>
 
-      <!-- BANNER -->
-      <div class="banner"
-           [style.backgroundImage]="'url(' + race.banner + ')'">
-      </div>
-
-      <!-- BODY -->
       <div class="card-body">
         <h3 class="race-name">{{ race.name }}</h3>
 
         <div class="info-row">
-          <i class="ri-calendar-event-line"></i>
+          <i class="ri-calendar-line"></i>
           {{ race.date | date:'d MMMM y' }}
         </div>
 
@@ -31,15 +23,26 @@
           {{ race.location }}
         </div>
 
-        <div class="info-row">
-          <i class="ri-run-line"></i>
-          {{ race.distance }}
+        <div class="info-row" *ngIf="race.distance">
+          🏃 {{ race.distance }}
+        </div>
+
+        <div class="info-row" *ngIf="race.difficultyLevel">
+          ⚡ Zorluk: {{ race.difficultyLevel }}
+        </div>
+
+        <div class="info-row" *ngIf="race.surfaceType">
+          🌍 Zemin: {{ race.surfaceType }}
+        </div>
+
+        <div class="info-row" *ngIf="race.elevationGain">
+          ⛰️ Tırmanış: {{ race.elevationGain }} m
         </div>
 
         <div class="info-row">
-          <i class="ri-money-dollar-circle-line"></i>
-          {{ race.registrationFee }}₺
+          💰 {{ race.registrationFee }}₺
         </div>
+
       </div>
 
       <button class="detail-bar" [routerLink]="['/races', race.raceId]">
@@ -48,16 +51,5 @@
 
     </div>
 
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="cta-section">
-  <h2>Hedefine Hazır Mısın?</h2>
-  <p>Yeni bir yarış seç ve kendini test et.</p>
-
-  <div class="cta-buttons">
-    <a routerLink="/register" class="cta-btn primary">Kayıt Ol</a>
-    <a routerLink="/profile" class="cta-btn secondary">Profilim</a>
   </div>
 </section>
