@@ -1,8 +1,7 @@
-
-
 <!-- YARIŞ KARTLARI -->
 <section class="features">
-<h2 class="title">Yaklaşan Yarışlar</h2>
+  <h2 class="title">Yaklaşan Yarışlar</h2>
+
   <div class="race-grid">
 
     <div class="race-card" *ngFor="let race of races">
@@ -28,11 +27,13 @@
         </div>
 
         <div class="info-row">
-          <i class="ri-map-pin-line"></i>{{ race.location }}
+          <i class="ri-map-pin-line"></i>
+          {{ race.location }}
         </div>
 
         <div class="info-row">
-          <i class="ri-run-line"></i>{{ race.distance }}
+          <i class="ri-run-line"></i>
+          {{ race.distance }}
         </div>
 
         <div class="info-row">
@@ -44,6 +45,7 @@
       <button class="detail-bar" [routerLink]="['/races', race.raceId]">
         Detay →
       </button>
+
     </div>
 
   </div>

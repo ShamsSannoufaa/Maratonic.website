@@ -5,7 +5,6 @@ import { routes } from './app.routes';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { ErrorInterceptor } from './core/interceptors/error.interceptor';
-
 import { ReactiveFormsModule } from '@angular/forms';
 
 export const appConfig: ApplicationConfig = {
