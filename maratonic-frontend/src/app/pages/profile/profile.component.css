@@ -37,14 +37,13 @@
 
 .username {
   font-size: 20px;
-  font-weight: 500;
-  margin-top: 10px;
-  color: #2b2b2b;
+  font-weight: 600;
+  margin-top: 12px;
 }
 
 .email {
-  color: #777;
   font-size: 14px;
+  color: #777;
   margin-bottom: 20px;
 }
 
@@ -56,18 +55,11 @@
 }
 
 .side-menu a {
-  text-decoration: none;
   padding: 10px;
   border-radius: 8px;
   background: #f1f7f7;
   color: #333;
-  transition: .2s;
-  font-size: 15px;
-  font-weight: 400;
-}
-
-.side-menu a:hover {
-  background: #dfeeed;
+  text-decoration: none;
 }
 
 .side-menu a.active {
@@ -95,11 +87,10 @@
 .banner span {
   display: block;
   margin-top: 5px;
-  font-size: 14px;
   opacity: .85;
 }
 
-/* GALLERY – PROFILE FIELDS */
+/* INFO GALLERY */
 .info-gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
@@ -108,29 +99,139 @@
 
 .gallery-card {
   background: white;
-  padding: 18px;
   border-radius: 14px;
+  padding: 18px;
   box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-  border: 1px solid #e9eeee;
 }
 
 .gallery-card h4 {
   margin: 0 0 8px;
   font-size: 14px;
-  font-weight: 500;
   color: #555;
 }
 
 .gallery-card p {
-  margin: 0;
   font-size: 16px;
-  font-weight: 300;
-  color: #222;
 }
 
-/* RESPONSIVE */
-@media (max-width: 900px) {
-  .profile-wrapper {
-    grid-template-columns: 1fr;
-  }
+/* MY RACES */
+.my-races {
+  margin-top: 10px;
+}
+
+.my-races h3 {
+  font-size: 22px;
+  margin-bottom: 15px;
+  color: #0a4b53;
+}
+
+.loading-box,
+.empty-box {
+  padding: 12px;
+  text-align: left;
+  color: #666;
+}
+
+.race-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.race-item {
+  background: white;
+  padding: 14px 18px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+}
+
+.race-item button {
+  background: #0d6b61;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+}
+/* MY RACES SECTION */
+.my-races-section {
+  margin-top: 30px;
+}
+
+.section-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: #003d4d;
+  margin-bottom: 15px;
+}
+
+.state-box {
+  background: white;
+  padding: 20px;
+  border-radius: 14px;
+  text-align: center;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+  margin-bottom: 15px;
+}
+
+.state-box.loading .spinner {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 3px solid #ccc;
+  border-top-color: #26a08c;
+  animation: spin 0.7s linear infinite;
+  margin: 0 auto 10px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.my-races-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+}
+
+.race-mini-card {
+  background: white;
+  padding: 18px;
+  border-radius: 14px;
+  border: 1px solid #e8eeee;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.race-mini-card h4 {
+  margin: 0 0 6px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #003d4d;
+}
+
+.race-mini-card p {
+  margin: 2px 0;
+  font-size: 14px;
+}
+
+.mini-btn {
+  margin-top: 10px;
+  display: inline-block;
+  background: #065667;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 14px;
+  text-align: center;
+  transition: .2s;
+}
+
+.mini-btn:hover {
+  background: #0c8196;
 }

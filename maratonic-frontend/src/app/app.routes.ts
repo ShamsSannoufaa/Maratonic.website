@@ -12,6 +12,8 @@ import { AuthGuard } from './core/guards/auth.guard';
 import { CalendarComponent } from './pages/calendar/calendar.component';
 import { AdminDashboardComponent } from './pages/admin/dashboard/admin-dashboard.component';
 
+import { EditProfileComponent } from './pages/profile/edit-profile/edit-profile.component';  // ✅ EKLENDİ
+
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
@@ -22,27 +24,27 @@ export const routes: Routes = [
     children: [
       { path: '', component: HomeComponent },
 
+      // PROFİL
       { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
 
-      { 
-        path: 'races',
-        component: RacesListComponent
-      },
+      // EDIT PROFILE  ✅ YENİ EKLENDİ
+      { path: 'profile/edit', component: EditProfileComponent, canActivate: [AuthGuard] },
 
-      { 
-        path: 'races/:id',
-        component: RaceDetailComponent 
-      },
-      { 
-        path: 'calendar',
-        component: CalendarComponent 
-      },
+      // RACES
+      { path: 'races', component: RacesListComponent },
+      { path: 'races/:id', component: RaceDetailComponent },
 
+      // CALENDAR
+      { path: 'calendar', component: CalendarComponent },
+
+      // ADMIN PANEL
       { 
         path: 'admin',
-        component: AdminDashboardComponent ,  canActivate: [AuthGuard]
+        component: AdminDashboardComponent,
+        canActivate: [AuthGuard]
       },
 
+      // 404
       { path: '**', component: NotFoundComponent }
     ]
   }

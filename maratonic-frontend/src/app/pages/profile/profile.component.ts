@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule, Router } from '@angular/router';
-import { AuthService } from '../../core/services/auth.service';
+import { RouterModule } from '@angular/router';
+import { ProfileService } from '../../core/services/profile.service';
 
 @Component({
   standalone: true,
@@ -12,40 +12,28 @@ import { AuthService } from '../../core/services/auth.service';
 })
 export class ProfileComponent implements OnInit {
 
-  user: any = {
-    name: "",
-    email: "",
-    country: "",
-    city: "",
-    club: "",
-    category: "",
-    pace: "",
-    birthday: "",
-    phone: "",
-    startYear: ""
-  };
+  user: any = {};
 
   constructor(
-    private auth: AuthService,
-    private router: Router
+    private profileService: ProfileService,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit() {
-    this.loadUserFromToken();
+    this.loadUserProfile();
   }
 
-  loadUserFromToken() {
-    const token = this.auth.getToken();
-    if (!token) return;
+  loadUserProfile() {
+    this.profileService.getProfile().subscribe({
+      next: (res) => {
+        this.user = res;
 
-    try {
-      const decoded = JSON.parse(atob(token.split('.')[1]));
-
-      this.user.name = `${decoded.firstName ?? ""} ${decoded.lastName ?? ""}`.trim();
-      this.user.email = decoded.email ?? "";
-
-    } catch (err) {
-      console.error("Token decode error", err);
-    }
+        // SSR ve OnPush durumlarında DOM’un yenilenmesi için zorunlu
+        this.cdr.detectChanges();
+      },
+      error: () => {
+        console.error("User could not be loaded.");
+      }
+    });
   }
 }

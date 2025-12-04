@@ -7,46 +7,41 @@
       <i class="fa-solid fa-user"></i>
     </div>
 
-    <h2 class="username">{{ user.name || "Kullanıcı" }}</h2>
-    <p class="email">{{ user.email || "—" }}</p>
+    <h2 class="username">{{ user.firstName }} {{ user.lastName }}</h2>
+    <p class="email">{{ user.email }}</p>
 
     <nav class="side-menu">
-      <a class="active">Profil</a>
-      <a routerLink="/profile/edit">Profili Düzenle</a>
-      <a routerLink="/login">Çıkış Yap</a>
+      <a class="active">Profile</a>
+      <a routerLink="/profile/edit">Edit Profile</a>
+      <a routerLink="/login">Log Out</a>
     </nav>
 
   </aside>
 
-  <!-- MAIN SECTION -->
+  <!-- MAIN CONTENT -->
   <main class="content">
 
-    <!-- MOTIVATION BANNER -->
+    <!-- BANNER -->
     <div class="banner">
-      “Koşmak bir yarış değil, bir ritimdir.”
-      <span>Daha tutarlı, daha güçlü.</span>
+      “Running is not a race, but a rhythm.”
+      <span>More consistent, more powerful.</span>
     </div>
 
-    <!-- PROFILE INFORMATION IN GALLERY -->
+    <!-- USER INFO GRID -->
     <section class="info-gallery">
 
       <div class="gallery-card">
-        <h4>Ülke</h4>
+        <h4>Country</h4>
         <p>{{ user.country || "—" }}</p>
       </div>
 
       <div class="gallery-card">
-        <h4>Şehir</h4>
+        <h4>City</h4>
         <p>{{ user.city || "—" }}</p>
       </div>
 
       <div class="gallery-card">
-        <h4>Running Club</h4>
-        <p>{{ user.club || "—" }}</p>
-      </div>
-
-      <div class="gallery-card">
-        <h4>Kategori</h4>
+        <h4>Category</h4>
         <p>{{ user.category || "—" }}</p>
       </div>
 
@@ -56,18 +51,18 @@
       </div>
 
       <div class="gallery-card">
-        <h4>Başlangıç Yılı</h4>
-        <p>{{ user.startYear || "—" }}</p>
+        <h4>Phone</h4>
+        <p>{{ user.phoneNumber || "—" }}</p>
       </div>
 
       <div class="gallery-card">
-        <h4>Telefon</h4>
-        <p>{{ user.phone || "—" }}</p>
+        <h4>Birth Year</h4>
+        <p>{{ user.birthYear || "—" }}</p>
       </div>
 
       <div class="gallery-card">
-        <h4>Doğum Tarihi</h4>
-        <p>{{ user.birthday || "—" }}</p>
+        <h4>Emergency Contact</h4>
+        <p>{{ user.emergencyContact || "—" }}</p>
       </div>
 
     </section>

@@ -1,7 +1,7 @@
 export const API_BASE = 'https://localhost:7280/api';
 
-
 export const API_ENDPOINTS = {
+
   AUTH: {
     REGISTER: `${API_BASE}/auth/register`,
     LOGIN: `${API_BASE}/auth/login`,
@@ -15,10 +15,9 @@ export const API_ENDPOINTS = {
   },
 
   REGISTRATION: {
-  REGISTER: `${API_BASE}/registrations/register`,
-  USER_REGISTRATIONS: `${API_BASE}/registrations/my`
-},
-
+    REGISTER: `${API_BASE}/registrations/register`,
+    MY_RACES: `${API_BASE}/registrations/my`   // ✔ BUNU KULLANACAĞIZ
+  },
 
   PAYMENTS: {
     CHECKOUT: `${API_BASE}/payments/checkout`,

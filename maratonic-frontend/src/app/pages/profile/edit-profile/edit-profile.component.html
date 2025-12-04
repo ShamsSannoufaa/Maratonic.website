@@ -1,21 +1,69 @@
-<div class="edit-container">
-  <h2>Profili Düzenle</h2>
+<div class="edit-wrapper">
 
-  <form [formGroup]="form">
+  <h2>Edit Profile</h2>
+  <p class="subtitle">Update your personal information</p>
 
-    <label>Full Name</label>
-    <input type="text" formControlName="fullName">
+  <!-- SUCCESS MESSAGE -->
+  <div *ngIf="successMessage" class="success-box">
+    {{ successMessage }}
+  </div>
 
-    <label>Email</label>
-    <input type="email" formControlName="email">
+  <form [formGroup]="form" class="edit-grid">
 
-    <label>City</label>
-    <input type="text" formControlName="city">
+    <div class="field">
+      <label>First Name</label>
+      <input type="text" formControlName="firstName">
+    </div>
 
-    <div class="button-row">
-      <button type="button" class="back" (click)="goBack()">Geri Dön</button>
-      <button type="button" class="save" (click)="save()">Kaydet</button>
+    <div class="field">
+      <label>Last Name</label>
+      <input type="text" formControlName="lastName">
+    </div>
+
+    <div class="field">
+      <label>Gender</label>
+      <input type="text" formControlName="gender">
+    </div>
+
+    <div class="field">
+      <label>Birth Year</label>
+      <input type="number" formControlName="birthYear">
+    </div>
+
+    <div class="field">
+      <label>Country</label>
+      <input type="text" formControlName="country">
+    </div>
+
+    <div class="field">
+      <label>City</label>
+      <input type="text" formControlName="city">
+    </div>
+
+    <div class="field">
+      <label>Running Club</label>
+      <input type="text" formControlName="club">
+    </div>
+
+    <div class="field">
+      <label>Category</label>
+      <input type="text" formControlName="category">
+    </div>
+
+    <div class="field">
+      <label>Pace</label>
+      <input type="text" formControlName="pace">
+    </div>
+
+    <div class="field">
+      <label>Emergency Contact</label>
+      <input type="text" formControlName="emergencyContact">
     </div>
 
   </form>
+
+  <button class="save-btn" [disabled]="saving" (click)="save()">
+    {{ saving ? 'Saving...' : 'Save Changes' }}
+  </button>
+
 </div>

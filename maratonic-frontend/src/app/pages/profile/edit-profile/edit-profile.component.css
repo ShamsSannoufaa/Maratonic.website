@@ -1,55 +1,90 @@
-.edit-container {
-  max-width: 450px;
+* {
+  font-family: "Inter", sans-serif;
+  box-sizing: border-box;
+}
+
+.edit-wrapper {
+  max-width: 850px;
   margin: 40px auto;
-  padding: 20px;
+  padding: 25px;
   background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
 }
 
 h2 {
-  margin-bottom: 20px;
-  font-size: 24px;
+  text-align: center;
+  font-size: 26px;
   color: #065667;
+  margin-bottom: 6px;
+}
+
+.subtitle {
+  text-align: center;
+  color: #777;
+  margin-bottom: 25px;
+}
+
+/* SUCCESS MESSAGE */
+.success-box {
+  background: #d8f5e2;
+  color: #0a7a45;
+  padding: 12px;
+  border-radius: 8px;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+/* GRID FORM */
+.edit-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
 }
 
 label {
   font-size: 14px;
-  margin-top: 12px;
-  display: block;
-  color: #027361;
+  margin-bottom: 6px;
+  color: #444;
 }
 
-input, select {
-  width: 100%;
-  padding: 10px;
-  border: 1.5px solid #ccc;
-  border-radius: 8px;
-  margin-top: 5px;
-  margin-bottom: 12px;
-  font-size: 14px;
-}
-
-.button-row {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 15px;
-}
-
-button {
-  padding: 10px 20px;
-  border-radius: 8px;
-  border: none;
+input {
+  padding: 12px;
+  border-radius: 10px;
+  border: 1.5px solid #dcdcdc;
+  background: #fafafa;
   font-size: 15px;
+}
+
+input:focus {
+  border-color: #0a7a83;
+  outline: none;
+}
+
+/* BUTTON */
+.save-btn {
+  width: 100%;
+  margin-top: 25px;
+  padding: 14px;
+  font-size: 17px;
+  background: #0a7a83;
+  color: white;
+  border: none;
+  border-radius: 10px;
   cursor: pointer;
+  transition: 0.2s;
 }
 
-button.back {
-  background: #ccc;
-  color: #000;
+.save-btn:hover {
+  background: #0c909b;
 }
 
-button.save {
-  background: #027361;
-  color: #fff;
+.save-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
