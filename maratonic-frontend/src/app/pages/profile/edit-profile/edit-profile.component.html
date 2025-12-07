@@ -8,6 +8,7 @@
     {{ successMessage }}
   </div>
 
+  <!-- PROFILE INFO FORM -->
   <form [formGroup]="form" class="edit-grid">
 
     <div class="field">
@@ -65,5 +66,85 @@
   <button class="save-btn" [disabled]="saving" (click)="save()">
     {{ saving ? 'Saving...' : 'Save Changes' }}
   </button>
+
+  <!-- PASSWORD CHANGE SECTION -->
+  <div class="password-section">
+
+    <h3 class="password-title">Change Password</h3>
+
+    <form [formGroup]="passwordForm" class="password-grid">
+
+      <!-- OLD PASSWORD -->
+      <div class="field password-field">
+        <label>Old Password</label>
+        <div class="password-wrapper">
+          <input
+            [type]="showOldPassword ? 'text' : 'password'"
+            formControlName="oldPassword"
+          >
+          <i
+            class="fa-solid"
+            [ngClass]="showOldPassword ? 'fa-eye-slash' : 'fa-eye'"
+            (click)="showOldPassword = !showOldPassword">
+          </i>
+        </div>
+      </div>
+
+      <!-- NEW PASSWORD -->
+      <div class="field password-field">
+        <label>New Password</label>
+        <div class="password-wrapper">
+          <input
+            [type]="showNewPassword ? 'text' : 'password'"
+            formControlName="newPassword"
+          >
+          <i
+            class="fa-solid"
+            [ngClass]="showNewPassword ? 'fa-eye-slash' : 'fa-eye'"
+            (click)="showNewPassword = !showNewPassword">
+          </i>
+        </div>
+      </div>
+
+      <!-- CONFIRM PASSWORD -->
+      <div class="field password-field">
+        <label>Confirm New Password</label>
+        <div class="password-wrapper">
+          <input
+            [type]="showConfirmPassword ? 'text' : 'password'"
+            formControlName="confirmPassword"
+          >
+          <i
+            class="fa-solid"
+            [ngClass]="showConfirmPassword ? 'fa-eye-slash' : 'fa-eye'"
+            (click)="showConfirmPassword = !showConfirmPassword">
+          </i>
+        </div>
+
+        <p
+          *ngIf="passwordForm.value.newPassword &&
+                 passwordForm.value.confirmPassword &&
+                 passwordForm.value.newPassword !== passwordForm.value.confirmPassword"
+          class="password-error"
+        >
+          Passwords do not match.
+        </p>
+
+      </div>
+
+    </form>
+
+    <button
+      class="change-password-btn"
+      [disabled]="changingPassword || !passwordsMatch"
+      (click)="changePassword()">
+      {{ changingPassword ? 'Updating...' : 'Update Password' }}
+    </button>
+
+    <div *ngIf="passwordSuccess" class="success-box">
+      {{ passwordSuccess }}
+    </div>
+
+  </div>
 
 </div>

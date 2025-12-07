@@ -4,7 +4,7 @@
   <aside class="side">
 
     <div class="avatar">
-      <i class="fa-solid fa-user"></i>
+      {{ initials }}
     </div>
 
     <h2 class="username">{{ user.name }}</h2>
@@ -51,13 +51,8 @@
       </div>
 
       <div class="gallery-card">
-        <h4>Phone</h4>
-        <p>{{ user.phone || '—' }}</p>
-      </div>
-
-      <div class="gallery-card">
         <h4>Birth Year</h4>
-        <p>{{ user.birthDate || '—' }}</p>
+        <p>{{ user.birthYear || '—' }}</p>
       </div>
 
       <div class="gallery-card">
@@ -72,49 +67,31 @@
 
       <h3 class="section-title">My Registered Races</h3>
 
-      <!-- LOADING -->
       <div *ngIf="loadingRaces" class="state-box loading">
         <div class="spinner"></div>
         <p>Loading your races...</p>
       </div>
 
-      <!-- NO RACES -->
-      <div
-        *ngIf="!loadingRaces && myRaces.length === 0"
-        class="state-box empty"
-      >
+      <div *ngIf="!loadingRaces && myRaces.length === 0" class="state-box empty">
         <p>You have not registered for any races yet.</p>
       </div>
 
-      <!-- RACE GRID -->
-      <div
-        class="my-races-grid"
-        *ngIf="!loadingRaces && myRaces.length > 0"
-      >
+      <div class="my-races-grid" *ngIf="!loadingRaces && myRaces.length > 0">
+
         <div class="race-mini-card" *ngFor="let r of myRaces">
 
           <h4>{{ r.name }}</h4>
 
-          <p>
-            <strong>Date:</strong>
-            {{ r.date | date:'d MMMM y' }}
-          </p>
+          <p><strong>Date:</strong> {{ r.date | date:'d MMMM y' }}</p>
 
-          <p>
-            <strong>Location:</strong>
-            {{ r.location }}
-          </p>
+          <p><strong>Location:</strong> {{ r.location }}</p>
 
-          <p *ngIf="r.distance">
-            <strong>Distance:</strong>
-            {{ r.distance }}
-          </p>
+          <p *ngIf="r.distance"><strong>Distance:</strong> {{ r.distance }}</p>
 
-          <a class="mini-btn" [routerLink]="['/races', r.raceId]">
-            View Details →
-          </a>
+          <a class="mini-btn" [routerLink]="['/races', r.raceId]">View Details →</a>
 
         </div>
+
       </div>
 
     </section>

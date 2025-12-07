@@ -1,8 +1,9 @@
 .footer {
-  background: #000103;
+background: linear-gradient(135deg, #027361, #065667); 
   color: #ffffffdd;
   padding: 45px 0 30px;
   margin-top: 60px;
+  border-radius: 5%;
 }
 
 .footer-content {

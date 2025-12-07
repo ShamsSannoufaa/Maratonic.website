@@ -1,5 +1,8 @@
-<h2 class="title">Dashboard Overview</h2>
+<app-toast></app-toast>
 
+<h2 class="title">Admin Dashboard</h2>
+
+<!-- STATS -->
 <div class="stat-grid">
 
   <div class="stat-card">
@@ -23,3 +26,66 @@
   </div>
 
 </div>
+
+<!-- CREATE RACE -->
+<section class="create-section">
+  <h3>Add New Race</h3>
+
+  <div class="grid">
+
+    <input placeholder="Race Name" [(ngModel)]="newRace.name" name="name">
+
+    <input type="datetime-local" [(ngModel)]="newRace.date" name="date">
+
+    <input placeholder="Location" [(ngModel)]="newRace.location" name="location">
+
+    <input type="number" placeholder="Registration Fee" [(ngModel)]="newRace.registrationFee" name="registrationFee">
+
+    <input placeholder="Surface Type (Road, Trail)" [(ngModel)]="newRace.surfaceType" name="surfaceType">
+
+    <input placeholder="Distance (10K, 21K, 42K)" [(ngModel)]="newRace.distance" name="distance">
+
+    <input type="number" placeholder="Elevation Gain (m)" [(ngModel)]="newRace.elevationGain" name="elevationGain">
+
+    <input placeholder="Banner Image URL" [(ngModel)]="newRace.banner" name="banner">
+
+    <select [(ngModel)]="newRace.difficultyLevel" name="difficultyLevel">
+      <option disabled selected>Difficulty Level</option>
+      <option>Easy</option>
+      <option>Moderate</option>
+      <option>Hard</option>
+    </select>
+
+    <select [(ngModel)]="newRace.status" name="status">
+      <option disabled selected>Status</option>
+      <option>Upcoming</option>
+      <option>Open</option>
+      <option>Closed</option>
+    </select>
+
+    <textarea placeholder="Description"
+              class="description"
+              [(ngModel)]="newRace.description"
+              name="description"></textarea>
+
+  </div>
+
+  <button class="create-btn" (click)="createRace()">+ Create Race</button>
+
+</section>
+
+<!-- MANAGE RACES -->
+<section class="manage-section">
+  <h3>Manage Races</h3>
+
+  <div class="race-card" *ngFor="let r of races">
+    <div class="race-info">
+      <h4>{{ r.name }}</h4>
+      <p>{{ r.date | date:'d MMMM y' }} • {{ r.location }}</p>
+    </div>
+
+    <div class="actions">
+      <button class="delete-btn" (click)="deleteRace(r.raceId)">Delete</button>
+    </div>
+  </div>
+</section>

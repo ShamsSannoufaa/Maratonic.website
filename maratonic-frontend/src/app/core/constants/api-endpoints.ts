@@ -23,11 +23,11 @@ export const API_ENDPOINTS = {
   },
 
   // ===============================
-  // REGISTRATIONS (USER RACE SIGNUPS)
+  // REGISTRATIONS
   // ===============================
   REGISTRATION: {
     REGISTER: `${API_BASE}/registrations/register`,
-    MY_RACES: `${API_BASE}/registrations/my`      // ✔ profile page uses this
+    MY_RACES: `${API_BASE}/registrations/my`
   },
 
   // ===============================

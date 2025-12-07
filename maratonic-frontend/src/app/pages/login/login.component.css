@@ -26,6 +26,7 @@ html, body {
 .left-panel {
   width: 50%;
   padding: 70px 50px;
+    border-radius: 5%;
 
   background: linear-gradient(135deg, #065667, #027361);
   color: #FFFFFF;
@@ -132,6 +133,7 @@ background: linear-gradient(135deg, #027361, #065667);  padding: 9px 20px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+    border-radius: 5%;
 
   position: relative;
 }

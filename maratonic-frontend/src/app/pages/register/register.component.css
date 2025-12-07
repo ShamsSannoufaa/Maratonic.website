@@ -54,6 +54,8 @@ html, body {
   justify-content: center;
   position: relative;
   padding: 40px;
+    border-radius: 5%;
+
 }
 
 .logo {
@@ -123,4 +125,6 @@ html, body {
   flex-direction: column;
   justify-content: center;
   padding: 80px;
+    border-radius: 5%;
+
 }

@@ -14,8 +14,17 @@ import { ProfileService } from '../../../core/services/profile.service';
 export class EditProfileComponent implements OnInit {
 
   form!: FormGroup;
+  passwordForm!: FormGroup;
+
   saving = false;
+  changingPassword = false;
   successMessage = "";
+  passwordSuccess = "";
+
+  // SHOW/HIDE STATES
+  showOldPassword = false;
+  showNewPassword = false;
+  showConfirmPassword = false;
 
   constructor(
     private fb: FormBuilder,
@@ -37,7 +46,18 @@ export class EditProfileComponent implements OnInit {
       emergencyContact: ['']
     });
 
+    this.passwordForm = this.fb.group({
+      oldPassword: [''],
+      newPassword: [''],
+      confirmPassword: ['']
+    });
+
     this.loadProfile();
+  }
+
+  get passwordsMatch(): boolean {
+    const p = this.passwordForm.value;
+    return p.newPassword && p.confirmPassword && p.newPassword === p.confirmPassword;
   }
 
   loadProfile() {
@@ -56,9 +76,7 @@ export class EditProfileComponent implements OnInit {
           emergencyContact: res.emergencyContact
         });
       },
-      error: () => {
-        console.error("Profile cannot be loaded.");
-      }
+      error: () => console.error("Profile cannot be loaded.")
     });
   }
 
@@ -70,7 +88,6 @@ export class EditProfileComponent implements OnInit {
     this.profileService.updateProfile(this.form.value).subscribe({
       next: () => {
         this.successMessage = "Profile updated successfully!";
-
         setTimeout(() => {
           this.saving = false;
           this.router.navigate(['/profile']);
@@ -78,7 +95,30 @@ export class EditProfileComponent implements OnInit {
       },
       error: () => {
         this.saving = false;
-        alert("Error while updating profile.");
+        alert("Error updating profile.");
+      }
+    });
+  }
+
+  changePassword() {
+    if (!this.passwordsMatch) return;
+
+    this.changingPassword = true;
+
+    const payload = {
+      oldPassword: this.passwordForm.value.oldPassword,
+      newPassword: this.passwordForm.value.newPassword
+    };
+
+    this.profileService.changePassword(payload).subscribe({
+      next: () => {
+        this.passwordSuccess = "Password updated successfully!";
+        this.changingPassword = false;
+        this.passwordForm.reset();
+      },
+      error: () => {
+        this.changingPassword = false;
+        alert("Error updating password.");
       }
     });
   }

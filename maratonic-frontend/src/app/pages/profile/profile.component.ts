@@ -33,7 +33,7 @@ export class ProfileComponent implements OnInit {
   }
 
   /* ---------------------------------------------
-     LOAD USER WITH FIRST + LAST NAME SUPPORT
+     LOAD USER PROFILE
   --------------------------------------------- */
   loadUserProfile() {
     this.profileService.getProfile().subscribe({
@@ -41,11 +41,14 @@ export class ProfileComponent implements OnInit {
 
         this.user = res;
 
-        // 🔥 Backend "firstName" ve "lastName" döndürüyorsa → name oluştur
+        // FULL NAME
         const first = res.firstName ?? "";
         const last = res.lastName ?? "";
-
         this.user.name = `${first} ${last}`.trim();
+
+        // EXTRA FIELDS
+        this.user.birthYear = res.birthYear ?? "";
+        this.user.phone = res.phone ?? "";
 
         this.loadingUser = false;
         this.cdr.detectChanges();
@@ -55,6 +58,15 @@ export class ProfileComponent implements OnInit {
         console.error("User could not be loaded.");
       }
     });
+  }
+
+  /* ------------------------------------------------
+     AVATAR INITIALS
+  ------------------------------------------------ */
+  get initials(): string {
+    const first = this.user?.firstName?.charAt(0)?.toUpperCase() ?? "";
+    const last = this.user?.lastName?.charAt(0)?.toUpperCase() ?? "";
+    return `${first}${last}`.trim();
   }
 
   /* ---------------------------------------------

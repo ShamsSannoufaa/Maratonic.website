@@ -25,7 +25,6 @@ h2 {
   margin-bottom: 25px;
 }
 
-/* SUCCESS MESSAGE */
 .success-box {
   background: #d8f5e2;
   color: #0a7a45;
@@ -66,7 +65,6 @@ input:focus {
   outline: none;
 }
 
-/* BUTTON */
 .save-btn {
   width: 100%;
   margin-top: 25px;
@@ -86,5 +84,73 @@ input:focus {
 
 .save-btn:disabled {
   opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* PASSWORD SECTION */
+.password-section {
+  margin-top: 50px;
+}
+
+.password-title {
+  font-size: 22px;
+  color: #003d4d;
+  margin-bottom: 15px;
+}
+
+.password-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+}
+
+.password-field .password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-wrapper input {
+  width: 100%;
+  padding-right: 40px;
+}
+
+.password-wrapper i {
+  position: absolute;
+  right: 12px;
+  cursor: pointer;
+  color: #666;
+  font-size: 18px;
+}
+
+.password-wrapper i:hover {
+  color: #222;
+}
+
+.password-error {
+  color: #d43b3b;
+  margin-top: 4px;
+  font-size: 13px;
+}
+
+.change-password-btn {
+  width: 100%;
+  margin-top: 20px;
+  padding: 14px;
+  font-size: 17px;
+  background: #b6810e;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.change-password-btn:hover {
+  background: #0c8196;
+}
+
+.change-password-btn:disabled {
+  opacity: 0.5;
   cursor: not-allowed;
 }

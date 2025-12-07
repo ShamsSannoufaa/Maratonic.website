@@ -22,17 +22,21 @@
   text-align: center;
 }
 
+/* INITIALS AVATAR */
 .avatar {
   width: 110px;
   height: 110px;
   margin: 0 auto 10px;
-  background: #d5ebe6;
-  color: #0d6b61;
+  background: #8a5a33;
+  color: white;
   border-radius: 50%;
   display: flex;
-  font-size: 48px;
+  font-size: 42px;
+  font-weight: 700;
   align-items: center;
   justify-content: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .username {
@@ -84,13 +88,7 @@
   font-weight: 300;
 }
 
-.banner span {
-  display: block;
-  margin-top: 5px;
-  opacity: .85;
-}
-
-/* INFO GALLERY */
+/* INFO GRID */
 .info-gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
@@ -114,48 +112,7 @@
   font-size: 16px;
 }
 
-/* MY RACES */
-.my-races {
-  margin-top: 10px;
-}
-
-.my-races h3 {
-  font-size: 22px;
-  margin-bottom: 15px;
-  color: #0a4b53;
-}
-
-.loading-box,
-.empty-box {
-  padding: 12px;
-  text-align: left;
-  color: #666;
-}
-
-.race-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.race-item {
-  background: white;
-  padding: 14px 18px;
-  border-radius: 12px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.05);
-}
-
-.race-item button {
-  background: #0d6b61;
-  color: white;
-  border: none;
-  padding: 8px 14px;
-  border-radius: 8px;
-}
-/* MY RACES SECTION */
+/* MY RACES GRID */
 .my-races-section {
   margin-top: 30px;
 }
@@ -202,21 +159,6 @@
   border-radius: 14px;
   border: 1px solid #e8eeee;
   box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.race-mini-card h4 {
-  margin: 0 0 6px;
-  font-size: 16px;
-  font-weight: 600;
-  color: #003d4d;
-}
-
-.race-mini-card p {
-  margin: 2px 0;
-  font-size: 14px;
 }
 
 .mini-btn {
@@ -227,8 +169,6 @@
   padding: 8px 12px;
   border-radius: 8px;
   text-decoration: none;
-  font-size: 14px;
-  text-align: center;
   transition: .2s;
 }
 

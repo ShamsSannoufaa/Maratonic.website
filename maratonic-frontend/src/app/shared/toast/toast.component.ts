@@ -2,18 +2,14 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-toast',
   standalone: true,
-  imports: [CommonModule],
-  template: `
-    <div class="toast" [class.show]="visible" [class.success]="type === 'success'" [class.error]="type === 'error'">
-      {{ message }}
-    </div>
-  `,
-  styleUrls: ['./toast.component.css']
+  selector: 'app-toast',
+  templateUrl: './toast.component.html',
+  styleUrls: ['./toast.component.css'],
+  imports: [CommonModule]
 })
 export class ToastComponent {
-  @Input() visible = false;
-  @Input() message = '';
+  @Input() message = "";
   @Input() type: 'success' | 'error' = 'success';
+  @Input() show = false;
 }
