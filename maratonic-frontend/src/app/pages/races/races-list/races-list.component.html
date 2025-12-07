@@ -1,9 +1,14 @@
 <section class="features">
-  <h2 class="title">Yaklaşan Yarışlar</h2>
+  <h2 class="title">Upcoming Races</h2>
 
   <div class="race-grid">
 
     <div class="race-card" *ngFor="let race of races">
+
+      <!-- COUNTDOWN BADGE -->
+      <div class="countdown-badge">
+        {{ getCountdownLabel(race.date) }}
+      </div>
 
       <!-- STATUS BADGE -->
       <div class="status-badge" [ngClass]="getStatusClass(race.status)">
@@ -24,29 +29,29 @@
         </div>
 
         <div class="info-row" *ngIf="race.distance">
-          🏃 {{ race.distance }}
+          🏃 Distance: {{ race.distance }}
         </div>
 
         <div class="info-row" *ngIf="race.difficultyLevel">
-          ⚡ Zorluk: {{ race.difficultyLevel }}
+          ⚡ Difficulty: {{ race.difficultyLevel }}
         </div>
 
         <div class="info-row" *ngIf="race.surfaceType">
-          🌍 Zemin: {{ race.surfaceType }}
+          🌍 Surface: {{ race.surfaceType }}
         </div>
 
         <div class="info-row" *ngIf="race.elevationGain">
-          ⛰️ Tırmanış: {{ race.elevationGain }} m
+          ⛰️ Elevation Gain: {{ race.elevationGain }} m
         </div>
 
         <div class="info-row">
-          💰 {{ race.registrationFee }}₺
+          💰 Fee: {{ race.registrationFee }}₺
         </div>
 
       </div>
 
       <button class="detail-bar" [routerLink]="['/races', race.raceId]">
-        Detay →
+        Details →
       </button>
 
     </div>

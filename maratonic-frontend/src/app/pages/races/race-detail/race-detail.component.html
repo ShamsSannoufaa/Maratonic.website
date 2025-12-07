@@ -3,14 +3,14 @@
   <!-- LOADING -->
   <div *ngIf="loading" class="state-box loading-state">
     <div class="spinner"></div>
-    <p>Yarış bilgileri yükleniyor...</p>
+    <p>Loading race information...</p>
   </div>
 
   <!-- ERROR -->
   <div *ngIf="!loading && errorMessage" class="state-box error-state">
-    <h3>Bir şeyler ters gitti</h3>
+    <h3>Something went wrong</h3>
     <p>{{ errorMessage }}</p>
-    <button class="back-btn" (click)="goBack()">← Yarış listesine dön</button>
+    <button class="back-btn" (click)="goBack()">← Back to race list</button>
   </div>
 
   <!-- CONTENT -->
@@ -55,17 +55,17 @@
 
           <div class="meta-item" *ngIf="race.difficultyLevel">
             <i class="ri-bar-chart-line"></i>
-            <span>Zorluk: {{ race.difficultyLevel }}</span>
+            <span>Difficulty: {{ race.difficultyLevel }}</span>
           </div>
 
           <div class="meta-item" *ngIf="race.surfaceType">
             <i class="ri-road-map-line"></i>
-            <span>Zemin: {{ race.surfaceType }}</span>
+            <span>Surface: {{ race.surfaceType }}</span>
           </div>
 
           <div class="meta-item" *ngIf="race.elevationGain">
             <i class="ri-arrow-up-line"></i>
-            <span>Tırmanış: {{ race.elevationGain }} m</span>
+            <span>Elevation Gain: {{ race.elevationGain }} m</span>
           </div>
         </div>
       </div>
@@ -79,12 +79,12 @@
 
         <div class="price-card">
           <div class="price-main">
-            <span class="price-label">Kayıt Ücreti</span>
+            <span class="price-label">Registration Fee</span>
             <div class="price-value">{{ race.registrationFee }}₺</div>
           </div>
 
           <div class="button-group">
-            <button class="back-btn ghost" (click)="goBack()">← Listeye dön</button>
+            <button class="back-btn ghost" (click)="goBack()">← Back to List</button>
 
             <button
               class="signup-btn"
@@ -92,17 +92,17 @@
               (click)="onRegister()"
               [disabled]="registering"
             >
-              {{ registering ? 'Kayıt yapılıyor...' : 'Hemen Kaydol →' }}
+              {{ registering ? 'Processing registration...' : 'Register Now →' }}
             </button>
           </div>
 
           <button class="edit-btn" *ngIf="auth.isAdmin()" (click)="onEdit()">
-            <i class="ri-edit-2-line"></i> Yarışı düzenle
+            <i class="ri-edit-2-line"></i> Edit Race
           </button>
         </div>
 
         <section class="description-section">
-          <h2 class="section-title">Yarış Hakkında</h2>
+          <h2 class="section-title">About This Race</h2>
           <p>{{ race.description }}</p>
         </section>
       </div>
@@ -111,14 +111,14 @@
       <div class="right-column">
 
         <section class="info-section">
-          <h2 class="section-title">Öne Çıkan Bilgiler</h2>
+          <h2 class="section-title">Key Information</h2>
 
           <div class="info-grid">
 
             <div class="info-box">
               <i class="ri-calendar-event-line"></i>
               <div>
-                <strong>Tarih</strong>
+                <strong>Date</strong>
                 <p>{{ race.date | date:'d MMMM y, EEEE' }}</p>
               </div>
             </div>
@@ -126,7 +126,7 @@
             <div class="info-box">
               <i class="ri-map-pin-line"></i>
               <div>
-                <strong>Konum</strong>
+                <strong>Location</strong>
                 <p>{{ race.location }}</p>
               </div>
             </div>
@@ -134,7 +134,7 @@
             <div class="info-box" *ngIf="race.distance">
               <i class="ri-run-line"></i>
               <div>
-                <strong>Mesafe</strong>
+                <strong>Distance</strong>
                 <p>{{ race.distance }}</p>
               </div>
             </div>
@@ -142,7 +142,7 @@
             <div class="info-box" *ngIf="race.difficultyLevel">
               <i class="ri-bar-chart-line"></i>
               <div>
-                <strong>Zorluk</strong>
+                <strong>Difficulty</strong>
                 <p>{{ race.difficultyLevel }}</p>
               </div>
             </div>
@@ -150,7 +150,7 @@
             <div class="info-box" *ngIf="race.surfaceType">
               <i class="ri-road-map-line"></i>
               <div>
-                <strong>Zemin Türü</strong>
+                <strong>Surface Type</strong>
                 <p>{{ race.surfaceType }}</p>
               </div>
             </div>
@@ -158,7 +158,7 @@
             <div class="info-box" *ngIf="race.elevationGain">
               <i class="ri-arrow-up-line"></i>
               <div>
-                <strong>Tırmanış</strong>
+                <strong>Elevation Gain</strong>
                 <p>{{ race.elevationGain }} m</p>
               </div>
             </div>
@@ -166,7 +166,7 @@
             <div class="info-box">
               <i class="ri-money-dollar-circle-line"></i>
               <div>
-                <strong>Ücret</strong>
+                <strong>Fee</strong>
                 <p>{{ race.registrationFee }}₺</p>
               </div>
             </div>
@@ -179,11 +179,12 @@
         </div>
 
         <div *ngIf="!isOpen && !successMessage" class="alert info">
-          <i class="ri-information-line"></i> Bu yarış için kayıtlar kapalı.
+          <i class="ri-information-line"></i> Registration is closed for this race.
         </div>
 
       </div>
 
     </div>
+
   </div>
 </div>

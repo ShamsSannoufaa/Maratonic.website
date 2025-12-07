@@ -2,7 +2,6 @@
 /*     RACE LIST PAGE - FULL     */
 /* ============================= */
 
-/* GENEL */
 .features {
   padding: 40px 0;
   display: flex;
@@ -17,7 +16,7 @@
   margin-bottom: 30px;
 }
 
-/* GRID – Orta alanda 3 kart */
+/* GRID */
 .race-grid {
   width: 100%;
   max-width: 1100px;
@@ -27,10 +26,7 @@
   justify-content: center;
 }
 
-/* ========================= */
-/*           KART            */
-/* ========================= */
-
+/* CARD */
 .race-card {
   background: white;
   border-radius: 14px;
@@ -38,10 +34,7 @@
   box-shadow: 0 4px 18px rgba(0,0,0,0.08);
   transition: .25s;
   position: relative;
-
-  /* 🔥 Sabit yükseklik → tüm kartlar eşit */
   height: 300px;
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -52,10 +45,7 @@
   box-shadow: 0 8px 24px rgba(0,0,0,0.12);
 }
 
-/* ========================= */
-/*     STATUS BADGE (köşe)   */
-/* ========================= */
-
+/* STATUS BADGE */
 .status-badge {
   position: absolute;
   top: 12px;
@@ -84,14 +74,23 @@
   background: #555;
 }
 
-/* ========================= */
-/*         CARD BODY         */
-/* ========================= */
+/* COUNTDOWN BADGE (NEW LEFT BADGE) */
+.countdown-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: #7fb7be;
+  color: white;
+  padding: 4px 10px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 12px;
+  opacity: 0.95;
+}
 
+/* CARD BODY */
 .card-body {
   padding: 22px 24px;
-
-  /* 🔥 İçerik sabit yüksekliğe uyacak */
   height: 200px;
   overflow: hidden;
 }
@@ -103,10 +102,7 @@
   margin-bottom: 12px;
 }
 
-/* ========================= */
-/*        INFO LINES         */
-/* ========================= */
-
+/* INFO LINES */
 .info-row {
   display: flex;
   align-items: center;
@@ -122,10 +118,7 @@
   color: #027361;
 }
 
-/* ========================= */
-/*        DETAIL BUTTON      */
-/* ========================= */
-
+/* DETAIL BUTTON */
 .detail-bar {
   width: 100%;
   padding: 12px;
@@ -138,8 +131,6 @@
   transition: .25s;
   border-bottom-left-radius: 14px;
   border-bottom-right-radius: 14px;
-
-  /* 🔥 Her zaman en altta sabit */
   margin-top: auto;
 }
 
@@ -147,10 +138,7 @@
   background: #0c8196;
 }
 
-/* ========================= */
-/*        RESPONSIVE         */
-/* ========================= */
-
+/* RESPONSIVE */
 @media (max-width: 1100px) {
   .race-grid {
     grid-template-columns: repeat(2, 1fr);

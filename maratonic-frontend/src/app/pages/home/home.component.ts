@@ -7,11 +7,14 @@ import { RouterLink } from '@angular/router';
   standalone: true,
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
-  imports: [
-    CommonModule,
-    RouterLink    // <-- BUNU EKLEDİK
-  ]
+  imports: [CommonModule, RouterLink]
 })
 export class HomeComponent {
-  // şu an ekstra mantığa ihtiyacın yok
+
+  isLoggedIn = false;
+
+  constructor() {
+    // token varsa kullanıcı giriş yapmıştır
+    this.isLoggedIn = !!localStorage.getItem('token');
+  }
 }

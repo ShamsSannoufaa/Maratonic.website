@@ -52,37 +52,58 @@ export class RacesListComponent implements OnInit, OnDestroy {
         this.loading = false;
         this.cdr.detectChanges();
       },
-      error: (err) => {
+      error: () => {
         this.loading = false;
-        this.errorMessage = 'Yarışlar yüklenirken bir sorun oluştu.';
+        this.errorMessage = 'Failed to load races.';
         this.cdr.detectChanges();
       }
     });
   }
 
-
-
   openRace(id: number) {
     this.router.navigate(['/races', id]);
   }
+
+  // -------------------------
+  // COUNTDOWN FUNCTIONS
+  // -------------------------
+  getDaysLeft(date: string | Date): number {
+    const raceDate = new Date(date);
+    const today = new Date();
+
+    const diff = raceDate.getTime() - today.getTime();
+    return Math.ceil(diff / (1000 * 60 * 60 * 24));
+  }
+
+  getCountdownLabel(date: string | Date): string {
+    const days = this.getDaysLeft(date);
+
+    if (days > 1) return `${days} days left`;
+    if (days === 1) return '1 day left';
+    if (days === 0) return 'Race is today!';
+    return 'Finished';
+  }
+
+  // -------------------------
+  // STATUS BADGE
+  // -------------------------
   getStatusClass(status: any): string {
-  const s = String(status).toLowerCase();
-  return {
-    open: 'status-open',
-    upcoming: 'status-upcoming',
-    closed: 'status-closed',
-    finished: 'status-finished'
-  }[s] || 'status-upcoming';
-}
+    const s = String(status).toLowerCase();
+    return {
+      open: 'status-open',
+      upcoming: 'status-upcoming',
+      closed: 'status-closed',
+      finished: 'status-finished'
+    }[s] || 'status-upcoming';
+  }
 
-getStatusLabel(status: any): string {
-  const s = String(status).toLowerCase();
-  return {
-    open: 'Open',
-    upcoming: 'Upcoming',
-    closed: 'Closed',
-    finished: 'Finished'
-  }[s] || 'Status';
-}
-
+  getStatusLabel(status: any): string {
+    const s = String(status).toLowerCase();
+    return {
+      open: 'Open',
+      upcoming: 'Upcoming',
+      closed: 'Closed',
+      finished: 'Finished'
+    }[s] || 'Status';
+  }
 }

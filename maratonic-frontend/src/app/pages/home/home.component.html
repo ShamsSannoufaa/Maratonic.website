@@ -1,103 +1,107 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-content">
-    <h1>Koşu Dünyasını Tek Platformda Yönet</h1>
+    <h1>Manage Your Running World in One Platform</h1>
     <p>
-      Yarışları keşfet, kaydol, performansını takip et. Maratonic, sporcular için
-      tasarlanmış modern bir yarış yönetim platformudur.
+      Discover races, register instantly, and track your performance.
+      Maratonic is a modern race management platform built for runners.
     </p>
 
     <div class="hero-buttons">
-      <a routerLink="/races" class="btn primary">Yarışları Keşfet</a>
-      <a routerLink="/register" class="btn secondary">Kayıt Ol</a>
+      <a routerLink="/races" class="btn primary">Explore Races</a>
+
+      <!-- SIGN UP only if not logged in -->
+      <a *ngIf="!isLoggedIn" routerLink="/register" class="btn secondary">
+        Sign Up
+      </a>
     </div>
   </div>
 </section>
 
-<!-- HIZLI BİLGİ KARTLARI -->
+<!-- QUICK INFO -->
 <section class="quick-info">
   <div class="info-card">
     <h3>150+</h3>
-    <p>Yarış</p>
+    <p>Races</p>
   </div>
 
   <div class="info-card">
-    <h3>10.000+</h3>
-    <p>Sporcu</p>
+    <h3>10,000+</h3>
+    <p>Athletes</p>
   </div>
 
   <div class="info-card">
     <h3>50+</h3>
-    <p>Şehir</p>
+    <p>Cities</p>
   </div>
 </section>
 
-<!-- ÖZELLİKLER -->
+<!-- FEATURES -->
 <section class="features">
-  <h2>Öne Çıkan Özellikler</h2>
+  <h2>Featured Capabilities</h2>
 
   <div class="feature-grid">
 
     <div class="feature-card">
-      <h3>OCR Göğüs Numarası Tanıma</h3>
-      <p>Yarış fotoğraflarındaki bib numaralarını otomatik algılar.</p>
+      <h3>OCR Bib Recognition</h3>
+      <p>Automatically detects bib numbers from race photos.</p>
     </div>
 
     <div class="feature-card">
-      <h3>Yarış Takvimi</h3>
-      <p>Yaklaşan tüm yarışları kolayca görüntüle.</p>
+      <h3>Race Calendar</h3>
+      <p>Easily browse all upcoming races.</p>
     </div>
 
     <div class="feature-card">
-      <h3>Performans Takibi</h3>
-      <p>Koşu geçmişini, PB’lerini ve sonuçlarını kaydet.</p>
+      <h3>Performance Tracking</h3>
+      <p>Record your running history, PBs, and race results.</p>
     </div>
 
     <div class="feature-card">
-      <h3>Sporcu Profili</h3>
-      <p>Tüm koşu geçmişini ve başarılarını sergile.</p>
+      <h3>Athlete Profile</h3>
+      <p>Showcase your achievements and running stats.</p>
     </div>
 
     <div class="feature-card">
-      <h3>Anlık Bildirimler</h3>
-      <p>Yarış kayıtları açıldığında ilk sen öğren.</p>
+      <h3>Instant Notifications</h3>
+      <p>Be the first to know when new races open.</p>
     </div>
 
     <div class="feature-card">
-      <h3>Güvenli Ödeme Sistemi</h3>
-      <p>Yarış ücretlerini güvenle öde.</p>
+      <h3>Secure Payment System</h3>
+      <p>Pay race fees safely and quickly.</p>
     </div>
 
   </div>
 </section>
 
-<!-- NEDEN MARATONİC -->
+<!-- WHY MARATONIC -->
 <section class="why">
-  <h2>Neden Maratonic?</h2>
+  <h2>Why Maratonic?</h2>
   <p class="why-subtitle">
-    Sporcular için tasarlanmış, modern bir deneyim.
+    A modern experience designed for runners.
   </p>
 
   <div class="why-grid">
 
     <div class="why-card">
-      <h3>Kolay Kullanım</h3>
-      <p>Sade, modern ve hızlı kullanıcı arayüzü.</p>
+      <h3>Easy to Use</h3>
+      <p>A clean, modern, and fast interface.</p>
     </div>
 
     <div class="why-card">
-      <h3>Sporcu Topluluğu</h3>
-      <p>Binlerce koşucu ile aynı platformda buluş.</p>
+      <h3>Running Community</h3>
+      <p>Join thousands of athletes on the same platform.</p>
     </div>
 
     <div class="why-card">
-      <h3>Profesyonel Altyapı</h3>
-      <p>Modern teknolojiyle geliştirilen güçlü sistem.</p>
+      <h3>Professional Infrastructure</h3>
+      <p>A powerful system built with modern technologies.</p>
     </div>
 
     <div class="why-card">
-      <h3>7/24 Destek</h3>
-      <p>Her zaman erişilebilir kullanıcı desteği.</p>
+      <h3>24/7 Support</h3>
+      <p>We’re always here to help.</p>
     </div>
 
   </div>
@@ -105,13 +109,21 @@
 
 <!-- CTA -->
 <section class="cta-section">
-  <h2>Hadi Başlayalım!</h2>
+  <h2>Let's Get Started!</h2>
   <p>
-    Spor dünyasına güçlü bir adım at. Maratonic ile yarışlara katıl ve performansını geliştir.
+    Take your next step into the running world. Register for races
+    and improve your performance with Maratonic.
   </p>
 
   <div class="cta-buttons">
-    <a routerLink="/register" class="cta-btn primary">Kayıt Ol</a>
-    <a routerLink="/races" class="cta-btn secondary">Yaklaşan Yarışlar</a>
+
+    <!-- Always show Explore Races -->
+    <a routerLink="/races" class="cta-btn secondary">Upcoming Races</a>
+
+    <!-- Show Sign Up only if NOT logged in -->
+    <a *ngIf="!isLoggedIn" routerLink="/register" class="cta-btn primary">
+      Create Account
+    </a>
+
   </div>
 </section>

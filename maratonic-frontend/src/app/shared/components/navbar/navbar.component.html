@@ -17,7 +17,7 @@
            routerLinkActive="active"
            [routerLinkActiveOptions]="{ exact: true }"
            (click)="closeMenu()">
-          Anasayfa
+          Home
         </a>
       </li>
 
@@ -25,7 +25,7 @@
         <a routerLink="/races"
            routerLinkActive="active"
            (click)="closeMenu()">
-          Yarışlar
+          Races
         </a>
       </li>
 
@@ -33,7 +33,7 @@
         <a routerLink="/calendar"
            routerLinkActive="active"
            (click)="closeMenu()">
-          Takvim
+          Calendar
         </a>
       </li>
 
@@ -42,7 +42,7 @@
         <a routerLink="/admin"
            routerLinkActive="active"
            (click)="closeMenu()">
-          Admin Paneli
+          Admin Dashboard
         </a>
       </li>
 
@@ -51,7 +51,7 @@
         <a routerLink="/profile"
            routerLinkActive="active"
            (click)="closeMenu()">
-          Profilim
+          Profile
         </a>
       </li>
 
@@ -60,14 +60,14 @@
 
         <!-- Giriş yapmamışsa -->
         <ng-container *ngIf="!isLoggedIn">
-          <a routerLink="/login" class="btn login-btn" (click)="closeMenu()">Giriş Yap</a>
-          <a routerLink="/register" class="btn signup-btn" (click)="closeMenu()">Kayıt Ol</a>
+          <a routerLink="/login" class="btn login-btn" (click)="closeMenu()">Sign-In</a>
+          <a routerLink="/register" class="btn signup-btn" (click)="closeMenu()">Sign-Up</a>
         </ng-container>
 
         <!-- Giriş yapmışsa -->
         <ng-container *ngIf="isLoggedIn">
-          <a routerLink="/profile" class="btn login-btn" (click)="closeMenu()">Profil</a>
-          <button class="btn logout-btn" (click)="logout(); closeMenu()">Çıkış Yap</button>
+          <a routerLink="/profile" class="btn login-btn" (click)="closeMenu()">Profile</a>
+          <button class="btn logout-btn" (click)="logout(); closeMenu()">Logout</button>
         </ng-container>
 
       </div>
@@ -79,14 +79,14 @@
 
       <!-- Giriş yapmamışsa -->
       <ng-container *ngIf="!isLoggedIn">
-        <a routerLink="/login" class="btn login-btn">Giriş Yap</a>
-        <a routerLink="/register" class="btn signup-btn">Kayıt Ol</a>
+        <a routerLink="/login" class="btn login-btn">Sign-In</a>
+        <a routerLink="/register" class="btn signup-btn">Sign-Up</a>
       </ng-container>
 
       <!-- Giriş yapmışsa -->
       <ng-container *ngIf="isLoggedIn">
-        <a routerLink="/profile" class="btn login-btn">Profil</a>
-        <button class="btn logout-btn" (click)="logout()">Çıkış Yap</button>
+        <a routerLink="/profile" class="btn login-btn">Profile</a>
+        <button class="btn logout-btn" (click)="logout()">Logout</button>
       </ng-container>
 
     </div>
