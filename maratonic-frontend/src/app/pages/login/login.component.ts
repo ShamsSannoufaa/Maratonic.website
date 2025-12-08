@@ -56,7 +56,7 @@ export class LoginComponent {
         this.auth.saveToken(res.token);
 
         // Profil veya Anasayfaya yönlendir
-        this.router.navigate(['/profile']);
+        this.router.navigate(['/']);
       },
 
       error: (err) => {

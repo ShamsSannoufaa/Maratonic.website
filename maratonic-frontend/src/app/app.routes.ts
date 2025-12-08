@@ -12,7 +12,7 @@ import { AuthGuard } from './core/guards/auth.guard';
 import { CalendarComponent } from './pages/calendar/calendar.component';
 import { AdminDashboardComponent } from './pages/admin/dashboard/admin-dashboard.component';
 
-import { EditProfileComponent } from './pages/profile/edit-profile/edit-profile.component';  // ✅ EKLENDİ
+import { EditProfileComponent } from './pages/profile/edit-profile/edit-profile.component';  
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -27,7 +27,6 @@ export const routes: Routes = [
       // PROFİL
       { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
 
-      // EDIT PROFILE  ✅ YENİ EKLENDİ
       { path: 'profile/edit', component: EditProfileComponent, canActivate: [AuthGuard] },
 
       // RACES
