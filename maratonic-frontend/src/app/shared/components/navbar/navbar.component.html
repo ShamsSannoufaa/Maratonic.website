@@ -60,7 +60,7 @@
 
         <!-- Giriş yapmamışsa -->
         <ng-container *ngIf="!isLoggedIn">
-          <a routerLink="/login" class="btn login-btn" (click)="closeMenu()">Sign-In</a>
+          <a routerLink="/login" class="btn login-btn" (click)="closeMenu()">Login</a>
           <a routerLink="/register" class="btn signup-btn" (click)="closeMenu()">Sign-Up</a>
         </ng-container>
 
@@ -79,7 +79,7 @@
 
       <!-- Giriş yapmamışsa -->
       <ng-container *ngIf="!isLoggedIn">
-        <a routerLink="/login" class="btn login-btn">Sign-In</a>
+        <a routerLink="/login" class="btn login-btn">Login</a>
         <a routerLink="/register" class="btn signup-btn">Sign-Up</a>
       </ng-container>
 

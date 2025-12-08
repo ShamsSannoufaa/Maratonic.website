@@ -2,7 +2,7 @@
 .page-wrapper {
   display: flex;
   flex-direction: column;
-  min-height: auto;   /* << DÜZELTİLDİ */
+  min-height: auto;   
 }
 
 /* ROUTER İÇERİĞİ */
@@ -14,7 +14,7 @@
   width: 100%;
 }
 
-/* Mobil görünüm iyileştirme */
+/* Mobil görünüm  */
 @media (max-width: 768px) {
   .page-container {
     padding: 16px;

@@ -8,11 +8,8 @@ section {
   padding: 80px 30px;
 }
 
-/* -------------------- */
-/* HERO */
-/* -------------------- */
 .hero {
-background: linear-gradient(135deg, #027361, #065667); 
+background: linear-gradient(135deg, #af0655, #2f023a); 
   color: white;
   text-align: center;
   padding: 170px 20px;
@@ -50,7 +47,7 @@ background: linear-gradient(135deg, #027361, #065667);
 }
 
 .btn.primary {
-background: linear-gradient(135deg, #027361, #065667); 
+background: linear-gradient(135deg, #af0655, #e97fa3); 
   color: white;
 }
 
@@ -68,9 +65,7 @@ background: linear-gradient(135deg, #027361, #065667);
   color: #027361;
 }
 
-/* -------------------- */
-/* QUICK INFO STATS */
-/* -------------------- */
+
 
 .quick-info {
   display: flex;
@@ -86,12 +81,12 @@ background: linear-gradient(135deg, #027361, #065667);
   border-radius: 12px;
   text-align: center;
   box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-  border-bottom: 4px solid #027361;
+  border-bottom: 4px solid #af0655;
 }
 
 .info-card h3 {
   font-size: 32px;
-  color: #027361;
+  color: #383637;
   margin-bottom: 5px;
 }
 
@@ -100,9 +95,6 @@ background: linear-gradient(135deg, #027361, #065667);
   color: #444;
 }
 
-/* -------------------- */
-/* FEATURES */
-/* -------------------- */
 
 .features h2 {
   text-align: center;
@@ -140,12 +132,9 @@ background: linear-gradient(135deg, #027361, #065667);
   line-height: 1.5;
 }
 
-/* -------------------- */
-/* WHY */
-/* -------------------- */
 
 .why {
-  background: #f3fbf9;
+  background: #fdf5f9;
   text-align: center;
 }
 
@@ -187,12 +176,10 @@ background: linear-gradient(135deg, #027361, #065667);
   color: #555;
 }
 
-/* -------------------- */
-/* CTA */
-/* -------------------- */
+
 
 .cta-section {
-  background: #e7f7f5;
+  background: #fdf5f9;
   text-align: center;
 }
 
@@ -216,7 +203,7 @@ background: linear-gradient(135deg, #027361, #065667);
 }
 
 .cta-btn.primary {
-  background: #027361;
+  background: #aa145a;
   color: white;
 }
 
@@ -225,11 +212,13 @@ background: linear-gradient(135deg, #027361, #065667);
 }
 
 .cta-btn.secondary {
-  border: 2px solid #027361;
-  color: #027361;
+  border: 2px solid #aa145a;
+  color: #aa145a;
 }
 
 .cta-btn.secondary:hover {
   background: #027361;
+    border: 2px solid #027361;
+
   color: white;
 }

@@ -19,7 +19,7 @@
 .month-title {
   font-size: 24px;
   font-weight: 600;
-  color: #027361;
+  color: #383a3a;
   margin-bottom: 16px;
 }
 
@@ -36,7 +36,7 @@
 .date-box {
   width: 60px;
   height: 60px;
-  background: #004d61;
+  background: #383a3a;
   color: white;
   font-size: 22px;
   font-weight: 700;

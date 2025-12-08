@@ -55,7 +55,6 @@ export class LoginComponent {
         // Token kaydet
         this.auth.saveToken(res.token);
 
-        // Profil veya Anasayfaya yönlendir
         this.router.navigate(['/']);
       },
 
